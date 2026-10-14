@@ -6,7 +6,7 @@ const EMAIL = 'team@mcfallprod.com';
 const CONTACT_MAILTO = `mailto:${EMAIL}`;
 const REPORT_MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent('Buried Gold Report for my show')}&body=${encodeURIComponent("My show's name: ")}`;
 
-const img = (file: string) => encodeURI(`/images/${file}`);
+const img = (file: string) => encodeURI(`${import.meta.env.BASE_URL}images/${file}`);
 
 // The School of Greatness back catalog project, 2026
 const sogLedger = [
