@@ -5,6 +5,7 @@
 - **Done:** On branch `pr-previews`: new `.github/workflows/pr-preview.yml` builds every pull request to https://mcfallprod.com/pr-preview/pr-<number>/ (noindex), posts the link on the PR, and removes it when the PR closes. `deploy.yml` now deploys with a step that leaves `pr-preview/` alone. `src/App.tsx` image paths follow the build's base path (live output unchanged). Typecheck, lint and both builds pass. Explainer: https://claude.ai/artifact/Vb9Zas9gdFbevBiH9Rkc5r
 - **Done:** Pushed and opened [PR #8](https://github.com/mcfall-productions/mcfallprod_website/pull/8) into `GH`. Its preview https://mcfallprod.com/pr-preview/pr-8/ loads with all images.
 - **Done:** CLAUDE.md now says feedback on a PR preview is posted as a PR comment, and Claude edits only when told "fix it" or "fix the PR comments".
+- **Done:** Review SOP for Lauren written as a doc: https://claude.ai/code/artifact/59794d38-383a-4d11-9210-218af8011207. Lauren added as reviewer on PR #8; test comments deleted.
 - **Waiting on:** Scott and Lauren: merge PR #8 into `GH` (turns on the deploy step that keeps previews).
 - **Next:** After merging, a push to `main` still runs the old deploy from `main`'s own workflow, which would overwrite the live site and wipe previews. Decide whether to retire `main` or point it at `GH`.
 
