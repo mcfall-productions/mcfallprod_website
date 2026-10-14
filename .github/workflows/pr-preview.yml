@@ -1,0 +1,49 @@
+name: PR preview
+
+# Every pull request gets its own preview at
+# https://mcfallprod.com/pr-preview/pr-<number>/
+# It updates on each push to the PR and is removed when the PR is closed.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        if: github.event.action != 'closed'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        if: github.event.action != 'closed'
+        run: npm ci
+
+      - name: Build for the preview folder
+        if: github.event.action != 'closed'
+        run: npx vite build --base=/pr-preview/pr-${{ github.event.number }}/
+
+      - name: Keep previews out of search engines
+        if: github.event.action != 'closed'
+        run: sed -i 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' dist/index.html
+
+      - name: Publish or remove the preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: ./dist
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          pages-base-url: mcfallprod.com

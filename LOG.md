@@ -1,8 +1,31 @@
 # Project log
 
+## 2026-10-14 · Preview links for pull requests (branch `pr-previews`, not pushed)
+- **Done:** Fixed a LOG.md merge conflict after pulling (kept Lauren's "pushed live" entry and Scott's minimal-site entries).
+- **Done:** On branch `pr-previews`: new `.github/workflows/pr-preview.yml` builds every pull request to https://mcfallprod.com/pr-preview/pr-<number>/ (noindex), posts the link on the PR, and removes it when the PR closes. `deploy.yml` now deploys with a step that leaves `pr-preview/` alone. `src/App.tsx` image paths follow the build's base path (live output unchanged). Typecheck, lint and both builds pass. Explainer: https://claude.ai/artifact/Vb9Zas9gdFbevBiH9Rkc5r
+- **Done:** Pushed and opened [PR #8](https://github.com/mcfall-productions/mcfallprod_website/pull/8) into `GH`. Its preview https://mcfallprod.com/pr-preview/pr-8/ loads with all images.
+- **Done:** CLAUDE.md now says feedback on a PR preview is posted as a PR comment, and Claude edits only when told "fix it" or "fix the PR comments".
+- **Done:** Review SOP for Lauren written as a doc: https://claude.ai/code/artifact/59794d38-383a-4d11-9210-218af8011207. Lauren added as reviewer on PR #8; test comments deleted.
+- **Waiting on:** Scott and Lauren: merge PR #8 into `GH` (turns on the deploy step that keeps previews).
+- **Next:** After merging, a push to `main` still runs the old deploy from `main`'s own workflow, which would overwrite the live site and wipe previews. Decide whether to retire `main` or point it at `GH`.
+
 ## 2026-10-14 · Homepage rebuild pushed live
 - **Done:** Lauren said to commit and push. The homepage rebuild (5–9 Oct entries below) is committed and pushed to `GH`, which deploys mcfallprod.com. Build passes.
 - **Next:** Send a test email to team@mcfallprod.com. Close the Asana reminder task about pushing after Scott's review. Decide what to do with `main` and the Meta Pixel.
+
+## 2026-10-14 · Minimal site: title fix section
+- **Done:** On Scott's comment, replaced the "one title rewritten" section of the minimal version with a scroll sequence: an Outdated title (7 SECRETS To Start Long-Term WEALTH! EP 1194) gets red strike lines and three notes saying what changes and why (no all caps, remove the episode number, add the guest's name), then the Updated title appears (7 Secrets to Building Long Term Wealth | Lewis Howes). Added "using best practices" to that section and the Goldmine intro. Republished to https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3.
+- **Done (later):** "The School of Greatness" in the closing audit paragraph is now bold, italic and white, per Scott's comment. Title fix now uses hand-drawn red pen strokes, handwritten notes beside the words they mark (stacked under the title on phones), and a gold glint with sparks as the updated title fades in. "13-year back catalog" in the proof section is now white. Removed a stray red dot (pen-stroke cap) that showed before the strikes drew. Moved the "Add the guest's name" note above EP 1194. Sparkle on the updated title is smaller and lasts longer. Footer credit now reads "The School of Greatness with Lewis Howes and The Daily Motivation".
+- **Waiting on:** Scott: which direction to carry forward (original or minimal), from 2026-10-13.
+- **Next:** Nothing committed yet; `mcfall-website/` and `scrollcraft/` are still untracked on the `GH` branch.
+
+## 2026-10-13 · Minimal, Apple-inspired site variant
+- **Done:** Built a second review version of the site in `mcfall-website/minimal/`: white, grey and black tiles, system sans, one gold accent, details tucked into expanders, and a scroll moment where 1,950 dots turn gold. Published privately at https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3. The original review page and its link are untouched. Checked by screenshot at desktop, phone width and reduced motion; not checked on a real phone.
+- **Done (later, same day):** On Scott's comment, replaced the hero dot field with the bar graph from the original page, restyled grey, gold and black, growing as you scroll. Republished to the same link.
+- **Done (later, same day):** Audit pop-up opens on load again in the minimal version, at Scott's request.
+- **Waiting on:** Scott: which direction to carry forward (original scroll version or minimal).
+- **Next:** Nothing is committed. `mcfall-website/` and `scrollcraft/` are untracked on the old `GH` branch; commit and push when ready.
+- **Ideas:** A real phone pass; hooking the audit email box to a mail service (still unsent in both versions).
 
 ## 2026-10-09 · Referral partner page live at mcfallprod.com/referral
 - **Done:** `public/referral/index.html` committed on its own and pushed to `GH` (commit 56e255b). It is a standalone copy of `mcfallProdBiz/sales-kit/referral-partner-page.html` wrapped in a full HTML document, marked noindex so search engines skip it. The homepage rebuild was not pushed: the live homepage is unchanged and those files are still uncommitted.
