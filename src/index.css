@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Gold foil is for the Back Catalog Goldmine block only. */
+@layer components {
+  .foil-text {
+    background: linear-gradient(115deg, #a9801f 0%, #e6c567 28%, #f6e3a1 42%, #c9a13b 58%, #e9cb73 80%, #a9801f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .foil-bg {
+    background: linear-gradient(115deg, #a9801f 0%, #e6c567 28%, #f6e3a1 42%, #c9a13b 58%, #e9cb73 80%, #a9801f 100%);
+    background-size: 160% 100%;
+    color: #1d1605;
+  }
+
+  .foil-bg:hover {
+    background-position: 100% 0;
+  }
+}
+
+/* Top-of-page picture: the "found again" bars grow in once. */
+@keyframes barGrow {
+  from {
+    transform: scaleY(0.22);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bar-grow {
+    transform-origin: bottom;
+    animation: barGrow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
 @layer utilities {
   @keyframes fadeInUp {
     from {
