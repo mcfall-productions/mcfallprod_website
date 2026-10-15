@@ -1,9 +1,14 @@
 # Project log
 
+## 2026-10-15 · Minimal draft reviewable in PR previews (branch `review/minimal-homepage`, not pushed)
+- **Done:** `.github/workflows/pr-preview.yml` now adds the minimal draft to every PR preview at `/pr-preview/pr-<number>/drafts/minimal/` (noindex). Checked locally: the page, red-pen title fix and images all load. `CLAUDE.md` explains how to review and fix it.
+- **Waiting on:** Scott: OK to push the branch and open a PR into `GH` with Lauren as reviewer.
+- **Next:** Once the PR is up, Lauren tells her Claude to review it and her comments land on the PR.
+
 ## 2026-10-15 · Where the minimal site lives, and Lauren's access
 - **Done:** Confirmed the minimal version with the red-pen title fix is on GitHub's `GH` branch (commit 7cd37d1) in `mcfall-website/minimal/`, matching https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3. It is not on the live site.
 - **Done:** Added a "Homepage drafts" section to `CLAUDE.md` so Lauren's Claude can find the drafts, the review link and the build requirement.
-- **Next:** Commit and push `CLAUDE.md` and this entry once Scott OKs it.
+- **Done:** Committed and pushed to `GH` on Scott's OK (013ac16).
 
 ## 2026-10-14 · Preview links for pull requests (branch `pr-previews`, not pushed)
 - **Done:** Fixed a LOG.md merge conflict after pulling (kept Lauren's "pushed live" entry and Scott's minimal-site entries).
