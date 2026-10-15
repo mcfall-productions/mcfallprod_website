@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-15 · Where the minimal site lives, and Lauren's access
+- **Done:** Confirmed the minimal version with the red-pen title fix is on GitHub's `GH` branch (commit 7cd37d1) in `mcfall-website/minimal/`, matching https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3. It is not on the live site.
+- **Done:** Added a "Homepage drafts" section to `CLAUDE.md` so Lauren's Claude can find the drafts, the review link and the build requirement.
+- **Next:** Commit and push `CLAUDE.md` and this entry once Scott OKs it.
+
 ## 2026-10-14 · Preview links for pull requests (branch `pr-previews`, not pushed)
 - **Done:** Fixed a LOG.md merge conflict after pulling (kept Lauren's "pushed live" entry and Scott's minimal-site entries).
 - **Done:** On branch `pr-previews`: new `.github/workflows/pr-preview.yml` builds every pull request to https://mcfallprod.com/pr-preview/pr-<number>/ (noindex), posts the link on the PR, and removes it when the PR closes. `deploy.yml` now deploys with a step that leaves `pr-preview/` alone. `src/App.tsx` image paths follow the build's base path (live output unchanged). Typecheck, lint and both builds pass. Explainer: https://claude.ai/artifact/Vb9Zas9gdFbevBiH9Rkc5r

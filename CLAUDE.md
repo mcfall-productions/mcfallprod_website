@@ -33,3 +33,9 @@ Run `npm run typecheck` and `npm run lint` before considering a change done.
 - Each PR gets a preview at `https://mcfallprod.com/pr-preview/pr-<number>/`; the link is posted on the PR about 2 minutes after each push.
 - **While Scott or Lauren is reviewing a PR preview, their feedback is a PR comment, not an edit.** Post it with `gh pr comment <number>` in plain words, naming the element (for a selected element or a drawing, describe what it points at). Do not change files.
 - Edit only when told to act ("fix it", "fix the PR comments on #N"). Then read all PR comments, make the changes on that PR's branch, push, and reply on the PR with what changed.
+
+## Homepage drafts (not live)
+
+- `mcfall-website/` (scroll version) and `mcfall-website/minimal/` (minimal, Apple-style, with the red-pen title fix) are review drafts. They are not part of the Vite build and pushing them does not change mcfallprod.com.
+- Read the `README.md` in each folder before editing. The minimal review page is https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3 (owned by Scott's Claude account; anyone with the link can view it).
+- `node build.mjs` in `minimal/` needs the `nateherk-design` plugin (scroll-craft) installed, or `SCROLLCRAFT_CSS` pointing at its `scrollcraft.css`.
