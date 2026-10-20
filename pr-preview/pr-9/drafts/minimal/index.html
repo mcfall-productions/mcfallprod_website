@@ -629,6 +629,15 @@ ul, ol { padding: 0; list-style: none; }
 .pair p { color: var(--sc-ink-soft); }
 .defs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 3rem; max-width: none !important; }
 .defs dt { color: var(--sc-ink); font-weight: 600; }
+.defs__h { margin: 1.8rem 0 0.9rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: var(--sc-ink-soft); }
+.defs__h--bonus { color: var(--sc-ink); }
+.defs--bonus > div { padding: 1rem 1.2rem; border-radius: 1rem; box-shadow: inset 0 0 0 1.5px var(--sc-accent); }
+.badge { display: block; width: max-content; margin-bottom: 0.35rem; padding: 0.1rem 0.55rem; border-radius: 99px; background: var(--sc-accent); color: var(--sc-accent-ink); font-size: 0.75rem; font-weight: 700; }
+.review { display: grid; gap: 0.6rem; max-width: 44rem; margin-top: clamp(3rem, 7vw, 5rem); }
+.review p { color: var(--sc-ink-soft); }
+.publish { display: grid; gap: 0.8rem; justify-items: start; padding: clamp(2rem, 5vw, 3.5rem); border-radius: 1.75rem; background: var(--tile); color: var(--sc-ink); margin-bottom: clamp(3rem, 7vw, 5rem); }
+.publish small { font-size: 0.8125rem; font-weight: 600; color: var(--sc-accent); }
+.publish p { max-width: 40rem; font-size: 1.1875rem; line-height: 1.45; color: var(--sc-ink-soft); }
 @media (max-width: 720px) { .svc li, .pair, .defs { grid-template-columns: minmax(0, 1fr); } }
 
 /* 6. beside your team */
@@ -668,6 +677,7 @@ ul, ol { padding: 0; list-style: none; }
 .person p { margin-top: 0.6rem; color: var(--sc-ink-soft); }
 .voices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem clamp(2rem, 6vw, 5rem); padding-top: clamp(2.5rem, 6vw, 4rem); margin-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--hair); }
 .voices blockquote { display: grid; gap: 1rem; align-content: start; font-size: 1.1875rem; line-height: 1.42; letter-spacing: -0.014em; }
+.person p.quote, .voices blockquote p { font-style: italic; }
 .voices cite { font-style: normal; font-size: 0.875rem; color: var(--sc-ink-soft); }
 @media (max-width: 720px) {
   .people, .voices { grid-template-columns: minmax(0, 1fr); }
@@ -779,7 +789,7 @@ ul, ol { padding: 0; list-style: none; }
   <div class="wrap">
     <div class="stack" data-sc-in data-sc-stagger="70">
       <h2 class="h-lg">Your next untapped revenue stream is already recorded.</h2>
-      <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog, so listeners find them again. Then we show you which ones are paying off.</p>
+      <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog. Then we don't hand you a document and leave. We publish all of it ourselves, on your podcast host and on your podcast website, so listeners find your old episodes again. Then we show you which ones are paying off.</p>
     </div>
     <div class="acc" data-sc-in>
       <details>
@@ -803,12 +813,12 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 <!-- 3. ONE TITLE, FIXED: the reader watches what changes and why -->
-<section class="fixer" id="fixer" data-sc-act="pin" data-sc-span="2.8" data-tone="light">
+<section class="fixer" id="fixer" data-sc-act="flow" data-tone="light">
   <div data-sc-stage>
     <div class="wrap fixer__in">
       <div class="stack">
         <h2 class="h-md">Every title rewritten using best practices.</h2>
-        <p class="soft">The same best practices go into your show notes and transcripts. Here's one title, fixed.</p>
+        <p class="soft" id="fix-cue">The same best practices go into your show notes and transcripts. Here's one title, fixed.</p>
       </div>
       <div class="fx">
         <p class="fx__tag">Outdated</p>
@@ -828,10 +838,10 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 <!-- 4. THE PEAK: 1,950 dots turn gold under the reader's hand -->
-<section class="peak dk" id="proof" data-sc-act="pin" data-sc-span="3" data-tone="dark">
+<section class="peak dk" id="proof" data-sc-act="flow" data-tone="dark">
   <div data-sc-stage>
     <div class="wrap peak__copy">
-      <h2 class="h-md">We did it for The School of Greatness first.</h2>
+      <h2 class="h-md" id="peak-cue">We did it for The School of Greatness first.</h2>
       <p class="soft">We produce the show with Lewis Howes. In 2026 we took on its whole <strong class="hl">13-year back catalog</strong>.</p>
       <p class="peak__n" id="peak-n">1,950</p>
       <p class="peak__label">titles rewritten to a written style guide</p>
@@ -858,22 +868,34 @@ ul, ol { padding: 0; list-style: none; }
       <li><h3 class="h-md">Show notes</h3><div><p class="fix">So your episodes get found.</p><p>New notes for every episode, written so search engines and podcast apps can match them to what people are looking for.</p></div></li>
       <li><h3 class="h-md">Transcripts</h3><div><p class="fix">So every conversation can be used again.</p><p>Every episode transcribed, so your team can search, quote and reuse anything that's ever been said on the show.</p></div></li>
     </ul>
+    <div class="review" data-sc-in>
+      <h3 class="h-md">A real person reads every word.</h3>
+      <p>Our automation writes the first draft. Then a native English-speaking human on our team reviews every title, set of show notes and transcript before any of it goes live.</p>
+    </div>
     <div class="pair" data-sc-in>
       <div><h3 class="h-md">Days or weeks, not months.</h3><p>Big catalogs stay messy because fixing one by hand takes a team months. We built our own automation on a show with nearly 2,000 episodes. It does the heavy lifting, people review the work, and the cleanup takes days or weeks, depending on how many episodes you have.</p></div>
-      <div><h3 class="h-md">We publish it for you.</h3><p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website.</p></div>
+    </div>
+    <div class="publish dk" data-sc-in>
+      <small>Not just rewrites</small>
+      <h3 class="h-lg">We publish it for you.</h3>
+      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
     </div>
     <div class="acc" data-sc-in>
       <details>
         <summary>The full suite, and its three bonuses</summary>
         <div class="acc__body" style="max-width:none">
-          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge.</p>
+          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge, marked below.</p>
+          <h4 class="defs__h">In the suite</h4>
           <dl class="defs">
-            <div><dt>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
-            <div><dt>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
-            <div><dt>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
             <div><dt>Your podcast host</dt><dd>The feed Apple, Spotify and every other app reads. Every title, description and transcript updated there, so the change shows up everywhere people listen.</dd></div>
             <div><dt>Your podcast website</dt><dd>Each episode's page on your site updated to match: the new title, the new show notes, and the transcript behind a “Click here to read transcript” link.</dd></div>
             <div><dt>Nothing lost</dt><dd>We save every original title and show note before we change anything, so any episode can be put back.</dd></div>
+          </dl>
+          <h4 class="defs__h defs__h--bonus">Plus three bonuses, free with the suite</h4>
+          <dl class="defs defs--bonus">
+            <div><dt><span class="badge">Bonus 1</span>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
+            <div><dt><span class="badge">Bonus 2</span>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
+            <div><dt><span class="badge">Bonus 3</span>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
           </dl>
           <p class="note">Your quote comes after a walkthrough call, based on your catalog's size.</p>
         </div>
@@ -965,12 +987,12 @@ ul, ol { padding: 0; list-style: none; }
       <div class="person">
         <img src="images/lauren.jpg" width="388" height="500" alt="Lauren McFall">
         <h3 class="h-sm">Lauren McFall</h3><small>Co-Founder &amp; Executive Producer</small>
-        <p>“I run every project like a production calendar: dates set up front, updates every week, and nothing that depends on you remembering to ask.”</p>
+        <p class="quote">“I run every project like a production calendar: dates set up front, updates every week, and nothing that depends on you remembering to ask.”</p>
       </div>
       <div class="person">
         <img src="images/scott-headshot.jpg" width="388" height="500" alt="Scott McFall">
         <h3 class="h-sm">Scott McFall</h3><small>Co-Founder &amp; Director of Editing &amp; AI Innovation</small>
-        <p>“Most shows never fix their back catalog because doing it by hand costs months of salaries. I built the tools that make it affordable.”</p>
+        <p class="quote">“Most shows never fix their back catalog because doing it by hand costs months of salaries. I built the tools that make it affordable.”</p>
       </div>
       <div class="person">
         <img src="images/wayne-headshot.jpg" width="388" height="500" alt="Wayne Redden">
@@ -1148,11 +1170,17 @@ ul, ol { padding: 0; list-style: none; }
     }
   }
 
-  /* progress of a pinned act, starting a little before it pins */
-  function actP(sec, leadFrac) {
-    var r = sec.getBoundingClientRect(), vh = window.innerHeight, lead = vh * leadFrac;
-    return clamp01((lead - r.top) / (lead + Math.max(1, r.height - vh)));
+  /* progress of an act that plays by itself: it starts once the visitor has scrolled past its cue
+     (the cue's bottom edge above 40% of the screen) and then runs for dur ms, scrolling or not */
+  function autoP(act, cue, dur) {
+    if (reduce) return 1;
+    if (!act.t0) {
+      if (cue.getBoundingClientRect().bottom > window.innerHeight * 0.4) return 0;
+      act.t0 = performance.now();
+    }
+    return clamp01((performance.now() - act.t0) / dur);
   }
+  var fixAct = { t0: 0, p: 0 }, peakAct = { t0: 0, p: 0 };
 
   /* the title fix: strike the caps, strike the number, add the guest, then the update */
   var fixer = $('#fixer'), fixStage = fixer.querySelector('[data-sc-stage]'), fixLast = '';
@@ -1192,7 +1220,7 @@ ul, ol { padding: 0; list-style: none; }
   addEventListener('resize', placeNotes);
 
   function drawFixer() {
-    var P = reduce ? 1 : actP(fixer, 0.35), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
+    var P = fixAct.p = autoP(fixAct, $('#fix-cue'), 7000), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
     for (var i = 0; i < 4; i++) {
       var v = clamp01((P - steps[i][0]) / (steps[i][1] - steps[i][0]));
       v = 1 - Math.pow(1 - v, 3);
@@ -1219,7 +1247,7 @@ ul, ol { padding: 0; list-style: none; }
   function drawPeak() {
     var n = N, so = 1, hold = true;
     if (!reduce) {
-      var P = actP(peak, 0.4);
+      var P = peakAct.p = autoP(peakAct, $('#peak-cue'), 4500);
       n = Math.round(clamp01(P / 0.72) * N);
       so = clamp01((P - 0.74) / 0.1);
       hold = P >= 0.84;
@@ -1233,13 +1261,18 @@ ul, ol { padding: 0; list-style: none; }
     paint(peakC, peakG, 0, n);
     bigN.textContent = n.toLocaleString('en-US');
   }
-  function onScroll() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; growHero(); drawFixer(); drawPeak(); }); }
+  /* keeps drawing while an act that has started is still playing */
+  function frame() {
+    raf = 0; growHero(); drawFixer(); drawPeak();
+    if ((fixAct.t0 && fixAct.p < 1) || (peakAct.t0 && peakAct.p < 1)) raf = requestAnimationFrame(frame);
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
   function onResize() { peakG = null; lit = -1; drawPeak(); }
 
   if (window.ScrollCraft) ScrollCraft.mount(document.body);
   else document.documentElement.classList.add('no-sc');
 
-  growHero(); drawFixer(); drawPeak();
+  growHero(); drawFixer(); drawPeak(); onScroll();
   addEventListener('scroll', onScroll, { passive: true });
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(onResize); ro.observe(peakC); }
   else addEventListener('resize', onResize);
