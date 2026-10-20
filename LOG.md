@@ -1,8 +1,9 @@
 # Project log
 
-## 2026-10-20 · Minimal draft: title fix back on scroll (branch `review/fixer-scroll`, not pushed)
+## 2026-10-20 · Minimal draft: title fix back on scroll ([PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11))
 - **Done:** On Scott's artifact comment, the red-pen title fix is scroll-driven again (pinned, `data-sc-span="1.8"`, was 2.8), so it takes about half the scrolling it did before the auto-play change. The 1,950 counter still auto-plays. Review link republished (Version 13): https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3
-- **Waiting on:** Scott: OK to push `review/fixer-scroll` and open a PR into `GH`.
+- **Done:** Pushed and opened [PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11) into `GH`. Draft preview: https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/
+- **Waiting on:** Review and merge of PR #11.
 
 ## 2026-10-20 · Minimal draft: Lauren's #4, #8, #15 (PR #9)
 - **Done:** Checked the Claude GitHub app's second-batch fix (c871b45): rebuild matches, both animations auto-run, no console errors.
