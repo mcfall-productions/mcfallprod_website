@@ -39,3 +39,5 @@ Run `npm run typecheck` and `npm run lint` before considering a change done.
 - `mcfall-website/` (scroll version) and `mcfall-website/minimal/` (minimal, Apple-style, with the red-pen title fix) are review drafts. They are not part of the Vite build and pushing them does not change mcfallprod.com.
 - Read the `README.md` in each folder before editing. The minimal review page is https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3 (owned by Scott's Claude account; anyone with the link can view it).
 - `node build.mjs` in `minimal/` needs the `nateherk-design` plugin (scroll-craft) installed, or `SCROLLCRAFT_CSS` pointing at its `scrollcraft.css`.
+- Every PR preview also carries the minimal draft at `https://mcfallprod.com/pr-preview/pr-<number>/drafts/minimal/`, so it is reviewed like any PR: feedback is a PR comment (rules above). To fix it, edit `mcfall-website/minimal/src/page.html`, run `node build.mjs`, and push to the PR branch. The free audit does not run on the preview, only inside Claude.
+- Pushes do not update the claude.ai review link; only Scott's account can republish it.

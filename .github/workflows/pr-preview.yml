@@ -2,6 +2,7 @@ name: PR preview
 
 # Every pull request gets its own preview at
 # https://mcfallprod.com/pr-preview/pr-<number>/
+# (and the minimal homepage draft at .../pr-<number>/drafts/minimal/)
 # It updates on each push to the PR and is removed when the PR is closed.
 
 on:
@@ -39,6 +40,21 @@ jobs:
       - name: Keep previews out of search engines
         if: github.event.action != 'closed'
         run: sed -i 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' dist/index.html
+
+      # The minimal homepage draft is not part of the live site. Previews carry it at
+      # https://mcfallprod.com/pr-preview/pr-<number>/drafts/minimal/ so it can be reviewed in a PR.
+      - name: Add the minimal homepage draft
+        if: github.event.action != 'closed'
+        run: |
+          out=dist/drafts/minimal
+          mkdir -p "$out"
+          cp -RL mcfall-website/minimal/images "$out/images"
+          cp -L mcfall-website/minimal/scrollcraft.js "$out/"
+          {
+            printf '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><style>body{margin:0}img{max-width:100%%}[hidden]{display:none!important}</style></head><body>'
+            cat mcfall-website/minimal/index.html
+            printf '</body></html>'
+          } > "$out/index.html"
 
       - name: Publish or remove the preview
         uses: rossjrw/pr-preview-action@v1

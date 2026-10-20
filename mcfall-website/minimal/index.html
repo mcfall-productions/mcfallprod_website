@@ -448,7 +448,7 @@ video[data-sc-scrub].sc-has-clip { opacity: 1; }
   --sc-accent: #8a6410;  --sc-accent-ink: #ffffff;
   --hair: #d2d2d7;       --tile: #ffffff;
   --dot: #d6d6db;        --dot-lit: #c9a13b;
-  --bar-far: #ececf0;    --bar-old: #c7c7cc;
+  --bar-old: #c7c7cc;
   --gold: #e2bd57;
   --sc-font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Geist", "Helvetica Neue", Arial, sans-serif;
   --sc-font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Geist", "Helvetica Neue", Arial, sans-serif;
@@ -534,18 +534,18 @@ ul, ol { padding: 0; list-style: none; }
 .hero__copy .row { margin-top: 0.6rem; justify-content: center; }
 .field { position: relative; min-height: 0; }
 .field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-/* the catalog as three planes of bars. They grow as the page scrolls. */
+/* the catalog as one row of bars: old episodes on the left, new ones on the right, never
+   layered. They grow as the page scrolls. */
 .strata { position: relative; min-height: 0; margin: clamp(2rem, 6vh, 4rem) var(--g) 0; border-bottom: 1px solid var(--hair); }
 .plane { position: absolute; inset: 0; }
 .plane__in { position: absolute; inset: 0; display: flex; align-items: flex-end; gap: 3px; transform-origin: 50% 100%; will-change: transform; }
 .plane__in i { flex: 1 1 0; min-width: 0; border-radius: 2px 2px 0 0; }
-.plane--far .plane__in { gap: 2px; }
-.plane--far i { background: var(--bar-far); }
+.plane--mid { right: calc(38% + clamp(6px, 1.1vw, 14px)); }
 .plane--mid i { background: var(--bar-old); }
-.plane--mid i.found { background: var(--dot-lit); }
+.plane--mid i.found { background: var(--dot-lit); transform-origin: 50% 100%; transform: scaleY(calc(0.12 + 0.88 * var(--t, 1))); }
+.plane--near { left: 62%; }
 .plane--near .plane__in { gap: clamp(6px, 1.1vw, 14px); }
 .plane--near i { background: var(--sc-ink); }
-.plane--near i.gap { background: transparent; }
 .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 1.5rem; padding: 1.1rem var(--g) 1.4rem; }
 .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
 .legend i { width: 0.6rem; height: 0.6rem; border-radius: 2px; }
@@ -564,6 +564,22 @@ ul, ol { padding: 0; list-style: none; }
 /* 2. buried */
 .buried .h-lg { max-width: 15ch; }
 .buried .acc { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+/* the back-catalog calculator: same inputs and math as the sales page */
+.calc { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3rem); width: 100%; margin-top: clamp(2.5rem, 6vw, 4.5rem); padding: clamp(1.6rem, 4vw, 3rem); border-radius: 1.75rem; background: var(--tile); }
+.calc__in { display: grid; gap: 1.1rem; align-content: start; }
+.calc__in > p { color: var(--sc-ink-soft); }
+.calc label { display: grid; gap: 0.45rem; font-size: 0.9375rem; color: var(--sc-ink-soft); }
+.calc .in { color: var(--sc-ink); font-variant-numeric: tabular-nums; }
+.calc output { color: var(--sc-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.calc input[type="range"] { width: 100%; margin: 0.4rem 0 0; }
+.calc__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.calc__out { display: grid; gap: 0.35rem; align-content: center; justify-items: start; padding: clamp(1.4rem, 3vw, 2rem); border-radius: 1.25rem; background: var(--sc-surface); }
+.calc__out small { font-size: 0.8125rem; font-weight: 600; color: var(--sc-ink-soft); }
+.calc__big { font-family: var(--sc-font-display); font-weight: 600; font-size: clamp(2.6rem, 1.6rem + 4vw, 4.25rem); line-height: 1; letter-spacing: -0.04em; color: var(--sc-accent); font-variant-numeric: tabular-nums; }
+.calc__out p { font-variant-numeric: tabular-nums; }
+.calc__math { grid-column: 1 / -1; font-variant-numeric: tabular-nums; }
+.calc__math b { color: var(--sc-ink); font-weight: 600; }
+@media (max-width: 720px) { .calc { grid-template-columns: minmax(0, 1fr); } }
 
 /* 3. one title, fixed. --s1..--s4 run 0 to 1 as the act scrolls. */
 .fixer { --red: #d70015; --s1: 1; --s2: 1; --s3: 1; --s4: 1; }
@@ -629,6 +645,15 @@ ul, ol { padding: 0; list-style: none; }
 .pair p { color: var(--sc-ink-soft); }
 .defs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 3rem; max-width: none !important; }
 .defs dt { color: var(--sc-ink); font-weight: 600; }
+.defs__h { margin: 1.8rem 0 0.9rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; color: var(--sc-ink-soft); }
+.defs__h--bonus { color: var(--sc-ink); }
+.defs--bonus > div { padding: 1rem 1.2rem; border-radius: 1rem; box-shadow: inset 0 0 0 1.5px var(--sc-accent); }
+.badge { display: block; width: max-content; margin-bottom: 0.35rem; padding: 0.1rem 0.55rem; border-radius: 99px; background: var(--sc-accent); color: var(--sc-accent-ink); font-size: 0.75rem; font-weight: 700; }
+.review { display: grid; gap: 0.6rem; max-width: 44rem; margin-top: clamp(3rem, 7vw, 5rem); }
+.review p { color: var(--sc-ink-soft); }
+.publish { display: grid; gap: 0.8rem; justify-items: start; padding: clamp(2rem, 5vw, 3.5rem); border-radius: 1.75rem; background: var(--tile); color: var(--sc-ink); margin-bottom: clamp(3rem, 7vw, 5rem); }
+.publish small { font-size: 0.8125rem; font-weight: 600; color: var(--sc-accent); }
+.publish p { max-width: 40rem; font-size: 1.1875rem; line-height: 1.45; color: var(--sc-ink-soft); }
 @media (max-width: 720px) { .svc li, .pair, .defs { grid-template-columns: minmax(0, 1fr); } }
 
 /* 6. beside your team */
@@ -668,6 +693,7 @@ ul, ol { padding: 0; list-style: none; }
 .person p { margin-top: 0.6rem; color: var(--sc-ink-soft); }
 .voices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem clamp(2rem, 6vw, 5rem); padding-top: clamp(2.5rem, 6vw, 4rem); margin-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--hair); }
 .voices blockquote { display: grid; gap: 1rem; align-content: start; font-size: 1.1875rem; line-height: 1.42; letter-spacing: -0.014em; }
+.person p.quote, .voices blockquote p { font-style: italic; }
 .voices cite { font-style: normal; font-size: 0.875rem; color: var(--sc-ink-soft); }
 @media (max-width: 720px) {
   .people, .voices { grid-template-columns: minmax(0, 1fr); }
@@ -763,7 +789,6 @@ ul, ol { padding: 0; list-style: none; }
     </div>
   </div>
   <div class="strata" id="strata" aria-hidden="true">
-    <div class="plane plane--far"><div class="plane__in" data-grow="0.2"></div></div>
     <div class="plane plane--mid"><div class="plane__in" data-grow="0.38"></div></div>
     <div class="plane plane--near"><div class="plane__in" data-grow="0.55"></div></div>
   </div>
@@ -780,7 +805,30 @@ ul, ol { padding: 0; list-style: none; }
   <div class="wrap">
     <div class="stack" data-sc-in data-sc-stagger="70">
       <h2 class="h-lg">Your next untapped revenue stream is already recorded.</h2>
-      <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog, so listeners find them again. Then we show you which ones are paying off.</p>
+      <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog. Then we don't hand you a document and leave. We publish all of it ourselves, on your podcast host and on your podcast website, so listeners find your old episodes again. Then we show you which ones are paying off.</p>
+    </div>
+    <div class="calc" data-sc-in>
+      <div class="calc__in">
+        <h3 class="h-md">How much is sitting in your back catalog?</h3>
+        <p>If your show uses dynamic ad insertion, a play of a 2016 episode carries this month's ads. More people finding old episodes means more ad revenue from episodes you've already paid to make.</p>
+        <label for="k-dl">Monthly downloads from episodes more than a year old
+          <input class="in" id="k-dl" type="number" inputmode="numeric" min="0" step="10000" value="300000"></label>
+        <label for="k-lift">Lift in those downloads: <output id="k-lift-out">10%</output>
+          <input id="k-lift" type="range" min="0" max="30" step="1" value="10"></label>
+        <div class="calc__row">
+          <label for="k-slots">Ad spots per episode
+            <input class="in" id="k-slots" type="number" inputmode="numeric" min="0" max="10" step="1" value="3"></label>
+          <label for="k-cpm">Your CPM ($ per 1,000)
+            <input class="in" id="k-cpm" type="number" inputmode="decimal" min="0" step="1" value="25"></label>
+        </div>
+      </div>
+      <div class="calc__out" aria-live="polite">
+        <small>Extra ad revenue</small>
+        <p class="calc__big" id="k-year">$27,000</p>
+        <p>a year, or <span id="k-month">$2,250</span> a month</p>
+        <p class="cap"><span id="k-extra">30,000</span> more back-catalog downloads a month</p>
+      </div>
+      <p class="cap calc__math"><span id="m-extra">30,000</span> extra downloads x <span id="m-slots">3</span> ad spots x <span id="m-cpm">$25</span> per 1,000 = <b id="m-month">$2,250 a month</b>. Try your own numbers. Ads are only the start: a searchable, well-titled catalog also feeds sponsor pitches, clips and premium content.</p>
     </div>
     <div class="acc" data-sc-in>
       <details>
@@ -804,24 +852,24 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 <!-- 3. ONE TITLE, FIXED: the reader watches what changes and why -->
-<section class="fixer" id="fixer" data-sc-act="pin" data-sc-span="2.8" data-tone="light">
+<section class="fixer" id="fixer" data-sc-act="flow" data-tone="light">
   <div data-sc-stage>
     <div class="wrap fixer__in">
       <div class="stack">
         <h2 class="h-md">Every title rewritten using best practices.</h2>
-        <p class="soft">The same best practices go into your show notes and transcripts. Here's one title, fixed.</p>
+        <p class="soft" id="fix-cue">The same best practices go into your show notes and transcripts. Here's one title, fixed.</p>
       </div>
       <div class="fx">
         <p class="fx__tag">Outdated</p>
-        <p class="fx__old"><span class="m" data-step="1">7 SECRETS</span> To Start <span class="nw">Long-Term</span> <span class="m" data-step="1">WEALTH!</span> <span class="m" data-step="2">EP 1194</span><span class="fx__caret" data-step="3" aria-hidden="true"></span></p>
+        <p class="fx__old"><span class="m" data-step="2">The #1</span> Financial Freedom <span class="m" data-step="1">SECRET</span> Rich People <span class="m" data-step="1">WON’T</span> <span class="m" data-step="2">Tell You!</span><span class="fx__caret" data-step="3" aria-hidden="true"></span></p>
         <ol class="fx__notes">
           <li data-step="1"><b>No all caps</b><span>Caps read as shouting in a podcast app.</span></li>
-          <li data-step="2"><b>Remove the episode number</b><span>It takes up space and means nothing to a new listener.</span></li>
+          <li data-step="2"><b>Cut the clickbait</b><span>Say the actual idea, so people know why to press play.</span></li>
           <li data-step="3"><b>Add the guest's name</b><span>People search for the guest, so the name gets the episode found.</span></li>
         </ol>
         <div class="fx__new" data-step="4">
           <p class="fx__tag">Updated</p>
-          <p class="fx__title">7 Secrets to Building Long Term Wealth | Lewis Howes<span class="spark" style="left:-1.2rem;top:-0.6rem" aria-hidden="true"></span><span class="spark" style="left:38%;top:-1rem;width:.8rem;height:.8rem" aria-hidden="true"></span><span class="spark" style="right:-1.3rem;top:30%" aria-hidden="true"></span><span class="spark" style="left:66%;bottom:-0.9rem;width:.7rem;height:.7rem" aria-hidden="true"></span></p>
+          <p class="fx__title">Saving Will Never Make You Rich. Earning Will | Codie Sanchez<span class="spark" style="left:-1.2rem;top:-0.6rem" aria-hidden="true"></span><span class="spark" style="left:38%;top:-1rem;width:.8rem;height:.8rem" aria-hidden="true"></span><span class="spark" style="right:-1.3rem;top:30%" aria-hidden="true"></span><span class="spark" style="left:66%;bottom:-0.9rem;width:.7rem;height:.7rem" aria-hidden="true"></span></p>
         </div>
       </div>
     </div>
@@ -829,10 +877,10 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 <!-- 4. THE PEAK: 1,950 dots turn gold under the reader's hand -->
-<section class="peak dk" id="proof" data-sc-act="pin" data-sc-span="3" data-tone="dark">
+<section class="peak dk" id="proof" data-sc-act="flow" data-tone="dark">
   <div data-sc-stage>
     <div class="wrap peak__copy">
-      <h2 class="h-md">We did it for The School of Greatness first.</h2>
+      <h2 class="h-md" id="peak-cue">We did it for The School of Greatness first.</h2>
       <p class="soft">We produce the show with Lewis Howes. In 2026 we took on its whole <strong class="hl">13-year back catalog</strong>.</p>
       <p class="peak__n" id="peak-n">1,950</p>
       <p class="peak__label">titles rewritten to a written style guide</p>
@@ -859,22 +907,34 @@ ul, ol { padding: 0; list-style: none; }
       <li><h3 class="h-md">Show notes</h3><div><p class="fix">So your episodes get found.</p><p>New notes for every episode, written so search engines and podcast apps can match them to what people are looking for.</p></div></li>
       <li><h3 class="h-md">Transcripts</h3><div><p class="fix">So every conversation can be used again.</p><p>Every episode transcribed, so your team can search, quote and reuse anything that's ever been said on the show.</p></div></li>
     </ul>
+    <div class="review" data-sc-in>
+      <h3 class="h-md">A real person reads every word.</h3>
+      <p>Our automation writes the first draft. Then a native English-speaking human on our team reviews every title, set of show notes and transcript before any of it goes live.</p>
+    </div>
     <div class="pair" data-sc-in>
       <div><h3 class="h-md">Days or weeks, not months.</h3><p>Big catalogs stay messy because fixing one by hand takes a team months. We built our own automation on a show with nearly 2,000 episodes. It does the heavy lifting, people review the work, and the cleanup takes days or weeks, depending on how many episodes you have.</p></div>
-      <div><h3 class="h-md">We publish it for you.</h3><p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website.</p></div>
+    </div>
+    <div class="publish dk" data-sc-in>
+      <small>Not just rewrites</small>
+      <h3 class="h-lg">We publish it for you.</h3>
+      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
     </div>
     <div class="acc" data-sc-in>
       <details>
         <summary>The full suite, and its three bonuses</summary>
         <div class="acc__body" style="max-width:none">
-          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge.</p>
+          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge, marked below.</p>
+          <h4 class="defs__h">In the suite</h4>
           <dl class="defs">
-            <div><dt>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
-            <div><dt>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
-            <div><dt>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
             <div><dt>Your podcast host</dt><dd>The feed Apple, Spotify and every other app reads. Every title, description and transcript updated there, so the change shows up everywhere people listen.</dd></div>
             <div><dt>Your podcast website</dt><dd>Each episode's page on your site updated to match: the new title, the new show notes, and the transcript behind a “Click here to read transcript” link.</dd></div>
             <div><dt>Nothing lost</dt><dd>We save every original title and show note before we change anything, so any episode can be put back.</dd></div>
+          </dl>
+          <h4 class="defs__h defs__h--bonus">Plus three bonuses, free with the suite</h4>
+          <dl class="defs defs--bonus">
+            <div><dt><span class="badge">Bonus 1</span>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
+            <div><dt><span class="badge">Bonus 2</span>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
+            <div><dt><span class="badge">Bonus 3</span>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
           </dl>
           <p class="note">Your quote comes after a walkthrough call, based on your catalog's size.</p>
         </div>
@@ -909,7 +969,7 @@ ul, ol { padding: 0; list-style: none; }
     <h2 class="h-lg" data-sc-in>A complete podcast partner</h2>
     <p class="lede" data-sc-in>From editing and publishing to growth and monetization strategy, we handle it all so your podcast sounds as world-class as your ideas.</p>
     <dl class="ledger">
-      <div><dt>Podcast downloads produced since 2020</dt><dd><span data-sc-count="0 15.8">15.8</span>M+</dd></div>
+      <div><dt>Podcast downloads produced since 2020</dt><dd><span data-sc-count="0 30.8">30.8</span>M+</dd></div>
       <div><dt>Reduction in project creation time by introducing Asana best practices</dt><dd><span data-sc-count="0 50">50</span>%</dd></div>
       <div><dt>Increased watch time on YouTube in one month</dt><dd><span data-sc-count="0 27">27</span>%</dd></div>
       <div><dt>Expanded Facebook reach in one month, maximizing exposure for podcast-driven posts</dt><dd><span data-sc-count="0 60">60</span>%</dd></div>
@@ -966,12 +1026,12 @@ ul, ol { padding: 0; list-style: none; }
       <div class="person">
         <img src="images/lauren.jpg" width="388" height="500" alt="Lauren McFall">
         <h3 class="h-sm">Lauren McFall</h3><small>Co-Founder &amp; Executive Producer</small>
-        <p>“I run every project like a production calendar: dates set up front, updates every week, and nothing that depends on you remembering to ask.”</p>
+        <p class="quote">“I run every project like a production calendar: dates set up front, updates every week, and nothing that depends on you remembering to ask.”</p>
       </div>
       <div class="person">
         <img src="images/scott-headshot.jpg" width="388" height="500" alt="Scott McFall">
         <h3 class="h-sm">Scott McFall</h3><small>Co-Founder &amp; Director of Editing &amp; AI Innovation</small>
-        <p>“Most shows never fix their back catalog because doing it by hand costs months of salaries. I built the tools that make it affordable.”</p>
+        <p class="quote">“Most shows never fix their back catalog because doing it by hand costs months of salaries. I built the tools that make it affordable.”</p>
       </div>
       <div class="person">
         <img src="images/wayne-headshot.jpg" width="388" height="500" alt="Wayne Redden">
@@ -1045,7 +1105,7 @@ ul, ol { padding: 0; list-style: none; }
     <ol class="pop__steps" aria-label="How it works">
       <li><b>1</b>Type your show's name</li>
       <li><b>2</b>Keep looking around</li>
-      <li><b>3</b><span>Results pop up bottom right in under 60 sec</span></li>
+      <li><b>3</b><span>Results will pop up in the bottom right in under 60 seconds</span></li>
     </ol>
     <form class="pop__form" id="nugget-form" novalidate>
       <div id="step-name" class="stack" style="gap:.8rem">
@@ -1118,7 +1178,7 @@ ul, ol { padding: 0; list-style: none; }
     });
   }
 
-  /* the hero graph: three planes of bars, seeded so they never reshuffle */
+  /* the hero graph: old episodes in the left 62%, new ones in the rest, seeded so they never reshuffle */
   var planes = document.querySelectorAll('#strata .plane__in'), grown = -1;
   (function () {
     var seed = 7;
@@ -1129,15 +1189,12 @@ ul, ol { padding: 0; list-style: none; }
       el.appendChild(f);
     }
     var narrow = innerWidth < 700;
-    fill(planes[0], narrow ? 60 : 130, function (b, x) { b.style.height = (10 + rnd() * 16 + x * x * 30) + '%'; });
-    fill(planes[1], narrow ? 34 : 72, function (b, x) {
+    fill(planes[0], narrow ? 21 : 45, function (b, x) {
+      x *= 0.62;
       if (rnd() < 0.32) { b.className = 'found'; b.style.height = (30 + rnd() * 22 + x * x * 34) + '%'; }
       else b.style.height = (7 + rnd() * 12 + x * 8) + '%';
     });
-    fill(planes[2], narrow ? 14 : 26, function (b, x) {
-      if (x < 0.62) { b.className = 'gap'; b.style.height = '0'; }
-      else b.style.height = (34 + (x - 0.62) * 160 + rnd() * 5) + '%';
-    });
+    fill(planes[1], narrow ? 5 : 9, function (b, x) { b.style.height = (39 + x * 56 + rnd() * 5) + '%'; });
   })();
   /* each plane starts short and reaches full height over the first 60% of a screen of scroll */
   function growHero() {
@@ -1148,16 +1205,23 @@ ul, ol { padding: 0; list-style: none; }
     for (var i = 0; i < planes.length; i++) {
       var g = +planes[i].dataset.grow;
       planes[i].style.transform = 'scaleY(' + (1 - g + g * t).toFixed(4) + ')';
+      planes[i].style.setProperty('--t', t.toFixed(4));
     }
   }
 
-  /* progress of a pinned act, starting a little before it pins */
-  function actP(sec, leadFrac) {
-    var r = sec.getBoundingClientRect(), vh = window.innerHeight, lead = vh * leadFrac;
-    return clamp01((lead - r.top) / (lead + Math.max(1, r.height - vh)));
+  /* progress of an act that plays by itself: it starts once the visitor has scrolled past its cue
+     (the cue's bottom edge above 40% of the screen) and then runs for dur ms, scrolling or not */
+  function autoP(act, cue, dur) {
+    if (reduce) return 1;
+    if (!act.t0) {
+      if (cue.getBoundingClientRect().bottom > window.innerHeight * 0.4) return 0;
+      act.t0 = performance.now();
+    }
+    return clamp01((performance.now() - act.t0) / dur);
   }
+  var fixAct = { t0: 0, p: 0 }, peakAct = { t0: 0, p: 0 };
 
-  /* the title fix: strike the caps, strike the number, add the guest, then the update */
+  /* the title fix: strike the caps, strike the clickbait, add the guest, then the update */
   var fixer = $('#fixer'), fixStage = fixer.querySelector('[data-sc-stage]'), fixLast = '';
   if (reduce) fixer.setAttribute('data-sc-act', 'flow');
   var fxOld = fixer.querySelector('.fx__old'), fxBox = fixer.querySelector('.fx'), notes = fixer.querySelectorAll('.fx__notes li'), sparks = fixer.querySelectorAll('.spark');
@@ -1166,28 +1230,25 @@ ul, ol { padding: 0; list-style: none; }
     m.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="' + PEN[i % 2] + '"/></svg>');
   });
   sparks.forEach(function (sp) { sp.innerHTML = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.4 4.6 10.6 12 12-7.4 1.4-11.1 5.6-12 12-.9-6.4-4.6-10.6-12-12C7.4 10.6 11.1 6.4 12 0z"/></svg>'; });
-  /* put each note beside the words it is about: caps above, the number below, the guest after the caret */
+  /* put each note beside the words it is about: caps and clickbait above, the guest under the caret */
   function placeNotes() {
     var desk = window.innerWidth > 720, box = fxBox.getBoundingClientRect(), W = box.width;
     function rel(el) { var r = el.getBoundingClientRect(); return { l: r.left - box.left, r: r.right - box.left, t: r.top - box.top, b: r.bottom - box.top }; }
     function put(li, x, y) { li.style.transform = 'translate(' + Math.round(Math.max(0, Math.min(x, W - li.offsetWidth))) + 'px,' + Math.round(y) + 'px) rotate(-2deg)'; }
     fxOld.style.marginTop = fxOld.style.marginBottom = '';
     if (!desk) { notes.forEach(function (li) { li.style.transform = ''; }); return; }
-    var caps = rel(fxOld.querySelector('.m[data-step="1"]')), ep = rel(fxOld.querySelector('.m[data-step="2"]')), caret = rel(fxOld.querySelector('.fx__caret'));
     /* make room above and below the title for the notes, then place them */
-    var h0 = notes[0].offsetHeight, h1 = notes[1].offsetHeight, h2 = notes[2].offsetHeight, w2 = notes[2].offsetWidth;
-    fxOld.style.marginTop = (Math.max(h0, h2) + 26) + 'px';
-    fxOld.style.marginBottom = (h1 + 22) + 'px';
-    caps = rel(fxOld.querySelector('.m[data-step="1"]')); ep = rel(fxOld.querySelector('.m[data-step="2"]')); caret = rel(fxOld.querySelector('.fx__caret'));
-    put(notes[0], caps.l, caps.t - h0 - 16);
-    put(notes[1], ep.r - notes[1].offsetWidth, ep.b + 6);
-    /* the guest note sits just above EP 1194, up and to the right, clear of the first line */
-    var lineEnd = 0, rg = document.createRange();
-    rg.selectNodeContents(fxOld);
-    Array.prototype.forEach.call(rg.getClientRects(), function (r) { if (Math.abs(r.top - box.top - caps.t) < 10) lineEnd = Math.max(lineEnd, r.right - box.left); });
-    var x2 = Math.min(Math.max(ep.l, caret.r - w2 + 10), W - w2);
-    if (ep.t > caps.t + 4 && x2 >= lineEnd + 12) put(notes[2], x2, ep.t - h2 + 4);
-    else put(notes[2], Math.max(x2, caps.l + notes[0].offsetWidth + 28), caps.t - h2 - 16);
+    var h0 = notes[0].offsetHeight, h1 = notes[1].offsetHeight, h2 = notes[2].offsetHeight, w0 = notes[0].offsetWidth, w1 = notes[1].offsetWidth;
+    fxOld.style.marginTop = (Math.max(h0, h1) + 26) + 'px';
+    fxOld.style.marginBottom = (h2 + 22) + 'px';
+    var t = rel(fxOld), caps = rel(fxOld.querySelector('.m[data-step="1"]')), bait = rel(fxOld.querySelector('.m[data-step="2"]')), caret = rel(fxOld.querySelector('.fx__caret'));
+    /* the caps and clickbait notes sit above the title, each over its first word, never on top of each other */
+    var x0 = caps.l;
+    if (x0 < bait.l + w1 + 28 && x0 + w0 + 28 > bait.l) x0 = bait.l + w1 + 28;
+    put(notes[1], bait.l, t.t - h1 - 16);
+    put(notes[0], x0, t.t - h0 - 16);
+    /* the guest note sits under the title, ending at the caret */
+    put(notes[2], caret.r - notes[2].offsetWidth + 10, t.b + 6);
   }
   placeNotes();
   if (document.fonts) { document.fonts.ready.then(placeNotes); document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', placeNotes); }
@@ -1195,7 +1256,7 @@ ul, ol { padding: 0; list-style: none; }
   addEventListener('resize', placeNotes);
 
   function drawFixer() {
-    var P = reduce ? 1 : actP(fixer, 0.35), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
+    var P = fixAct.p = autoP(fixAct, $('#fix-cue'), 7000), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
     for (var i = 0; i < 4; i++) {
       var v = clamp01((P - steps[i][0]) / (steps[i][1] - steps[i][0]));
       v = 1 - Math.pow(1 - v, 3);
@@ -1222,7 +1283,7 @@ ul, ol { padding: 0; list-style: none; }
   function drawPeak() {
     var n = N, so = 1, hold = true;
     if (!reduce) {
-      var P = actP(peak, 0.4);
+      var P = peakAct.p = autoP(peakAct, $('#peak-cue'), 4500);
       n = Math.round(clamp01(P / 0.72) * N);
       so = clamp01((P - 0.74) / 0.1);
       hold = P >= 0.84;
@@ -1236,13 +1297,18 @@ ul, ol { padding: 0; list-style: none; }
     paint(peakC, peakG, 0, n);
     bigN.textContent = n.toLocaleString('en-US');
   }
-  function onScroll() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; growHero(); drawFixer(); drawPeak(); }); }
+  /* keeps drawing while an act that has started is still playing */
+  function frame() {
+    raf = 0; growHero(); drawFixer(); drawPeak();
+    if ((fixAct.t0 && fixAct.p < 1) || (peakAct.t0 && peakAct.p < 1)) raf = requestAnimationFrame(frame);
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
   function onResize() { peakG = null; lit = -1; drawPeak(); }
 
   if (window.ScrollCraft) ScrollCraft.mount(document.body);
   else document.documentElement.classList.add('no-sc');
 
-  growHero(); drawFixer(); drawPeak();
+  growHero(); drawFixer(); drawPeak(); onScroll();
   addEventListener('scroll', onScroll, { passive: true });
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(onResize); ro.observe(peakC); }
   else addEventListener('resize', onResize);
@@ -1286,7 +1352,7 @@ ul, ol { padding: 0; list-style: none; }
   var samplePromise = (window.claude && typeof claude.use === 'function') ? claude.use('sample') : Promise.resolve(null);
 
   var COPY = {
-    absent: 'The live demo runs when this page is opened in Claude. Send your show\'s name to team@mcfallprod.com and we\'ll run the full report by hand.',
+    absent: '',
     not_granted: 'The demo needs your OK to ask Claude, and it wasn\'t given. Send your show\'s name to team@mcfallprod.com and we\'ll run the full report instead.',
     rate_limited: 'Claude is busy or your usage limit was reached. Give it a minute and try again.',
     session_expired: 'You\'ve been signed out. Sign in again, then try once more.',
@@ -1470,5 +1536,21 @@ ul, ol { padding: 0; list-style: none; }
     function sel() { var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected. Press copy'; }
     try { navigator.clipboard.writeText('team@mcfallprod.com').then(function () { b.textContent = 'Copied'; }, sel); } catch (err) { sel(); }
   });
+
+  /* the back-catalog calculator */
+  function num(id) { var v = parseFloat($('#' + id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function calc() {
+    var lift = num('k-lift'), extra = num('k-dl') * lift / 100, mo = extra * num('k-slots') * num('k-cpm') / 1000;
+    $('#k-lift-out').textContent = lift + '%';
+    $('#k-extra').textContent = $('#m-extra').textContent = Math.round(extra).toLocaleString('en-US');
+    $('#k-month').textContent = money(mo);
+    $('#k-year').textContent = money(mo * 12);
+    $('#m-slots').textContent = num('k-slots');
+    $('#m-cpm').textContent = money(num('k-cpm'));
+    $('#m-month').textContent = money(mo) + ' a month';
+  }
+  ['k-dl', 'k-lift', 'k-slots', 'k-cpm'].forEach(function (id) { $('#' + id).addEventListener('input', calc); });
+  calc();
 })();
 </script>

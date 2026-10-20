@@ -1,9 +1,36 @@
 # Project log
 
+## 2026-10-20 · Minimal draft: Lauren's #4, #8, #15 (PR #9)
+- **Done:** Checked the Claude GitHub app's second-batch fix (c871b45): rebuild matches, both animations auto-run, no console errors.
+- **Done:** #4 example title is now episode 1656 from the retitle sheet: "The #1 Financial Freedom SECRET Rich People WON'T Tell You!" → "Saving Will Never Make You Rich. Earning Will | Codie Sanchez". Notes: no all caps, cut the clickbait, add the guest's name, placed so they never overlap.
+- **Done:** #8 downloads figure 15.8M+ → 30.8M+ (Scott: 15M from The Daily Motivation, added on top). The live site's `src/App.tsx` still says 15.8M+.
+- **Done:** #15 the sales page calculator (same inputs and math) is now in the "untapped revenue stream" section. Checked at desktop, 820px and phone width. Pushed to `review/minimal-homepage`.
+- **Waiting on:** Lauren: re-review PR #9 preview.
+- **Next:** Update 15.8M+ on the live site too if Scott wants it.
+
+## 2026-10-20 · Minimal draft: Scott's in-chat edits (pushed to PR #9)
+- **Done:** Checked the Claude GitHub app's fix for Lauren's first-round #1 and #3 (a780938): `node build.mjs` gives the same `index.html`.
+- **Done:** Hero chart is one row now: removed the light grey back layer, old and found-again bars sit in the left 62%, new-episode bars on the right with nothing behind them. Checked at desktop and phone width.
+- **Done:** Pushed to `review/minimal-homepage` on Scott's OK; Lauren's preview updates from it.
+- **Waiting on:** Lauren's 15 second-round notes still on hold until Scott or Lauren says fix.
+- **Ideas:** With the audit note gone, "Start my free audit" does nothing outside Claude; decide what it does on the real site.
+
+## 2026-10-20 · @claude GitHub Action setup
+- **Done:** Claude Action live on the repo (PR #10 merged: `claude.yml`, `claude-code-review.yml`, `CLAUDE_CODE_OAUTH_TOKEN` secret). Test `@claude` comment on PR #9 got a reply in ~13s, no files changed.
+- **Next:** Lauren and Scott can tag `@claude` in PR comments to get fixes. Scott to decide whether to keep `claude-code-review.yml` (auto-reviews every PR).
+- **Ideas:** `deploy.yml` on `main` fails (403, `contents: read`); live deploys run from `GH`, so harmless, but worth fixing or limiting to `GH`.
+
+## 2026-10-15 · Minimal draft reviewable in PR previews ([PR #9](https://github.com/mcfall-productions/mcfallprod_website/pull/9))
+- **Done:** `.github/workflows/pr-preview.yml` now adds the minimal draft to every PR preview at `/pr-preview/pr-<number>/drafts/minimal/` (noindex). Checked locally: the page, red-pen title fix and images all load. `CLAUDE.md` explains how to review and fix it.
+- **Done:** Pushed `review/minimal-homepage` and opened PR #9 into `GH`, Lauren as reviewer. Draft preview: https://mcfallprod.com/pr-preview/pr-9/drafts/minimal/ (checked live: page, red-pen title fix, images and script load; noindex).
+- **Done:** Lauren commented 3 changes on PR #9. On Scott's "fix #2", audit step 3 now reads "Results will pop up in the bottom right in under 60 seconds" (pushed to the PR branch). The claude.ai review link is not republished.
+- **Waiting on:** Scott: whether to do Lauren's #1 (remove the note under the audit button, the only fallback when the audit can't run) and #3 (more rise on the gold hero bars).
+- **Next:** Merging #9 keeps the draft in every future preview.
+
 ## 2026-10-15 · Where the minimal site lives, and Lauren's access
 - **Done:** Confirmed the minimal version with the red-pen title fix is on GitHub's `GH` branch (commit 7cd37d1) in `mcfall-website/minimal/`, matching https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3. It is not on the live site.
 - **Done:** Added a "Homepage drafts" section to `CLAUDE.md` so Lauren's Claude can find the drafts, the review link and the build requirement.
-- **Next:** Commit and push `CLAUDE.md` and this entry once Scott OKs it.
+- **Done:** Committed and pushed to `GH` on Scott's OK (013ac16).
 
 ## 2026-10-14 · Preview links for pull requests (branch `pr-previews`, not pushed)
 - **Done:** Fixed a LOG.md merge conflict after pulling (kept Lauren's "pushed live" entry and Scott's minimal-site entries).
