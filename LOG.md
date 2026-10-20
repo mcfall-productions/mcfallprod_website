@@ -1,5 +1,13 @@
 # Project log
 
+## 2026-10-20 · Minimal draft: Lauren's #4, #8, #15 (PR #9)
+- **Done:** Checked the Claude GitHub app's second-batch fix (c871b45): rebuild matches, both animations auto-run, no console errors.
+- **Done:** #4 example title is now episode 1656 from the retitle sheet: "The #1 Financial Freedom SECRET Rich People WON'T Tell You!" → "Saving Will Never Make You Rich. Earning Will | Codie Sanchez". Notes: no all caps, cut the clickbait, add the guest's name, placed so they never overlap.
+- **Done:** #8 downloads figure 15.8M+ → 30.8M+ (Scott: 15M from The Daily Motivation, added on top). The live site's `src/App.tsx` still says 15.8M+.
+- **Done:** #15 the sales page calculator (same inputs and math) is now in the "untapped revenue stream" section. Checked at desktop, 820px and phone width. Pushed to `review/minimal-homepage`.
+- **Waiting on:** Lauren: re-review PR #9 preview.
+- **Next:** Update 15.8M+ on the live site too if Scott wants it.
+
 ## 2026-10-20 · Minimal draft: Scott's in-chat edits (pushed to PR #9)
 - **Done:** Checked the Claude GitHub app's fix for Lauren's first-round #1 and #3 (a780938): `node build.mjs` gives the same `index.html`.
 - **Done:** Hero chart is one row now: removed the light grey back layer, old and found-again bars sit in the left 62%, new-episode bars on the right with nothing behind them. Checked at desktop and phone width.

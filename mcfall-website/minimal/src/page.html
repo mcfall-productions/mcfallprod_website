@@ -132,6 +132,22 @@ ul, ol { padding: 0; list-style: none; }
 /* 2. buried */
 .buried .h-lg { max-width: 15ch; }
 .buried .acc { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+/* the back-catalog calculator: same inputs and math as the sales page */
+.calc { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3rem); width: 100%; margin-top: clamp(2.5rem, 6vw, 4.5rem); padding: clamp(1.6rem, 4vw, 3rem); border-radius: 1.75rem; background: var(--tile); }
+.calc__in { display: grid; gap: 1.1rem; align-content: start; }
+.calc__in > p { color: var(--sc-ink-soft); }
+.calc label { display: grid; gap: 0.45rem; font-size: 0.9375rem; color: var(--sc-ink-soft); }
+.calc .in { color: var(--sc-ink); font-variant-numeric: tabular-nums; }
+.calc output { color: var(--sc-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.calc input[type="range"] { width: 100%; margin: 0.4rem 0 0; }
+.calc__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.calc__out { display: grid; gap: 0.35rem; align-content: center; justify-items: start; padding: clamp(1.4rem, 3vw, 2rem); border-radius: 1.25rem; background: var(--sc-surface); }
+.calc__out small { font-size: 0.8125rem; font-weight: 600; color: var(--sc-ink-soft); }
+.calc__big { font-family: var(--sc-font-display); font-weight: 600; font-size: clamp(2.6rem, 1.6rem + 4vw, 4.25rem); line-height: 1; letter-spacing: -0.04em; color: var(--sc-accent); font-variant-numeric: tabular-nums; }
+.calc__out p { font-variant-numeric: tabular-nums; }
+.calc__math { grid-column: 1 / -1; font-variant-numeric: tabular-nums; }
+.calc__math b { color: var(--sc-ink); font-weight: 600; }
+@media (max-width: 720px) { .calc { grid-template-columns: minmax(0, 1fr); } }
 
 /* 3. one title, fixed. --s1..--s4 run 0 to 1 as the act scrolls. */
 .fixer { --red: #d70015; --s1: 1; --s2: 1; --s3: 1; --s4: 1; }
@@ -359,6 +375,29 @@ ul, ol { padding: 0; list-style: none; }
       <h2 class="h-lg">Your next untapped revenue stream is already recorded.</h2>
       <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog. Then we don't hand you a document and leave. We publish all of it ourselves, on your podcast host and on your podcast website, so listeners find your old episodes again. Then we show you which ones are paying off.</p>
     </div>
+    <div class="calc" data-sc-in>
+      <div class="calc__in">
+        <h3 class="h-md">How much is sitting in your back catalog?</h3>
+        <p>If your show uses dynamic ad insertion, a play of a 2016 episode carries this month's ads. More people finding old episodes means more ad revenue from episodes you've already paid to make.</p>
+        <label for="k-dl">Monthly downloads from episodes more than a year old
+          <input class="in" id="k-dl" type="number" inputmode="numeric" min="0" step="10000" value="300000"></label>
+        <label for="k-lift">Lift in those downloads: <output id="k-lift-out">10%</output>
+          <input id="k-lift" type="range" min="0" max="30" step="1" value="10"></label>
+        <div class="calc__row">
+          <label for="k-slots">Ad spots per episode
+            <input class="in" id="k-slots" type="number" inputmode="numeric" min="0" max="10" step="1" value="3"></label>
+          <label for="k-cpm">Your CPM ($ per 1,000)
+            <input class="in" id="k-cpm" type="number" inputmode="decimal" min="0" step="1" value="25"></label>
+        </div>
+      </div>
+      <div class="calc__out" aria-live="polite">
+        <small>Extra ad revenue</small>
+        <p class="calc__big" id="k-year">$27,000</p>
+        <p>a year, or <span id="k-month">$2,250</span> a month</p>
+        <p class="cap"><span id="k-extra">30,000</span> more back-catalog downloads a month</p>
+      </div>
+      <p class="cap calc__math"><span id="m-extra">30,000</span> extra downloads x <span id="m-slots">3</span> ad spots x <span id="m-cpm">$25</span> per 1,000 = <b id="m-month">$2,250 a month</b>. Try your own numbers. Ads are only the start: a searchable, well-titled catalog also feeds sponsor pitches, clips and premium content.</p>
+    </div>
     <div class="acc" data-sc-in>
       <details>
         <summary>Titles and numbers stop making sense</summary>
@@ -390,15 +429,15 @@ ul, ol { padding: 0; list-style: none; }
       </div>
       <div class="fx">
         <p class="fx__tag">Outdated</p>
-        <p class="fx__old"><span class="m" data-step="1">7 SECRETS</span> To Start <span class="nw">Long-Term</span> <span class="m" data-step="1">WEALTH!</span> <span class="m" data-step="2">EP 1194</span><span class="fx__caret" data-step="3" aria-hidden="true"></span></p>
+        <p class="fx__old"><span class="m" data-step="2">The #1</span> Financial Freedom <span class="m" data-step="1">SECRET</span> Rich People <span class="m" data-step="1">WON’T</span> <span class="m" data-step="2">Tell You!</span><span class="fx__caret" data-step="3" aria-hidden="true"></span></p>
         <ol class="fx__notes">
           <li data-step="1"><b>No all caps</b><span>Caps read as shouting in a podcast app.</span></li>
-          <li data-step="2"><b>Remove the episode number</b><span>It takes up space and means nothing to a new listener.</span></li>
+          <li data-step="2"><b>Cut the clickbait</b><span>Say the actual idea, so people know why to press play.</span></li>
           <li data-step="3"><b>Add the guest's name</b><span>People search for the guest, so the name gets the episode found.</span></li>
         </ol>
         <div class="fx__new" data-step="4">
           <p class="fx__tag">Updated</p>
-          <p class="fx__title">7 Secrets to Building Long Term Wealth | Lewis Howes<span class="spark" style="left:-1.2rem;top:-0.6rem" aria-hidden="true"></span><span class="spark" style="left:38%;top:-1rem;width:.8rem;height:.8rem" aria-hidden="true"></span><span class="spark" style="right:-1.3rem;top:30%" aria-hidden="true"></span><span class="spark" style="left:66%;bottom:-0.9rem;width:.7rem;height:.7rem" aria-hidden="true"></span></p>
+          <p class="fx__title">Saving Will Never Make You Rich. Earning Will | Codie Sanchez<span class="spark" style="left:-1.2rem;top:-0.6rem" aria-hidden="true"></span><span class="spark" style="left:38%;top:-1rem;width:.8rem;height:.8rem" aria-hidden="true"></span><span class="spark" style="right:-1.3rem;top:30%" aria-hidden="true"></span><span class="spark" style="left:66%;bottom:-0.9rem;width:.7rem;height:.7rem" aria-hidden="true"></span></p>
         </div>
       </div>
     </div>
@@ -498,7 +537,7 @@ ul, ol { padding: 0; list-style: none; }
     <h2 class="h-lg" data-sc-in>A complete podcast partner</h2>
     <p class="lede" data-sc-in>From editing and publishing to growth and monetization strategy, we handle it all so your podcast sounds as world-class as your ideas.</p>
     <dl class="ledger">
-      <div><dt>Podcast downloads produced since 2020</dt><dd><span data-sc-count="0 15.8">15.8</span>M+</dd></div>
+      <div><dt>Podcast downloads produced since 2020</dt><dd><span data-sc-count="0 30.8">30.8</span>M+</dd></div>
       <div><dt>Reduction in project creation time by introducing Asana best practices</dt><dd><span data-sc-count="0 50">50</span>%</dd></div>
       <div><dt>Increased watch time on YouTube in one month</dt><dd><span data-sc-count="0 27">27</span>%</dd></div>
       <div><dt>Expanded Facebook reach in one month, maximizing exposure for podcast-driven posts</dt><dd><span data-sc-count="0 60">60</span>%</dd></div>
@@ -750,7 +789,7 @@ ul, ol { padding: 0; list-style: none; }
   }
   var fixAct = { t0: 0, p: 0 }, peakAct = { t0: 0, p: 0 };
 
-  /* the title fix: strike the caps, strike the number, add the guest, then the update */
+  /* the title fix: strike the caps, strike the clickbait, add the guest, then the update */
   var fixer = $('#fixer'), fixStage = fixer.querySelector('[data-sc-stage]'), fixLast = '';
   if (reduce) fixer.setAttribute('data-sc-act', 'flow');
   var fxOld = fixer.querySelector('.fx__old'), fxBox = fixer.querySelector('.fx'), notes = fixer.querySelectorAll('.fx__notes li'), sparks = fixer.querySelectorAll('.spark');
@@ -759,28 +798,25 @@ ul, ol { padding: 0; list-style: none; }
     m.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="' + PEN[i % 2] + '"/></svg>');
   });
   sparks.forEach(function (sp) { sp.innerHTML = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.9 6.4 4.6 10.6 12 12-7.4 1.4-11.1 5.6-12 12-.9-6.4-4.6-10.6-12-12C7.4 10.6 11.1 6.4 12 0z"/></svg>'; });
-  /* put each note beside the words it is about: caps above, the number below, the guest after the caret */
+  /* put each note beside the words it is about: caps and clickbait above, the guest under the caret */
   function placeNotes() {
     var desk = window.innerWidth > 720, box = fxBox.getBoundingClientRect(), W = box.width;
     function rel(el) { var r = el.getBoundingClientRect(); return { l: r.left - box.left, r: r.right - box.left, t: r.top - box.top, b: r.bottom - box.top }; }
     function put(li, x, y) { li.style.transform = 'translate(' + Math.round(Math.max(0, Math.min(x, W - li.offsetWidth))) + 'px,' + Math.round(y) + 'px) rotate(-2deg)'; }
     fxOld.style.marginTop = fxOld.style.marginBottom = '';
     if (!desk) { notes.forEach(function (li) { li.style.transform = ''; }); return; }
-    var caps = rel(fxOld.querySelector('.m[data-step="1"]')), ep = rel(fxOld.querySelector('.m[data-step="2"]')), caret = rel(fxOld.querySelector('.fx__caret'));
     /* make room above and below the title for the notes, then place them */
-    var h0 = notes[0].offsetHeight, h1 = notes[1].offsetHeight, h2 = notes[2].offsetHeight, w2 = notes[2].offsetWidth;
-    fxOld.style.marginTop = (Math.max(h0, h2) + 26) + 'px';
-    fxOld.style.marginBottom = (h1 + 22) + 'px';
-    caps = rel(fxOld.querySelector('.m[data-step="1"]')); ep = rel(fxOld.querySelector('.m[data-step="2"]')); caret = rel(fxOld.querySelector('.fx__caret'));
-    put(notes[0], caps.l, caps.t - h0 - 16);
-    put(notes[1], ep.r - notes[1].offsetWidth, ep.b + 6);
-    /* the guest note sits just above EP 1194, up and to the right, clear of the first line */
-    var lineEnd = 0, rg = document.createRange();
-    rg.selectNodeContents(fxOld);
-    Array.prototype.forEach.call(rg.getClientRects(), function (r) { if (Math.abs(r.top - box.top - caps.t) < 10) lineEnd = Math.max(lineEnd, r.right - box.left); });
-    var x2 = Math.min(Math.max(ep.l, caret.r - w2 + 10), W - w2);
-    if (ep.t > caps.t + 4 && x2 >= lineEnd + 12) put(notes[2], x2, ep.t - h2 + 4);
-    else put(notes[2], Math.max(x2, caps.l + notes[0].offsetWidth + 28), caps.t - h2 - 16);
+    var h0 = notes[0].offsetHeight, h1 = notes[1].offsetHeight, h2 = notes[2].offsetHeight, w0 = notes[0].offsetWidth, w1 = notes[1].offsetWidth;
+    fxOld.style.marginTop = (Math.max(h0, h1) + 26) + 'px';
+    fxOld.style.marginBottom = (h2 + 22) + 'px';
+    var t = rel(fxOld), caps = rel(fxOld.querySelector('.m[data-step="1"]')), bait = rel(fxOld.querySelector('.m[data-step="2"]')), caret = rel(fxOld.querySelector('.fx__caret'));
+    /* the caps and clickbait notes sit above the title, each over its first word, never on top of each other */
+    var x0 = caps.l;
+    if (x0 < bait.l + w1 + 28 && x0 + w0 + 28 > bait.l) x0 = bait.l + w1 + 28;
+    put(notes[1], bait.l, t.t - h1 - 16);
+    put(notes[0], x0, t.t - h0 - 16);
+    /* the guest note sits under the title, ending at the caret */
+    put(notes[2], caret.r - notes[2].offsetWidth + 10, t.b + 6);
   }
   placeNotes();
   if (document.fonts) { document.fonts.ready.then(placeNotes); document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', placeNotes); }
@@ -1068,5 +1104,21 @@ ul, ol { padding: 0; list-style: none; }
     function sel() { var r = document.createRange(); r.selectNodeContents(addr); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected. Press copy'; }
     try { navigator.clipboard.writeText('team@mcfallprod.com').then(function () { b.textContent = 'Copied'; }, sel); } catch (err) { sel(); }
   });
+
+  /* the back-catalog calculator */
+  function num(id) { var v = parseFloat($('#' + id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+  function calc() {
+    var lift = num('k-lift'), extra = num('k-dl') * lift / 100, mo = extra * num('k-slots') * num('k-cpm') / 1000;
+    $('#k-lift-out').textContent = lift + '%';
+    $('#k-extra').textContent = $('#m-extra').textContent = Math.round(extra).toLocaleString('en-US');
+    $('#k-month').textContent = money(mo);
+    $('#k-year').textContent = money(mo * 12);
+    $('#m-slots').textContent = num('k-slots');
+    $('#m-cpm').textContent = money(num('k-cpm'));
+    $('#m-month').textContent = money(mo) + ' a month';
+  }
+  ['k-dl', 'k-lift', 'k-slots', 'k-cpm'].forEach(function (id) { $('#' + id).addEventListener('input', calc); });
+  calc();
 })();
 </script>
