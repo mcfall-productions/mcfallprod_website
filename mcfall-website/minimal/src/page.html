@@ -420,7 +420,7 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 <!-- 3. ONE TITLE, FIXED: the reader watches what changes and why -->
-<section class="fixer" id="fixer" data-sc-act="flow" data-tone="light">
+<section class="fixer" id="fixer" data-sc-act="pin" data-sc-span="1.8" data-tone="light">
   <div data-sc-stage>
     <div class="wrap fixer__in">
       <div class="stack">
@@ -787,7 +787,12 @@ ul, ol { padding: 0; list-style: none; }
     }
     return clamp01((performance.now() - act.t0) / dur);
   }
-  var fixAct = { t0: 0, p: 0 }, peakAct = { t0: 0, p: 0 };
+  var peakAct = { t0: 0, p: 0 };
+  /* progress of a pinned act, starting a little before it pins */
+  function actP(sec, leadFrac) {
+    var r = sec.getBoundingClientRect(), vh = window.innerHeight, lead = vh * leadFrac;
+    return clamp01((lead - r.top) / (lead + Math.max(1, r.height - vh)));
+  }
 
   /* the title fix: strike the caps, strike the clickbait, add the guest, then the update */
   var fixer = $('#fixer'), fixStage = fixer.querySelector('[data-sc-stage]'), fixLast = '';
@@ -824,7 +829,7 @@ ul, ol { padding: 0; list-style: none; }
   addEventListener('resize', placeNotes);
 
   function drawFixer() {
-    var P = fixAct.p = autoP(fixAct, $('#fix-cue'), 7000), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
+    var P = reduce ? 1 : actP(fixer, 0.35), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
     for (var i = 0; i < 4; i++) {
       var v = clamp01((P - steps[i][0]) / (steps[i][1] - steps[i][0]));
       v = 1 - Math.pow(1 - v, 3);
@@ -868,7 +873,7 @@ ul, ol { padding: 0; list-style: none; }
   /* keeps drawing while an act that has started is still playing */
   function frame() {
     raf = 0; growHero(); drawFixer(); drawPeak();
-    if ((fixAct.t0 && fixAct.p < 1) || (peakAct.t0 && peakAct.p < 1)) raf = requestAnimationFrame(frame);
+    if (peakAct.t0 && peakAct.p < 1) raf = requestAnimationFrame(frame);
   }
   function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
   function onResize() { peakG = null; lit = -1; drawPeak(); }
