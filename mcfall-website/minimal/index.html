@@ -542,7 +542,7 @@ ul, ol { padding: 0; list-style: none; }
 .plane--far .plane__in { gap: 2px; }
 .plane--far i { background: var(--bar-far); }
 .plane--mid i { background: var(--bar-old); }
-.plane--mid i.found { background: var(--dot-lit); }
+.plane--mid i.found { background: var(--dot-lit); transform-origin: 50% 100%; transform: scaleY(calc(0.12 + 0.88 * var(--t, 1))); }
 .plane--near .plane__in { gap: clamp(6px, 1.1vw, 14px); }
 .plane--near i { background: var(--sc-ink); }
 .plane--near i.gap { background: transparent; }
@@ -1148,6 +1148,7 @@ ul, ol { padding: 0; list-style: none; }
     for (var i = 0; i < planes.length; i++) {
       var g = +planes[i].dataset.grow;
       planes[i].style.transform = 'scaleY(' + (1 - g + g * t).toFixed(4) + ')';
+      planes[i].style.setProperty('--t', t.toFixed(4));
     }
   }
 
@@ -1286,7 +1287,7 @@ ul, ol { padding: 0; list-style: none; }
   var samplePromise = (window.claude && typeof claude.use === 'function') ? claude.use('sample') : Promise.resolve(null);
 
   var COPY = {
-    absent: 'The live demo runs when this page is opened in Claude. Send your show\'s name to team@mcfallprod.com and we\'ll run the full report by hand.',
+    absent: '',
     not_granted: 'The demo needs your OK to ask Claude, and it wasn\'t given. Send your show\'s name to team@mcfallprod.com and we\'ll run the full report instead.',
     rate_limited: 'Claude is busy or your usage limit was reached. Give it a minute and try again.',
     session_expired: 'You\'ve been signed out. Sign in again, then try once more.',
