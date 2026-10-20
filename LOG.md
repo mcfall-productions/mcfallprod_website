@@ -1,5 +1,17 @@
 # Project log
 
+## 2026-10-20 · Minimal draft: Scott's in-chat edits (pushed to PR #9)
+- **Done:** Checked the Claude GitHub app's fix for Lauren's first-round #1 and #3 (a780938): `node build.mjs` gives the same `index.html`.
+- **Done:** Hero chart is one row now: removed the light grey back layer, old and found-again bars sit in the left 62%, new-episode bars on the right with nothing behind them. Checked at desktop and phone width.
+- **Done:** Pushed to `review/minimal-homepage` on Scott's OK; Lauren's preview updates from it.
+- **Waiting on:** Lauren's 15 second-round notes still on hold until Scott or Lauren says fix.
+- **Ideas:** With the audit note gone, "Start my free audit" does nothing outside Claude; decide what it does on the real site.
+
+## 2026-10-20 · @claude GitHub Action setup
+- **Done:** Claude Action live on the repo (PR #10 merged: `claude.yml`, `claude-code-review.yml`, `CLAUDE_CODE_OAUTH_TOKEN` secret). Test `@claude` comment on PR #9 got a reply in ~13s, no files changed.
+- **Next:** Lauren and Scott can tag `@claude` in PR comments to get fixes. Scott to decide whether to keep `claude-code-review.yml` (auto-reviews every PR).
+- **Ideas:** `deploy.yml` on `main` fails (403, `contents: read`); live deploys run from `GH`, so harmless, but worth fixing or limiting to `GH`.
+
 ## 2026-10-15 · Minimal draft reviewable in PR previews ([PR #9](https://github.com/mcfall-productions/mcfallprod_website/pull/9))
 - **Done:** `.github/workflows/pr-preview.yml` now adds the minimal draft to every PR preview at `/pr-preview/pr-<number>/drafts/minimal/` (noindex). Checked locally: the page, red-pen title fix and images all load. `CLAUDE.md` explains how to review and fix it.
 - **Done:** Pushed `review/minimal-homepage` and opened PR #9 into `GH`, Lauren as reviewer. Draft preview: https://mcfallprod.com/pr-preview/pr-9/drafts/minimal/ (checked live: page, red-pen title fix, images and script load; noindex).
