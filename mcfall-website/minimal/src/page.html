@@ -667,10 +667,11 @@ ul, ol { padding: 0; list-style: none; }
         <p class="note" id="form-status" role="status" hidden></p>
       </div>
     </form>
-    <div class="stack" id="pop-done" style="gap:.6rem" hidden>
-      <p class="wait" role="status">Thank you. We'll email your audit within 48 hours.</p>
+    <div class="stack" id="pop-done" style="gap:1rem" hidden>
+      <p class="wait" role="status">We'll email your Buried Gold Report to <b id="done-email"></b> within 48 hours.</p>
+      <p class="pop__p">Keep an eye on your inbox, and check spam if you don't see it.</p>
+      <button class="btn btn--full" type="button" data-close>Back to the site</button>
     </div>
-    <button class="pop__skip" type="button" data-close>No thanks, just browsing</button>
   </div>
 </div>
 
@@ -895,7 +896,8 @@ ul, ol { padding: 0; list-style: none; }
   function clean(s, n) { return String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0, n || 200); }
   function finish() {
     form.hidden = true; $('#pop-p').hidden = true; done.hidden = false;
-    $('#pop-h').textContent = 'Request received.';
+    $('#pop-h').textContent = 'Thank you, you\'re all set.';
+    $('#done-email').textContent = clean(emailIn.value, 160);
   }
 
   form.addEventListener('submit', function (e) {
