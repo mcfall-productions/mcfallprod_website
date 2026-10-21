@@ -434,6 +434,7 @@ video[data-sc-scrub].sc-has-clip { opacity: 1; }
   }
 }
 
+@media (prefers-reduced-motion: reduce) { .pop__card { transform: none; } }
 </style>
 <style>
 /* ============================================================================
@@ -549,6 +550,30 @@ ul, ol { padding: 0; list-style: none; }
 .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 1.5rem; padding: 1.1rem var(--g) 1.4rem; }
 .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
 .legend i { width: 0.6rem; height: 0.6rem; border-radius: 2px; }
+
+/* the full suite: a dark panel, three numbered bonuses */
+.suite { margin-top: clamp(2.5rem, 6vw, 4.5rem); background: var(--sc-canvas); color: var(--sc-ink); border-radius: 2rem; padding: clamp(1.75rem, 5vw, 3.5rem); display: grid; gap: 1.4rem; position: relative; overflow: hidden; }
+.suite::before { content: ""; position: absolute; inset: -40% -10% auto auto; width: 60%; aspect-ratio: 1; background: radial-gradient(closest-side, rgba(226, 189, 87, 0.22), transparent); pointer-events: none; }
+.suite > * { position: relative; }
+.suite__kick { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+.suite__h { font-family: var(--sc-font-display); font-weight: 600; font-size: clamp(1.9rem, 1.2rem + 3vw, 3.25rem); line-height: 1.05; letter-spacing: -0.03em; max-width: 18ch; }
+.suite__lede { color: var(--sc-ink-soft); font-size: 1.1875rem; max-width: 40rem; }
+.bonus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 0.6rem; }
+.bonus li { background: var(--sc-surface); border-radius: 1.25rem; padding: 1.4rem; display: grid; gap: 0.6rem; align-content: start; box-shadow: inset 0 0 0 1px rgba(226, 189, 87, 0.28); }
+.bonus b { font-size: 2.5rem; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: var(--gold); font-variant-numeric: tabular-nums; }
+.bonus h4 { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.012em; }
+.bonus p, .live dd { color: var(--sc-ink-soft); font-size: 0.9375rem; }
+.live { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+.live dt { font-weight: 600; margin-bottom: 0.25rem; }
+@media (max-width: 860px) { .bonus, .live { grid-template-columns: minmax(0, 1fr); } }
+
+/* teasers above the disclosures */
+.tease { display: grid; gap: 0.4rem; margin-top: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+.tease .h-md { max-width: 26ch; }
+.tease p { color: var(--sc-ink-soft); font-size: 1.0625rem; }
+.tease p b { color: var(--sc-accent); font-weight: 600; }
+.center .tease { justify-items: center; }
+.production__ask { font-size: 1.0625rem; font-weight: 600; letter-spacing: 0.02em; color: var(--sc-accent); }
 
 /* disclosures */
 .acc { border-top: 1px solid var(--hair); width: 100%; }
@@ -714,8 +739,30 @@ ul, ol { padding: 0; list-style: none; }
 .colophon { display: grid; gap: 0.3rem; margin-top: clamp(4rem, 9vw, 7rem); padding-block: 1.5rem 2rem; border-top: 1px solid var(--hair); font-size: 0.75rem; color: var(--sc-ink-soft); text-align: left; }
 .colophon b { color: var(--sc-ink); font-weight: 600; }
 
-.in { width: 100%; min-height: 3rem; padding: 0.75rem 1rem; border: 1px solid var(--hair); border-radius: 0.8rem; background: #ffffff; font-size: 1.0625rem; }
-.in:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 1px; border-radius: 0.8rem; }
+/* the audit sheet */
+.pop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 1rem; }
+.pop__veil { position: absolute; inset: 0; background: rgba(29, 29, 31, 0.32); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transition: opacity 260ms var(--ease); }
+.pop__card { position: relative; width: min(30rem, 100%); max-height: calc(100svh - 2rem); overflow: auto; background: #ffffff; color: var(--sc-ink); border-radius: 1.75rem; padding: clamp(1.75rem, 5vw, 2.5rem); display: grid; gap: 1.1rem;
+  box-shadow: 0 2rem 4rem -1.5rem rgba(29, 29, 31, 0.4); opacity: 0; transform: translate3d(0, 12px, 0) scale(0.97); transition: opacity 260ms var(--ease), transform 320ms var(--ease); }
+.pop.is-open .pop__veil { opacity: 1; }
+.pop.is-open .pop__card { opacity: 1; transform: none; }
+.pop__x { position: absolute; top: 0.9rem; right: 0.9rem; width: 2.25rem; height: 2.25rem; border: 0; border-radius: 50%; background: var(--sc-surface); color: var(--sc-ink-soft); font-size: 1.25rem; line-height: 1; cursor: pointer; }
+.pop__p { color: var(--sc-ink-soft); font-size: 1.0625rem; }
+.pop__kick { font-size: 0.8125rem; font-weight: 600; color: var(--sc-ink-soft); }
+.pop__h { font-family: var(--sc-font-display); font-weight: 600; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.1rem); line-height: 1.1; letter-spacing: -0.025em; padding-right: 2rem; }
+.pop__h em, .wait em { font-style: normal; color: var(--sc-accent); }
+.pop__steps { display: grid; gap: 0.45rem; color: var(--sc-ink-soft); font-size: 0.9375rem; }
+.pop__steps li { display: flex; gap: 0.7rem; align-items: baseline; }
+.pop__steps b { color: var(--sc-ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.pop__form .stack { justify-items: stretch; }
+.in, .pop__form textarea { width: 100%; min-height: 3rem; padding: 0.75rem 1rem; border: 1px solid var(--hair); border-radius: 0.8rem; background: #ffffff; font-size: 1.0625rem; }
+.pop__form textarea { min-height: 7rem; resize: vertical; }
+.in:focus-visible, .pop__form textarea:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 1px; border-radius: 0.8rem; }
+.pop__form label:not(.sr) { font-size: 0.9375rem; color: var(--sc-ink-soft); }
+.q, .wait { font-weight: 600; font-size: 1.1875rem; letter-spacing: -0.012em; }
+.match { display: grid; gap: 0.15rem; padding: 1rem 1.1rem; border-radius: 0.9rem; background: var(--sc-surface); font-size: 0.9375rem; color: var(--sc-ink-soft); }
+.match b { color: var(--sc-ink); font-size: 1.0625rem; }
+.pop__skip { justify-self: center; background: none; border: 0; padding: 0.3rem; cursor: pointer; font-size: 0.875rem; color: var(--sc-ink-soft); }
 
 .no-sc [data-sc-in], .no-sc [data-sc-stagger] > * { opacity: 1; transform: none; }
 </style>
@@ -728,7 +775,7 @@ ul, ol { padding: 0; list-style: none; }
       <a href="#production">Production</a>
       <a href="#team">Team</a>
     </nav>
-    <a class="btn btn--sm" href="#assay">Get my free audit</a>
+    <button class="btn btn--sm" type="button" data-open>Get my free audit</button>
   </div>
 </header>
 
@@ -740,7 +787,7 @@ ul, ol { padding: 0; list-style: none; }
     <h1 class="h-xl">We make every podcast episode earn.</h1>
     <p class="lede">The one you publish next week, and the hundreds you've already made.</p>
     <div class="row">
-      <a class="btn" href="#assay">Get my free audit</a>
+      <button class="btn" type="button" data-open>Get my free audit</button>
       <a class="more" href="https://calendly.com/l-mcfall" target="_blank" rel="noopener noreferrer">Talk to Lauren &amp; Scott</a>
     </div>
   </div>
@@ -785,6 +832,10 @@ ul, ol { padding: 0; list-style: none; }
         <p class="cap"><span id="k-extra">30,000</span> more back-catalog downloads a month</p>
       </div>
       <p class="cap calc__math"><span id="m-extra">30,000</span> extra downloads x <span id="m-slots">3</span> ad spots x <span id="m-cpm">$25</span> per 1,000 = <b id="m-month">$2,250 a month</b>. Try your own numbers. Ads are only the start: a searchable, well-titled catalog also feeds sponsor pitches, clips and premium content.</p>
+    </div>
+    <div class="tease" data-sc-in>
+      <h3 class="h-md">Which of these is quietly burying your episodes?</h3>
+      <p>Tap the <b>+</b> on each one to see what goes wrong, and how we fix it.</p>
     </div>
     <div class="acc" data-sc-in>
       <details>
@@ -875,26 +926,21 @@ ul, ol { padding: 0; list-style: none; }
       <h3 class="h-lg">We publish it for you.</h3>
       <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
     </div>
-    <div class="acc" data-sc-in>
-      <details>
-        <summary>The full suite, and its three bonuses</summary>
-        <div class="acc__body" style="max-width:none">
-          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge, marked below.</p>
-          <h4 class="defs__h">In the suite</h4>
-          <dl class="defs">
-            <div><dt>Your podcast host</dt><dd>The feed Apple, Spotify and every other app reads. Every title, description and transcript updated there, so the change shows up everywhere people listen.</dd></div>
-            <div><dt>Your podcast website</dt><dd>Each episode's page on your site updated to match: the new title, the new show notes, and the transcript behind a “Click here to read transcript” link.</dd></div>
-            <div><dt>Nothing lost</dt><dd>We save every original title and show note before we change anything, so any episode can be put back.</dd></div>
-          </dl>
-          <h4 class="defs__h defs__h--bonus">Plus three bonuses, free with the suite</h4>
-          <dl class="defs defs--bonus">
-            <div><dt><span class="badge">Bonus 1</span>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
-            <div><dt><span class="badge">Bonus 2</span>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
-            <div><dt><span class="badge">Bonus 3</span>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
-          </dl>
-          <p class="note">Your quote comes after a walkthrough call, based on your catalog's size.</p>
-        </div>
-      </details>
+    <div class="suite dk" data-sc-in>
+      <p class="suite__kick">What we recommend</p>
+      <h3 class="suite__h">The full suite, and its three free bonuses.</h3>
+      <p class="suite__lede">All three services for every episode you've made, live on your podcast host and your website, for one price.</p>
+      <ol class="bonus">
+        <li><b>01</b><h4>Three months of monthly tune-ups</h4><p>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</p></li>
+        <li><b>02</b><h4>Your written style guide</h4><p>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</p></li>
+        <li><b>03</b><h4>Your 60-day comparison</h4><p>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</p></li>
+      </ol>
+      <dl class="live">
+        <div><dt>Your podcast host</dt><dd>The feed Apple, Spotify and every other app reads. Every title, description and transcript updated there, so the change shows up everywhere people listen.</dd></div>
+        <div><dt>Your podcast website</dt><dd>Each episode's page on your site updated to match: the new title, the new show notes, and the transcript behind a “Click here to read transcript” link.</dd></div>
+        <div><dt>Nothing lost</dt><dd>We save every original title and show note before we change anything, so any episode can be put back.</dd></div>
+      </dl>
+      <p class="note">Your quote comes after a walkthrough call, based on your catalog's size.</p>
     </div>
   </div>
 </section>
@@ -903,13 +949,13 @@ ul, ol { padding: 0; list-style: none; }
 <section class="tile gr" data-tone="light">
   <div class="wrap">
     <h2 class="h-lg" style="max-width:19ch" data-sc-in>Already have a production team? Great. We work on different episodes.</h2>
-    <div class="beside" data-sc-act="flow">
-      <div data-sc-reveal="right" data-sc-reveal-at="0.12 0.38">
+    <div class="beside">
+      <div>
         <small>Your team</small>
         <h3 class="h-md">This week's episode</h3>
         <ul class="ticks"><li>Editing audio and video</li><li>Titles and show notes for new releases</li><li>Publishing on schedule</li></ul>
       </div>
-      <div class="dk" data-sc-reveal="left" data-sc-reveal-at="0.2 0.48">
+      <div class="dk">
         <small>Us</small>
         <h3 class="h-md">Every episode behind it</h3>
         <ul class="ticks"><li>Fixing titles, numbers and notes nobody has touched in years</li><li>Making every past conversation searchable</li><li>Tracking which old episodes are coming back, and why</li></ul>
@@ -922,6 +968,7 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 7. PRODUCTION: real figures -->
 <section id="production" class="tile production" data-tone="light">
   <div class="wrap center stack">
+    <p class="production__ask" data-sc-in>Need a podcast producer for your future episodes? We do that too.</p>
     <h2 class="h-lg" data-sc-in>A complete podcast partner</h2>
     <p class="lede" data-sc-in>From editing and publishing to growth and monetization strategy, we handle it all so your podcast sounds as world-class as your ideas.</p>
     <dl class="ledger">
@@ -1013,7 +1060,7 @@ ul, ol { padding: 0; list-style: none; }
     <div id="assay-idle" class="stack center">
       <h2 class="h-lg">Find out what's buried in your back catalog.</h2>
       <p class="lede">We'll run your public feed through the same checks we used on <strong class="hl"><em>The School of Greatness</em></strong> and send you your podcast's Buried Gold Report, our free two-page audit, within 48 hours, plus a before-and-after on 10 of your own titles. All we need is your show's name. No login or APIs required.</p>
-      <div class="row" style="margin-top:.6rem"><a class="btn" href="mailto:team@mcfallprod.com?subject=Free%20Buried%20Gold%20Report">Get my free audit</a></div>
+      <div class="row" style="margin-top:.6rem"><button class="btn" type="button" data-open>Get my free audit</button></div>
     </div>
 
     <div class="ask">
@@ -1033,6 +1080,31 @@ ul, ol { padding: 0; list-style: none; }
 </section>
 
 </main>
+
+<div class="pop" id="pop" hidden>
+  <div class="pop__veil" data-close></div>
+  <div class="pop__card" role="dialog" aria-modal="true" aria-labelledby="pop-h">
+    <button class="pop__x" type="button" data-close aria-label="Close">&times;</button>
+    <p class="pop__kick">Free podcast audit</p>
+    <h2 class="pop__h" id="pop-h">Get your free audit, <em>in your inbox.</em></h2>
+    <p class="pop__p" id="pop-p">Tell us your show and where to send it. We'll email your Buried Gold Report within 48 hours.</p>
+    <form class="pop__form" id="audit-form" novalidate>
+      <div class="stack" style="gap:.8rem">
+        <label for="show-name" class="sr">Your show's name</label>
+        <input id="show-name" class="in" name="show" type="text" autocomplete="off" maxlength="120" placeholder="Your show's name" required>
+        <label for="show-email" class="sr">Your email address</label>
+        <input id="show-email" class="in" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Your email address" required>
+        <input type="text" id="show-site" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn btn--full" id="btn-send" type="submit">Email me my free audit</button>
+        <p class="note" id="form-status" role="status" hidden></p>
+      </div>
+    </form>
+    <div class="stack" id="pop-done" style="gap:.6rem" hidden>
+      <p class="wait" role="status">Thank you. We'll email your audit within 48 hours.</p>
+    </div>
+    <button class="pop__skip" type="button" data-close>No thanks, just browsing</button>
+  </div>
+</div>
 
 <script src="scrollcraft.js"></script>
 <script>
@@ -1118,7 +1190,8 @@ ul, ol { padding: 0; list-style: none; }
 
   /* the title fix: strike the caps, strike the clickbait, add the guest, then the update */
   var fixer = $('#fixer'), fixStage = fixer.querySelector('[data-sc-stage]'), fixLast = '';
-  if (reduce) fixer.setAttribute('data-sc-act', 'flow');
+  var calm = reduce || matchMedia('(max-width: 720px)').matches;   /* phones: no pinned travel, the whole fix shown at once */
+  if (calm) fixer.setAttribute('data-sc-act', 'flow');
   var fxOld = fixer.querySelector('.fx__old'), fxBox = fixer.querySelector('.fx'), notes = fixer.querySelectorAll('.fx__notes li'), sparks = fixer.querySelectorAll('.spark');
   var PEN = ['M2 7 C 14 3, 22 10, 34 6 S 52 3, 62 7 S 80 10, 98 4', 'M2 5 C 12 9, 24 2, 36 6 S 56 9, 68 5 S 86 2, 98 7'];
   fixer.querySelectorAll('.fx__old .m').forEach(function (m, i) {
@@ -1151,20 +1224,20 @@ ul, ol { padding: 0; list-style: none; }
   addEventListener('resize', placeNotes);
 
   function drawFixer() {
-    var P = reduce ? 1 : actP(fixer, 0.35), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
+    var P = calm ? 1 : actP(fixer, 0.35), steps = [[0.14, 0.26], [0.32, 0.44], [0.5, 0.62], [0.68, 0.8]], sig = [];
     for (var i = 0; i < 4; i++) {
       var v = clamp01((P - steps[i][0]) / (steps[i][1] - steps[i][0]));
       v = 1 - Math.pow(1 - v, 3);
       sig.push(v.toFixed(2));
     }
-    var key = sig.join('|') + '|' + (reduce ? 1 : clamp01((P - 0.66) / 0.3)).toFixed(3);
+    var key = sig.join('|') + '|' + (calm ? 1 : clamp01((P - 0.66) / 0.3)).toFixed(3);
     if (key === fixLast) return;
     fixLast = key;
     for (var k = 0; k < 4; k++) fixer.style.setProperty('--s' + (k + 1), sig[k]);
     /* the sparkle outlasts the fade: its own, longer window */
-    var s5 = reduce ? 1 : clamp01((P - 0.66) / 0.3);
+    var s5 = calm ? 1 : clamp01((P - 0.66) / 0.3);
     fixer.style.setProperty('--s5', s5.toFixed(3));
-    var tw = reduce ? 0 : Math.sin(Math.PI * s5);
+    var tw = calm ? 0 : Math.sin(Math.PI * s5);
     sparks.forEach(function (sp, n) { var ph = Math.sin(Math.PI * clamp01(s5 * 1.25 - n * 0.08)); sp.style.setProperty('--tw', Math.max(0, Math.min(1, Math.max(tw, ph) * (1.1 - n * 0.08))).toFixed(3)); });
     fixStage.setAttribute('data-sc-verify-state', key);
     fixStage.setAttribute('data-sc-verify-hold', P >= 0.97 ? 'true' : 'false');
@@ -1217,6 +1290,60 @@ ul, ol { padding: 0; list-style: none; }
     }, { rootMargin: '-49px 0px -' + Math.max(0, window.innerHeight - 52) + 'px 0px' });
     document.querySelectorAll('[data-tone]').forEach(function (s) { io.observe(s); });
   })();
+
+  /* ---------------------------------------------------------------- the audit request */
+  /* Requests post to FormSubmit (no account), which emails team@mcfallprod.com with a copy to eternallauren@gmail.com.
+     The first ever submission sends team@ an activation email: click its link once. If the post fails, the visitor's
+     own mail app opens with the request filled in instead. */
+  var AUDIT_ENDPOINT = 'https://formsubmit.co/ajax/team@mcfallprod.com';
+  var AUDIT_CC = 'eternallauren@gmail.com';
+  var AUDIT_TO = 'team@mcfallprod.com,' + AUDIT_CC;
+  function viaMail(name, email) {
+    location.href = 'mailto:' + AUDIT_TO + '?subject=' + encodeURIComponent('Free audit request: ' + name) + '&body=' + encodeURIComponent('Show: ' + name + '\nEmail: ' + email + '\n\nPlease email me my free audit.');
+    finish();
+  }
+  var form = $('#audit-form'), nameIn = $('#show-name'), emailIn = $('#show-email');
+  var status = $('#form-status'), btn = $('#btn-send'), done = $('#pop-done');
+  var pop = $('#pop'), lastFocus = null;
+
+  function openPop() {
+    if (!pop.hidden) return;
+    lastFocus = document.activeElement;
+    pop.hidden = false; document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(function () { requestAnimationFrame(function () { pop.classList.add('is-open'); }); });
+    setTimeout(function () { if (!form.hidden) nameIn.focus({ preventScroll: true }); }, reduce ? 0 : 320);
+  }
+  function closePop() {
+    if (pop.hidden) return;
+    pop.classList.remove('is-open'); document.documentElement.style.overflow = '';
+    setTimeout(function () { pop.hidden = true; }, reduce ? 0 : 320);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  pop.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', closePop); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePop(); });
+  document.querySelectorAll('[data-open]').forEach(function (b) { b.addEventListener('click', openPop); });
+
+  function say(msg) { status.textContent = msg || ''; status.hidden = !msg; }
+  function clean(s, n) { return String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0, n || 200); }
+  function finish() {
+    form.hidden = true; $('#pop-p').hidden = true; done.hidden = false;
+    $('#pop-h').textContent = 'Request received.';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = clean(nameIn.value, 120), email = clean(emailIn.value, 160);
+    if (!name) { say('Type your show\'s name first.'); nameIn.focus(); return; }
+    if (!email || !emailIn.checkValidity()) { say('Enter a valid email address so we know where to send it.'); emailIn.focus(); return; }
+    say('');
+    if ($('#show-site').value) { finish(); return; }   /* spam trap: bots fill the hidden field */
+    btn.disabled = true; btn.textContent = 'Sending';
+    fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ show: name, email: email, _replyto: email, _honey: '', _cc: AUDIT_CC, _subject: 'Free audit request: ' + name, _template: 'table' }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (!x.ok || String(x.j && x.j.success) === 'false') throw 0; finish(); })
+      .catch(function () { btn.disabled = false; btn.textContent = 'Email me my free audit'; viaMail(name, email); });
+  });
 
   $('#btn-copy').addEventListener('click', function () {
     var b = this, addr = document.querySelector('.addr');
