@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-21 · Minimal design is now the live homepage
+- **Done:** On Scott's go, mcfallprod.com now serves the minimal design (popup removed) instead of the React site. `deploy.yml` swaps it in after the normal build via new `mcfall-website/minimal/live.mjs` (real title, share tags, Google Analytics). Removed the "Review copy… not the live site" footer line. Merged PR #11 into `GH`. `CLAUDE.md` updated so Lauren's Claude knows.
+- **Next:** Scott: QC the buttons on https://mcfallprod.com/. Send a test email via the closing "Get my free audit" button. The share image (og.png) is still from the old design.
+- **Ideas:** The old React app in `src/` could be retired once the new homepage settles.
+
 ## 2026-10-21 · Minimal draft: free audit popup removed (pushed to PR #11)
 - **Done:** On Scott's ask, removed the free audit "Nugget" popup, its corner progress tab and its script from the minimal draft. The two top "Get my free audit" buttons now jump to the closing section; the closing one opens an email to team@mcfallprod.com. Calculator, Calendly and copy-address buttons unchanged. Checked locally: no popup, no script errors.
 - **Next:** After the push, QC the buttons at https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/ (about 2 minutes). The live homepage is still the old site; replacing it with the draft is a separate decision.

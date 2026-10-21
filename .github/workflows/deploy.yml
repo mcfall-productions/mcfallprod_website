@@ -28,6 +28,14 @@ jobs:
       - name: Build
         run: npm run build
 
+      # The homepage is the minimal design in mcfall-website/minimal/ (built index.html, committed).
+      # The Vite build above still supplies CNAME, favicon, og.png and /referral/.
+      - name: Use the minimal design as the homepage
+        run: |
+          cp -RL mcfall-website/minimal/images/. dist/images/
+          cp -L mcfall-website/minimal/scrollcraft.js dist/
+          node mcfall-website/minimal/live.mjs dist/index.html
+
       # Leaves pr-preview/ alone so open pull request previews survive a live deploy
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
