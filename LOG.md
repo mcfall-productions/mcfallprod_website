@@ -1,10 +1,5 @@
 # Project log
 
-## 2026-10-21 · Homepage layout tweaks (PR open)
-- **Done:** From Scott's six marked screenshots, on branch `review/layout-centering`: centered the "untapped revenue stream" intro, the production-team heading and closing paragraph, and the "Lauren & Scott McFall" intro; put "A real person reads every word" and "Days or weeks, not months" side by side (stacked on phones); "Not just rewrites" is now the same size as "We publish it for you", both a touch smaller than before; soft gold haze behind "The full suite, and its three bonuses". Checked at desktop and phone width.
-- **Waiting on:** Scott: review the PR preview, then merge to put it live.
-- **Next:** Favicon: Scott to pick one of the six gold bar/nugget options shown in chat (B or E recommended).
-
 ## 2026-10-21 · Minimal design is now the live homepage
 - **Done:** On Scott's go, mcfallprod.com now serves the minimal design (popup removed) instead of the React site. `deploy.yml` swaps it in after the normal build via new `mcfall-website/minimal/live.mjs` (real title, share tags, Google Analytics). Removed the "Review copy… not the live site" footer line. Merged PR #11 into `GH`. `CLAUDE.md` updated so Lauren's Claude knows.
 - **Next:** Scott: QC the buttons on https://mcfallprod.com/. Send a test email via the closing "Get my free audit" button. The share image (og.png) is still from the old design.
