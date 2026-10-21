@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-21 · Lauren's edits on the live minimal homepage (PR for preview)
+- **Done:** On top of the current live page: full suite as a dark panel with three numbered bonuses; teaser header above the four dropdowns; producer line above "A complete podcast partner"; every audit button opens a show name + email popup (FormSubmit to team@ + eternallauren@gmail.com, spam trap, mailto fallback); phones show the title fix all at once; team blocks no longer animate.
+- **Waiting on:** Merge to `GH`, then one test submission and a click on the FormSubmit activation link sent to team@mcfallprod.com. Earlier PRs #14 and #15 were built on the wrong base and are closed.
+
 ## 2026-10-21 · Minimal design is now the live homepage
 - **Done:** On Scott's go, mcfallprod.com now serves the minimal design (popup removed) instead of the React site. `deploy.yml` swaps it in after the normal build via new `mcfall-website/minimal/live.mjs` (real title, share tags, Google Analytics). Removed the "Review copy… not the live site" footer line. Merged PR #11 into `GH`. `CLAUDE.md` updated so Lauren's Claude knows.
 - **Next:** Scott: QC the buttons on https://mcfallprod.com/. Send a test email via the closing "Get my free audit" button. The share image (og.png) is still from the old design.
