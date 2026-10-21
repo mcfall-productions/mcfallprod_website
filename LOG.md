@@ -1,11 +1,27 @@
 # Project log
 
+## 2026-10-21 · Minimal design is now the live homepage
+- **Done:** On Scott's go, mcfallprod.com now serves the minimal design (popup removed) instead of the React site. `deploy.yml` swaps it in after the normal build via new `mcfall-website/minimal/live.mjs` (real title, share tags, Google Analytics). Removed the "Review copy… not the live site" footer line. Merged PR #11 into `GH`. `CLAUDE.md` updated so Lauren's Claude knows.
+- **Next:** Scott: QC the buttons on https://mcfallprod.com/. Send a test email via the closing "Get my free audit" button. The share image (og.png) is still from the old design.
+- **Ideas:** The old React app in `src/` could be retired once the new homepage settles.
+
+## 2026-10-21 · Minimal draft: free audit popup removed (pushed to PR #11)
+- **Done:** On Scott's ask, removed the free audit "Nugget" popup, its corner progress tab and its script from the minimal draft. The two top "Get my free audit" buttons now jump to the closing section; the closing one opens an email to team@mcfallprod.com. Calculator, Calendly and copy-address buttons unchanged. Checked locally: no popup, no script errors.
+- **Next:** After the push, QC the buttons at https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/ (about 2 minutes). The live homepage is still the old site; replacing it with the draft is a separate decision.
+
+## 2026-10-20 · Minimal draft: title fix back on scroll ([PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11))
+- **Done:** On Scott's artifact comment, the red-pen title fix is scroll-driven again (pinned, `data-sc-span="1.8"`, was 2.8), so it takes about half the scrolling it did before the auto-play change. The 1,950 counter still auto-plays. Review link republished (Version 13): https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3
+- **Done:** Pushed and opened [PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11) into `GH`. Draft preview: https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/
+- **Waiting on:** Review and merge of PR #11.
+
 ## 2026-10-20 · Minimal draft: Lauren's #4, #8, #15 (PR #9)
 - **Done:** Checked the Claude GitHub app's second-batch fix (c871b45): rebuild matches, both animations auto-run, no console errors.
 - **Done:** #4 example title is now episode 1656 from the retitle sheet: "The #1 Financial Freedom SECRET Rich People WON'T Tell You!" → "Saving Will Never Make You Rich. Earning Will | Codie Sanchez". Notes: no all caps, cut the clickbait, add the guest's name, placed so they never overlap.
 - **Done:** #8 downloads figure 15.8M+ → 30.8M+ (Scott: 15M from The Daily Motivation, added on top). The live site's `src/App.tsx` still says 15.8M+.
 - **Done:** #15 the sales page calculator (same inputs and math) is now in the "untapped revenue stream" section. Checked at desktop, 820px and phone width. Pushed to `review/minimal-homepage`.
-- **Waiting on:** Lauren: re-review PR #9 preview.
+- **Done:** Asana task "New McFallProd.com Website >> Review and lmk your feedback" marked complete, with an @Lauren comment that Scott has gone through all her feedback (closes the 2026-10-07 "Waiting on: Scott" item).
+- **Done:** PR #9 merged into `GH` (0a0115a, 19:21), which removed its preview, so the link in the Asana comment went dead. Republished the claude.ai review link with the merged draft (Version 12): https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3, and posted a follow-up @Lauren comment on the Asana task with it (the connector can't edit comments). Live site unchanged; every new PR preview now includes `/drafts/minimal/`.
+- **Waiting on:** Lauren: look over the review link.
 - **Next:** Update 15.8M+ on the live site too if Scott wants it.
 
 ## 2026-10-20 · Minimal draft: Scott's in-chat edits (pushed to PR #9)
