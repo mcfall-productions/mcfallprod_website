@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-21 · Minimal draft: free audit popup removed (pushed to PR #11)
+- **Done:** On Scott's ask, removed the free audit "Nugget" popup, its corner progress tab and its script from the minimal draft. The two top "Get my free audit" buttons now jump to the closing section; the closing one opens an email to team@mcfallprod.com. Calculator, Calendly and copy-address buttons unchanged. Checked locally: no popup, no script errors.
+- **Next:** After the push, QC the buttons at https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/ (about 2 minutes). The live homepage is still the old site; replacing it with the draft is a separate decision.
+
 ## 2026-10-20 · Minimal draft: title fix back on scroll ([PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11))
 - **Done:** On Scott's artifact comment, the red-pen title fix is scroll-driven again (pinned, `data-sc-span="1.8"`, was 2.8), so it takes about half the scrolling it did before the auto-play change. The 1,950 counter still auto-plays. Review link republished (Version 13): https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3
 - **Done:** Pushed and opened [PR #11](https://github.com/mcfall-productions/mcfallprod_website/pull/11) into `GH`. Draft preview: https://mcfallprod.com/pr-preview/pr-11/drafts/minimal/
