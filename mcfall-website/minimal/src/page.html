@@ -132,6 +132,9 @@ ul, ol { padding: 0; list-style: none; }
 /* 2. buried */
 .buried .h-lg { max-width: 15ch; }
 .buried .acc { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+.acc--glow { position: relative; isolation: isolate; }
+.acc--glow::before { content: ""; position: absolute; z-index: -1; inset: -2.5rem -1.5rem; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(226, 189, 87, 0.38) 0%, rgba(226, 189, 87, 0.16) 45%, rgba(226, 189, 87, 0) 72%); filter: blur(12px); }
 /* the back-catalog calculator: same inputs and math as the sales page */
 .calc { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3rem); width: 100%; margin-top: clamp(2.5rem, 6vw, 4.5rem); padding: clamp(1.6rem, 4vw, 3rem); border-radius: 1.75rem; background: var(--tile); }
 .calc__in { display: grid; gap: 1.1rem; align-content: start; }
@@ -217,10 +220,11 @@ ul, ol { padding: 0; list-style: none; }
 .defs__h--bonus { color: var(--sc-ink); }
 .defs--bonus > div { padding: 1rem 1.2rem; border-radius: 1rem; box-shadow: inset 0 0 0 1.5px var(--sc-accent); }
 .badge { display: block; width: max-content; margin-bottom: 0.35rem; padding: 0.1rem 0.55rem; border-radius: 99px; background: var(--sc-accent); color: var(--sc-accent-ink); font-size: 0.75rem; font-weight: 700; }
-.review { display: grid; gap: 0.6rem; max-width: 44rem; margin-top: clamp(3rem, 7vw, 5rem); }
-.review p { color: var(--sc-ink-soft); }
 .publish { display: grid; gap: 0.8rem; justify-items: start; padding: clamp(2rem, 5vw, 3.5rem); border-radius: 1.75rem; background: var(--tile); color: var(--sc-ink); margin-bottom: clamp(3rem, 7vw, 5rem); }
-.publish small { font-size: 0.8125rem; font-weight: 600; color: var(--sc-accent); }
+.publish small, .publish .h-lg { font-family: var(--sc-font-display); font-weight: 600; font-size: clamp(1.9rem, 1.1rem + 3.2vw, 3.5rem); line-height: 1.07; letter-spacing: -0.027em; }
+.publish small { color: var(--sc-accent); }
+.publish { gap: 0.2rem; }
+.publish p { margin-top: 0.8rem; }
 .publish p { max-width: 40rem; font-size: 1.1875rem; line-height: 1.45; color: var(--sc-ink-soft); }
 @media (max-width: 720px) { .svc li, .pair, .defs { grid-template-columns: minmax(0, 1fr); } }
 
@@ -327,7 +331,7 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 2. BURIED -->
 <section id="back-catalog" class="tile gr buried" data-tone="light">
   <div class="wrap">
-    <div class="stack" data-sc-in data-sc-stagger="70">
+    <div class="stack center" data-sc-in data-sc-stagger="70">
       <h2 class="h-lg">Your next untapped revenue stream is already recorded.</h2>
       <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog. Then we don't hand you a document and leave. We publish all of it ourselves, on your podcast host and on your podcast website, so listeners find your old episodes again. Then we show you which ones are paying off.</p>
     </div>
@@ -431,11 +435,8 @@ ul, ol { padding: 0; list-style: none; }
       <li><h3 class="h-md">Show notes</h3><div><p class="fix">So your episodes get found.</p><p>New notes for every episode, written so search engines and podcast apps can match them to what people are looking for.</p></div></li>
       <li><h3 class="h-md">Transcripts</h3><div><p class="fix">So every conversation can be used again.</p><p>Every episode transcribed, so your team can search, quote and reuse anything that's ever been said on the show.</p></div></li>
     </ul>
-    <div class="review" data-sc-in>
-      <h3 class="h-md">A real person reads every word.</h3>
-      <p>Our automation writes the first draft. Then a native English-speaking human on our team reviews every title, set of show notes and transcript before any of it goes live.</p>
-    </div>
     <div class="pair" data-sc-in>
+      <div><h3 class="h-md">A real person reads every word.</h3><p>Our automation writes the first draft. Then a native English-speaking human on our team reviews every title, set of show notes and transcript before any of it goes live.</p></div>
       <div><h3 class="h-md">Days or weeks, not months.</h3><p>Big catalogs stay messy because fixing one by hand takes a team months. We built our own automation on a show with nearly 2,000 episodes. It does the heavy lifting, people review the work, and the cleanup takes days or weeks, depending on how many episodes you have.</p></div>
     </div>
     <div class="publish dk" data-sc-in>
@@ -443,7 +444,7 @@ ul, ol { padding: 0; list-style: none; }
       <h3 class="h-lg">We publish it for you.</h3>
       <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
     </div>
-    <div class="acc" data-sc-in>
+    <div class="acc acc--glow" data-sc-in>
       <details>
         <summary>The full suite, and its three bonuses</summary>
         <div class="acc__body" style="max-width:none">
@@ -470,7 +471,7 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 6. BESIDE YOUR TEAM: two sides -->
 <section class="tile gr" data-tone="light">
   <div class="wrap">
-    <h2 class="h-lg" style="max-width:19ch" data-sc-in>Already have a production team? Great. We work on different episodes.</h2>
+    <h2 class="h-lg" style="max-width:19ch;margin-inline:auto;text-align:center" data-sc-in>Already have a production team? Great. We work on different episodes.</h2>
     <div class="beside" data-sc-act="flow">
       <div data-sc-reveal="right" data-sc-reveal-at="0.12 0.38">
         <small>Your team</small>
@@ -483,7 +484,7 @@ ul, ol { padding: 0; list-style: none; }
         <ul class="ticks"><li>Fixing titles, numbers and notes nobody has touched in years</li><li>Making every past conversation searchable</li><li>Tracking which old episodes are coming back, and why</li></ul>
       </div>
     </div>
-    <p class="lede" style="max-width:46rem" data-sc-in>We work on the archive without touching your production workflow, and we hand your team the style guide we build so new titles match the rest. Nobody's job changes, and nobody has to find hundreds of spare hours.</p>
+    <p class="lede" style="max-width:46rem;margin-inline:auto;text-align:center" data-sc-in>We work on the archive without touching your production workflow, and we hand your team the style guide we build so new titles match the rest. Nobody's job changes, and nobody has to find hundreds of spare hours.</p>
   </div>
 </section>
 
@@ -542,7 +543,7 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 9. THE PEOPLE -->
 <section id="team" class="tile" data-tone="light">
   <div class="wrap">
-    <div class="stack" data-sc-in data-sc-stagger="70">
+    <div class="stack center" data-sc-in data-sc-stagger="70">
       <h2 class="h-lg">Lauren &amp; Scott McFall</h2>
       <p class="lede" style="max-width:46rem">We're a husband-and-wife team, and we produce The School of Greatness and The Daily Motivation. When we took on Lewis's back catalog, we built our own tools to do it properly at that size. That's the work we now do for other shows, and every project gets both of us.</p>
     </div>
