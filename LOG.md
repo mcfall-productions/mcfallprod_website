@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-21 · Minimal draft edits (branch `review/homepage-edits`, not pushed)
+- **Done:** Full suite is now a dark panel with three numbered bonuses (no dropdown); teaser header above the four dropdowns; "Need a podcast producer?" line above "A complete podcast partner"; all 3 audit buttons open a show name + email popup ("we'll email your audit within 48 hours"). Local preview only.
+- **Done:** Mobile fixes (title section static on phones, production-team blocks unanimated). Audit form posts to FormSubmit (team@ + eternallauren@gmail.com cc, spam trap); falls back to mailto.
+- **Waiting on:** Someone must submit the form once and click the FormSubmit activation link sent to team@mcfallprod.com. Pushed as a PR into `GH` for preview; the draft is not part of the live Vite site.
+
 ## 2026-10-15 · Minimal draft reviewable in PR previews ([PR #9](https://github.com/mcfall-productions/mcfallprod_website/pull/9))
 - **Done:** `.github/workflows/pr-preview.yml` now adds the minimal draft to every PR preview at `/pr-preview/pr-<number>/drafts/minimal/` (noindex). Checked locally: the page, red-pen title fix and images all load. `CLAUDE.md` explains how to review and fix it.
 - **Done:** Pushed `review/minimal-homepage` and opened PR #9 into `GH`, Lauren as reviewer. Draft preview: https://mcfallprod.com/pr-preview/pr-9/drafts/minimal/ (checked live: page, red-pen title fix, images and script load; noindex).
