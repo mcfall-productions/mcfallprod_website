@@ -1,10 +1,17 @@
-import { Phone, Mail, Calendar, Headphones, Share2, TrendingUp } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { FormEvent } from 'react';
+import { Phone, Mail, Calendar, Headphones, Share2, TrendingUp, X } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const CALENDLY = 'https://calendly.com/l-mcfall';
 const EMAIL = 'team@mcfallprod.com';
 const CONTACT_MAILTO = `mailto:${EMAIL}`;
-const REPORT_MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent('Buried Gold Report for my show')}&body=${encodeURIComponent("My show's name: ")}`;
+const COPY_TO = 'eternallauren@gmail.com';
+// Requests post to FormSubmit (no account): it emails team@ with a copy to COPY_TO.
+// The first submission ever sends team@ an activation link to click once.
+const AUDIT_ENDPOINT = `https://formsubmit.co/ajax/${EMAIL}`;
+const auditMailto = (show: string, email: string) =>
+  `mailto:${EMAIL},${COPY_TO}?subject=${encodeURIComponent(`Free audit request: ${show}`)}&body=${encodeURIComponent(`Show: ${show}\nEmail: ${email}\n\nPlease email me my free audit.`)}`;
 
 const img = (file: string) => encodeURI(`${import.meta.env.BASE_URL}images/${file}`);
 
@@ -181,9 +188,92 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
   );
 }
 
+function AuditModal({ onClose }: { onClose: () => void }) {
+  const [show, setShow] = useState('');
+  const [email, setEmail] = useState('');
+  const [trap, setTrap] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
+  const [error, setError] = useState('');
+  const first = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    first.current?.focus();
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    const name = show.trim();
+    const addr = email.trim();
+    if (!name) return setError("Type your show's name first.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(addr)) return setError('Enter a valid email address so we know where to send it.');
+    setError('');
+    if (trap) return setStatus('done'); // bots fill the hidden field
+    setStatus('sending');
+    try {
+      const res = await fetch(AUDIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ show: name, email: addr, _replyto: addr, _cc: COPY_TO, _subject: `Free audit request: ${name}`, _template: 'table' }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) === 'false') throw new Error('send failed');
+    } catch {
+      window.location.href = auditMailto(name, addr); // fall back to the visitor's own mail app
+    }
+    setStatus('done');
+  };
+
+  const input = 'w-full rounded-sm border border-rule bg-ivory px-4 py-3 text-lg text-navy placeholder:text-navy/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal';
+
+  return (
+    <div className="fixed inset-0 z-50 grid place-items-center p-4">
+      <div className="absolute inset-0 bg-navy/60" onClick={onClose} />
+      <div role="dialog" aria-modal="true" aria-labelledby="audit-h" className="relative w-full max-w-md bg-ivory p-7 text-navy shadow-xl sm:p-9">
+        <button type="button" onClick={onClose} aria-label="Close" className="absolute right-3 top-3 p-2 text-navy hover:text-teal">
+          <X className="h-5 w-5" aria-hidden="true" />
+        </button>
+        {status === 'done' ? (
+          <div role="status">
+            <h2 id="audit-h" className="font-serif text-3xl font-medium leading-tight">Request received.</h2>
+            <p className="mt-4 text-lg leading-relaxed">Thank you. We'll email your audit within 48 hours.</p>
+            <button type="button" onClick={onClose} className="mt-6 font-semibold underline underline-offset-4">Close</button>
+          </div>
+        ) : (
+          <form onSubmit={submit} noValidate>
+            <p className="text-sm font-semibold uppercase tracking-wide text-teal">Free podcast audit</p>
+            <h2 id="audit-h" className="mt-2 font-serif text-3xl font-medium leading-tight">Get your free audit, in your inbox.</h2>
+            <p className="mt-3 text-lg leading-relaxed">Tell us your show and where to send it. We'll email your Buried Gold Report within 48 hours.</p>
+            <div className="mt-6 grid gap-3">
+              <input ref={first} className={input} type="text" name="show" maxLength={120} placeholder="Your show's name" aria-label="Your show's name" value={show} onChange={(e) => setShow(e.target.value)} />
+              <input className={input} type="email" name="email" maxLength={160} autoComplete="email" placeholder="Your email address" aria-label="Your email address" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" value={trap} onChange={(e) => setTrap(e.target.value)} style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+              <button type="submit" disabled={status === 'sending'} className={`${btn} bg-teal text-ivory hover:bg-teal-dark focus-visible:outline-teal disabled:opacity-60`}>
+                {status === 'sending' ? 'Sending' : 'Email me my free audit'}
+              </button>
+              {error && <p role="status" className="text-[15px] text-teal-dark">{error}</p>}
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function App() {
+  const [auditOpen, setAuditOpen] = useState(false);
+  const openAudit = () => setAuditOpen(true);
+  const closeAudit = useCallback(() => setAuditOpen(false), []);
   return (
     <div className="min-h-screen bg-ivory font-sans text-cocoa antialiased">
+      {auditOpen && <AuditModal onClose={closeAudit} />}
       {/* Top: what McFall Productions does, in one breath, with a door to each half */}
       <header className="pt-6">
         <div className={wrap}>
@@ -277,9 +367,9 @@ function App() {
               <li className={`flex gap-3 before:bg-teal ${diamond}`}>Made live for you, on your podcast host and your website</li>
             </ul>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href="#report" className={`${btn} bg-teal text-ivory hover:bg-teal-dark focus-visible:outline-teal`}>
+              <button type="button" onClick={openAudit} className={`${btn} bg-teal text-ivory hover:bg-teal-dark focus-visible:outline-teal`}>
                 Get your podcast's Buried Gold Report
-              </a>
+              </button>
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={`${btn} text-navy shadow-[inset_0_0_0_1.5px_currentColor] hover:bg-card focus-visible:outline-navy`}>
                 <Phone className="h-5 w-5" aria-hidden="true" />
                 Talk to Lauren &amp; Scott
@@ -385,9 +475,9 @@ function App() {
             ))}
           </ul>
           <div className="mt-10 flex flex-col gap-x-8 gap-y-4 sm:flex-row sm:items-center">
-            <a href="#report" className={`${btn} foil-bg transition-[background-position] duration-500 focus-visible:outline-gold`}>
+            <button type="button" onClick={openAudit} className={`${btn} foil-bg transition-[background-position] duration-500 focus-visible:outline-gold`}>
               Get your podcast's Buried Gold Report
-            </a>
+            </button>
             <p className="max-w-md text-[15px] text-oatmeal">Your quote comes after a walkthrough call, based on your catalog's size.</p>
           </div>
         </div>
@@ -432,10 +522,10 @@ function App() {
               Send us your show's name. The Buried Gold Report is our free audit of your catalog: we run your public feed through the same checks we used on The School of Greatness and send back two pages in plain English within 48 hours, plus a before-and-after on 10 of your own titles. You don't give us access to anything.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href={REPORT_MAILTO} className={`${btn} bg-teal text-ivory hover:bg-teal-dark focus-visible:outline-teal`}>
+              <button type="button" onClick={openAudit} className={`${btn} bg-teal text-ivory hover:bg-teal-dark focus-visible:outline-teal`}>
                 <Mail className="h-5 w-5" aria-hidden="true" />
                 Email us your show's name
-              </a>
+              </button>
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={`${btn} text-navy shadow-[inset_0_0_0_1.5px_currentColor] hover:bg-ivory focus-visible:outline-navy`}>
                 <Phone className="h-5 w-5" aria-hidden="true" />
                 Or book a call
@@ -464,6 +554,7 @@ function App() {
       <section id="production" className="bg-navy py-16 text-ivory sm:py-24">
         <div className={`${wrap} grid items-start gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20`}>
           <div>
+            <p className="mb-4 text-lg font-semibold text-gold-light sm:text-xl">Need a podcast producer for your future episodes? We do that too.</p>
             <h2 className="font-serif text-5xl font-medium leading-[1.04] tracking-tight [text-wrap:balance] sm:text-6xl">A complete podcast partner</h2>
             <p className="mt-6 max-w-[34rem] text-xl leading-relaxed text-oatmeal">
               From editing and publishing to growth and monetization strategy, we handle it all so your podcast sounds as world-class as your ideas.
@@ -611,10 +702,10 @@ function App() {
             We'll run your public feed through the same checks and send you your podcast's Buried Gold Report, our free two-page audit, within 48 hours. All we need is your show's name. No login or APIs required. Looking for a production team? Book a call and we'll talk through your show.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={REPORT_MAILTO} className={`${btn} bg-ivory text-navy hover:bg-card focus-visible:outline-ivory`}>
+            <button type="button" onClick={openAudit} className={`${btn} bg-ivory text-navy hover:bg-card focus-visible:outline-ivory`}>
               <Mail className="h-5 w-5" aria-hidden="true" />
               Get your podcast's Buried Gold Report
-            </a>
+            </button>
             <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className={`${btn} text-ivory shadow-[inset_0_0_0_1.5px_currentColor] hover:bg-teal-dark focus-visible:outline-ivory`}>
               <Phone className="h-5 w-5" aria-hidden="true" />
               Talk to Lauren &amp; Scott
