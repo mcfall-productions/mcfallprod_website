@@ -600,7 +600,9 @@ ul, ol { padding: 0; list-style: none; }
 .acc summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.15rem 0; cursor: pointer; font-weight: 600; font-size: 1.1875rem; letter-spacing: -0.012em; }
 .acc summary::-webkit-details-marker { display: none; }
 .acc summary::after { content: ""; flex: none; width: 0.8rem; height: 0.8rem; transition: rotate 180ms var(--ease);
-  background: linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat; }
+  background: linear-gradient(var(--plus), var(--plus)) center / 100% 1.5px no-repeat, linear-gradient(var(--plus), var(--plus)) center / 1.5px 100% no-repeat; }
+.acc { --plus: #b8892a; }
+.dk .acc { --plus: var(--gold); }
 .acc details[open] summary::after { rotate: 45deg; }
 .acc .acc__body { display: grid; gap: 0.7rem; padding: 0 2rem 1.5rem 0; max-width: 44rem; color: var(--sc-ink-soft); }
 .acc .fix { color: var(--sc-ink); font-weight: 500; }
