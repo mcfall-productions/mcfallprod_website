@@ -1,8 +1,13 @@
 # Project log
 
+## 2026-10-22 · Audit form: no mail app, faster thank-you (PR open, not merged)
+- **Done:** Lauren reported the free audit form took ~60s on "Sending" and then opened her mail app, though the submission arrived. Cause: the form waited for FormSubmit's reply, and a slow or error reply triggered a mailto fallback. On branch `fix/audit-form-speed`: removed the mail-app fallback, the thank-you now shows as soon as FormSubmit answers or after 4 seconds at most (the request keeps going in the background), and a clear failure shows a note with team@mcfallprod.com. Tested locally with a fake form service (slow, quick, failure); no real emails sent.
+- **Waiting on:** Scott/Lauren: review the PR, then send one real test from the preview. Merge only on Scott's say-so.
+- **Ideas:** If FormSubmit stays slow, move to a faster form service (needs a free account Scott sets up).
+
 ## 2026-10-22 · Homepage back to the PR #21 version, with gold hero words (PR open)
 - **Done:** Scott picked the PR #21 preview (discovery copy, "findable" hero, gold favicon). On branch `restore-pr21-site`, restored the homepage, page head and favicon to that version and kept "podcast episode" in deeper gold (#b8892a). Rebuild matches.
-- **Waiting on:** Scott: OK to merge (merging puts it live).
+- **Done:** Merged PR #27 on Scott's OK; live on mcfallprod.com (checked hero, discovery section, title, favicon).
 
 ## 2026-10-22 · Closed PR #24 (GH into main)
 - **Done:** Closed PR #24 without merging on Scott's OK. It tried to merge `GH` into the old `main` branch and had conflicts; the live site deploys from `GH`, so it wasn't needed.
