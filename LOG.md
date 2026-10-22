@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-21 · Homepage layout tweaks (PR #13, waiting on review)
+- **Done:** PR #12 was merged by mistake before review (Claude's merge command ran though it showed as rejected) and went live; reverted on `GH` (845616a), live site back to before. Same changes reopened as PR #13 for review.
+- **Done:** From Scott's six marked screenshots, on branch `review/layout-centering`: centered the "untapped revenue stream" intro, the production-team heading and closing paragraph, and the "Lauren & Scott McFall" intro; put "A real person reads every word" and "Days or weeks, not months" side by side (stacked on phones); "Not just rewrites" is now the same size as "We publish it for you", both a touch smaller than before; soft gold haze behind "The full suite, and its three bonuses". Checked at desktop and phone width.
+- **Waiting on:** Scott/Lauren: review PR #13 preview. Merge only on Scott's say-so (merging puts it live).
+- **Next:** Favicon: Scott to pick one of the six gold bar/nugget options shown in chat (B or E recommended).
 ## 2026-10-22 · Gold plus signs on the dropdowns (live)
 - **Done:** The + signs on both dropdown lists (back catalog problems, production services) are now gold (#b8892a, the deeper gold that reads on the light background; the site's #e2bd57 if a dropdown ever sits on a dark section). Checked locally.
 - **Waiting on:** Scott: which gold for "podcast episode" in the headline (previews sent: #e2bd57 vs #b8892a).
