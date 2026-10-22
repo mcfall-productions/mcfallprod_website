@@ -100,6 +100,7 @@ ul, ol { padding: 0; list-style: none; }
 .hero { min-height: calc(100svh - var(--bar-h)); display: grid; grid-template-rows: auto minmax(clamp(11rem, 30vh, 18rem), 1fr) auto; padding-top: clamp(3.5rem, 11vh, 7.5rem); overflow: clip; }
 .hero__copy { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
 .hero__copy .h-xl { max-width: 13ch; }
+.gold-word { color: #b8892a; }
 .hero__copy .row { margin-top: 0.6rem; justify-content: center; }
 .field { position: relative; min-height: 0; }
 .field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -355,7 +356,7 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 1. HERO: type, and a catalog drawn as dots -->
 <section class="hero" data-sc-act="flow" data-tone="light">
   <div class="wrap hero__copy">
-    <h1 class="h-xl">We make every podcast episode findable.</h1>
+    <h1 class="h-xl">We make every <span class="gold-word">podcast episode</span> findable.</h1>
     <p class="lede">In Google, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.</p>
     <div class="row">
       <button class="btn" type="button" data-open>Get my free audit</button>
