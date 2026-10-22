@@ -1,5 +1,13 @@
 # Project log
 
+## 2026-10-22 · Homepage back to the PR #21 version, with gold hero words (PR open)
+- **Done:** Scott picked the PR #21 preview (discovery copy, "findable" hero, gold favicon). On branch `restore-pr21-site`, restored the homepage, page head and favicon to that version and kept "podcast episode" in deeper gold (#b8892a). Rebuild matches.
+- **Waiting on:** Scott: OK to merge (merging puts it live).
+
+## 2026-10-22 · Closed PR #24 (GH into main)
+- **Done:** Closed PR #24 without merging on Scott's OK. It tried to merge `GH` into the old `main` branch and had conflicts; the live site deploys from `GH`, so it wasn't needed.
+- **Next:** Decide whether to retire `main` (it still has the old React site and the Claude Actions setup).
+
 ## 2026-10-22 · Live site reset to end of 2026-10-21, gold hero words kept
 - **Done:** On Scott's ask, the homepage and favicon are back to how they were after Lauren's PR #17 (d3e73ce), with only the gold "podcast episode" in the hero kept. This undoes today's gold favicon (#18), gold + signs (#19), layout/centering (#13), suite and team-card fix (#20), and all of the discovery rewrite. Lauren's 21 Oct edits stay. Everything undone is still in git history and PRs #13, #18, #19, #20 if any of it comes back.
 - **Next:** Scott and Lauren: decide which of today's changes to bring back, and whether "findable" is the new line.
