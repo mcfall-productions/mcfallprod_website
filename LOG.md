@@ -1,11 +1,16 @@
 # Project log
 
-## 2026-10-22 · Audit form: no mail app, faster thank-you (PR open, not merged)
+## 2026-10-22 · New website is live
+- **Done:** The new mcfallprod.com is live and final: minimal design with the discovery copy, gold "podcast episode" in the hero, gold pickaxe favicon, and the free audit popup (fixed in PR #28). `CLAUDE.md` updated so Lauren's Claude treats this as the baseline and never merges without Scott's OK.
+- **Next:** Decide whether to retire the old `main` branch and the old React app in `src/`. Share image (og.png) is still from the old design.
+- **Ideas:** Faster form service than FormSubmit; a real client before-and-after (with their OK) for the discovery section.
+
+## 2026-10-22 · Audit form: no mail app, faster thank-you (PR #28, live)
 - **Done:** Lauren reported the free audit form took ~60s on "Sending" and then opened her mail app, though the submission arrived. Cause: the form waited for FormSubmit's reply, and a slow or error reply triggered a mailto fallback. On branch `fix/audit-form-speed`: removed the mail-app fallback, the thank-you now shows as soon as FormSubmit answers or after 4 seconds at most (the request keeps going in the background), and a clear failure shows a note with team@mcfallprod.com. Tested locally with a fake form service (slow, quick, failure); no real emails sent.
-- **Waiting on:** Scott/Lauren: review the PR, then send one real test from the preview. Merge only on Scott's say-so.
+- **Done:** Scott tested a real request from the preview (arrived), then merged PR #28; live on mcfallprod.com.
 - **Ideas:** If FormSubmit stays slow, move to a faster form service (needs a free account Scott sets up).
 
-## 2026-10-22 · Homepage back to the PR #21 version, with gold hero words (PR open)
+## 2026-10-22 · Homepage back to the PR #21 version, with gold hero words (PR #27, live)
 - **Done:** Scott picked the PR #21 preview (discovery copy, "findable" hero, gold favicon). On branch `restore-pr21-site`, restored the homepage, page head and favicon to that version and kept "podcast episode" in deeper gold (#b8892a). Rebuild matches.
 - **Done:** Merged PR #27 on Scott's OK; live on mcfallprod.com (checked hero, discovery section, title, favicon).
 
