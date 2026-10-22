@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-22 · Gold favicon live
+- **Done:** Scott and Lauren picked option C3 (pickaxe, stacked gold bars and shine on the site's black tile), built from Lauren's reference image. Replaced `public/favicon.svg`; merged into `GH` so mcfallprod.com uses it (also covers `/referral/` and PR previews).
+- **Ideas:** No PNG or .ico fallback yet (only SVG); older browsers and iOS home-screen icons won't show it. The share image (og.png) is still from the old design.
+
 ## 2026-10-21 · Lauren's edits on the live minimal homepage (PR for preview)
 - **Done:** On top of the current live page: full suite as a dark panel with three numbered bonuses; teaser header above the four dropdowns; producer line above "A complete podcast partner"; every audit button opens a show name + email popup (FormSubmit to team@ + eternallauren@gmail.com, spam trap, mailto fallback); phones show the title fix all at once; team blocks no longer animate.
 - **Waiting on:** Merge to `GH`, then one test submission and a click on the FormSubmit activation link sent to team@mcfallprod.com. Earlier PRs #14 and #15 were built on the wrong base and are closed.
