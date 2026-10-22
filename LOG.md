@@ -1,8 +1,11 @@
 # Project log
 
+## 2026-10-22 · Live site reset to end of 2026-10-21, gold hero words kept
+- **Done:** On Scott's ask, the homepage and favicon are back to how they were after Lauren's PR #17 (d3e73ce), with only the gold "podcast episode" in the hero kept. This undoes today's gold favicon (#18), gold + signs (#19), layout/centering (#13), suite and team-card fix (#20), and all of the discovery rewrite. Lauren's 21 Oct edits stay. Everything undone is still in git history and PRs #13, #18, #19, #20 if any of it comes back.
+- **Next:** Scott and Lauren: decide which of today's changes to bring back, and whether "findable" is the new line.
+
 ## 2026-10-22 · Discovery rewrite off the live site
 - **Done:** On Scott's ask, back-catalog intro is back to "Your next untapped revenue stream is already recorded." with its original paragraph, and the "One episode. One strong title. Everywhere." section is removed. With the hero change below, the live page no longer leads with "findable". The discovery wording stays in git history (81aac1b) if it comes back.
-- **Next:** Still live from that rewrite: the Back Catalog Goldmine intro ("one goal: getting your episodes found") and the reworded Retitling, Show notes and Transcripts blurbs, plus a small change to the "We publish it for you" paragraph. Scott and Lauren to decide on "findable" and whether those stay.
 
 ## 2026-10-22 · Hero back to "earn" (live)
 - **Done:** Scott: "findable" isn't settled. Hero heading is back to "We make every podcast episode earn." (gold "podcast episode" kept), the hero line under it is back to the original, and the page title, search description and link-share text are back to the "earn" versions in `live.mjs`.
