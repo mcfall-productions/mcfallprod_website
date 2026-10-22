@@ -5,6 +5,17 @@
 - **Done:** From Scott's six marked screenshots, on branch `review/layout-centering`: centered the "untapped revenue stream" intro, the production-team heading and closing paragraph, and the "Lauren & Scott McFall" intro; put "A real person reads every word" and "Days or weeks, not months" side by side (stacked on phones); "Not just rewrites" is now the same size as "We publish it for you", both a touch smaller than before; soft gold haze behind "The full suite, and its three bonuses". Checked at desktop and phone width.
 - **Waiting on:** Scott/Lauren: review PR #13 preview. Merge only on Scott's say-so (merging puts it live).
 - **Next:** Favicon: Scott to pick one of the six gold bar/nugget options shown in chat (B or E recommended).
+## 2026-10-22 · Gold plus signs on the dropdowns (live)
+- **Done:** The + signs on both dropdown lists (back catalog problems, production services) are now gold (#b8892a, the deeper gold that reads on the light background; the site's #e2bd57 if a dropdown ever sits on a dark section). Checked locally.
+- **Waiting on:** Scott: which gold for "podcast episode" in the headline (previews sent: #e2bd57 vs #b8892a).
+
+## 2026-10-22 · Gold favicon live
+- **Done:** Scott and Lauren picked option C3 (pickaxe, stacked gold bars and shine on the site's black tile), built from Lauren's reference image. Replaced `public/favicon.svg`; merged into `GH` so mcfallprod.com uses it (also covers `/referral/` and PR previews).
+- **Ideas:** No PNG or .ico fallback yet (only SVG); older browsers and iOS home-screen icons won't show it. The share image (og.png) is still from the old design.
+
+## 2026-10-21 · Lauren's edits on the live minimal homepage (PR for preview)
+- **Done:** On top of the current live page: full suite as a dark panel with three numbered bonuses; teaser header above the four dropdowns; producer line above "A complete podcast partner"; every audit button opens a show name + email popup (FormSubmit to team@ + eternallauren@gmail.com, spam trap, mailto fallback); phones show the title fix all at once; team blocks no longer animate.
+- **Waiting on:** Merge to `GH`, then one test submission and a click on the FormSubmit activation link sent to team@mcfallprod.com. Earlier PRs #14 and #15 were built on the wrong base and are closed.
 
 ## 2026-10-21 · Minimal design is now the live homepage
 - **Done:** On Scott's go, mcfallprod.com now serves the minimal design (popup removed) instead of the React site. `deploy.yml` swaps it in after the normal build via new `mcfall-website/minimal/live.mjs` (real title, share tags, Google Analytics). Removed the "Review copy… not the live site" footer line. Merged PR #11 into `GH`. `CLAUDE.md` updated so Lauren's Claude knows.
