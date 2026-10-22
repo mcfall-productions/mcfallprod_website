@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-22 · Hero back to "earn" (live)
+- **Done:** Scott: "findable" isn't settled. Hero heading is back to "We make every podcast episode earn." (gold "podcast episode" kept), the hero line under it is back to the original, and the page title, search description and link-share text are back to the "earn" versions in `live.mjs`.
+- **Next:** Rest of the discovery rewrite (81aac1b) is still live: new back-catalog intro ("Your old episodes aren't bad. They're hard to find.") and the "One episode. One strong title. Everywhere." section. Scott and Lauren to decide on "findable" and whether those stay.
+
 ## 2026-10-22 · Gold "podcast episode" in the hero heading (live)
 - **Done:** "podcast episode" in the hero heading ("We make every podcast episode findable.") is now the deeper gold #b8892a, Scott's pick from the two previews. Closes the headline-gold question from the gold + signs entry below.
 
