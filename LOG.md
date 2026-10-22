@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-22 · Discovery copy for the homepage (PR open, not merged)
+- **Done:** On branch `review/discovery-copy`, reframed the homepage around discovery: hero "We make every podcast episode findable", new back-catalog intro, a new "One episode. One strong title. Everywhere." section (search matches words, same title everywhere, website carries the transcript, episodes add up, no #1 ranking promise), retitling/show notes/transcripts rewritten around being found, page title and share text updated. Checked desktop and phone.
+- **Waiting on:** Scott and Lauren: review the PR preview. Merge only on Scott's say-so.
+- **Next:** Decide whether YouTube belongs in the copy (only if we update YouTube titles too), and whether to ask JJ Virgin for a before-and-after example.
+
 ## 2026-10-22 · Fix merge damage on the live homepage (PR open, not merged)
 - **Done:** PR #13's merge with Lauren's PR #16 broke two things live: the old "full suite" dropdown came back above Lauren's new suite panel (and wrapped it), and the production-team heading plus both cards ended up stacked inside the left card. On branch `fix/beside-and-suite`: removed the old dropdown and its gold haze, rebuilt the production-team section (two cards side by side, stacked on phones). Checked desktop and phone.
 - **Waiting on:** Scott: review the PR preview. Merge only on Scott's say-so.
