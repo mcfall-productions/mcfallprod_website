@@ -1,5 +1,13 @@
 # Project log
 
+## 2026-10-22 · Gold "podcast episode" in the hero heading (live)
+- **Done:** "podcast episode" in the hero heading ("We make every podcast episode findable.") is now the deeper gold #b8892a, Scott's pick from the two previews. Closes the headline-gold question from the gold + signs entry below.
+
+## 2026-10-22 · Discovery copy for the homepage (PR open, not merged)
+- **Done:** On branch `review/discovery-copy`, reframed the homepage around discovery: hero "We make every podcast episode findable", new back-catalog intro, a new "One episode. One strong title. Everywhere." section (search matches words, same title everywhere, website carries the transcript, episodes add up, no #1 ranking promise), retitling/show notes/transcripts rewritten around being found, page title and share text updated. Checked desktop and phone.
+- **Waiting on:** Scott and Lauren: review the PR preview. Merge only on Scott's say-so.
+- **Next:** Decide whether YouTube belongs in the copy (only if we update YouTube titles too), and whether to ask JJ Virgin for a before-and-after example.
+
 ## 2026-10-22 · Fix merge damage on the live homepage (PR open, not merged)
 - **Done:** PR #13's merge with Lauren's PR #16 broke two things live: the old "full suite" dropdown came back above Lauren's new suite panel (and wrapped it), and the production-team heading plus both cards ended up stacked inside the left card. On branch `fix/beside-and-suite`: removed the old dropdown and its gold haze, rebuilt the production-team section (two cards side by side, stacked on phones). Checked desktop and phone.
 - **Waiting on:** Scott: review the PR preview. Merge only on Scott's say-so.
@@ -11,7 +19,6 @@
 - **Next:** Favicon: Scott to pick one of the six gold bar/nugget options shown in chat (B or E recommended).
 ## 2026-10-22 · Gold plus signs on the dropdowns (live)
 - **Done:** The + signs on both dropdown lists (back catalog problems, production services) are now gold (#b8892a, the deeper gold that reads on the light background; the site's #e2bd57 if a dropdown ever sits on a dark section). Checked locally.
-- **Waiting on:** Scott: which gold for "podcast episode" in the headline (previews sent: #e2bd57 vs #b8892a).
 
 ## 2026-10-22 · Gold favicon live
 - **Done:** Scott and Lauren picked option C3 (pickaxe, stacked gold bars and shine on the site's black tile), built from Lauren's reference image. Replaced `public/favicon.svg`; merged into `GH` so mcfallprod.com uses it (also covers `/referral/` and PR previews).

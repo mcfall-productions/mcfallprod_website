@@ -532,6 +532,7 @@ ul, ol { padding: 0; list-style: none; }
 .hero { min-height: calc(100svh - var(--bar-h)); display: grid; grid-template-rows: auto minmax(clamp(11rem, 30vh, 18rem), 1fr) auto; padding-top: clamp(3.5rem, 11vh, 7.5rem); overflow: clip; }
 .hero__copy { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
 .hero__copy .h-xl { max-width: 13ch; }
+.gold-word { color: #b8892a; }
 .hero__copy .row { margin-top: 0.6rem; justify-content: center; }
 .field { position: relative; min-height: 0; }
 .field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -787,8 +788,8 @@ ul, ol { padding: 0; list-style: none; }
 <!-- 1. HERO: type, and a catalog drawn as dots -->
 <section class="hero" data-sc-act="flow" data-tone="light">
   <div class="wrap hero__copy">
-    <h1 class="h-xl">We make every podcast episode earn.</h1>
-    <p class="lede">The one you publish next week, and the hundreds you've already made.</p>
+    <h1 class="h-xl">We make every <span class="gold-word">podcast episode</span> findable.</h1>
+    <p class="lede">In Google, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.</p>
     <div class="row">
       <button class="btn" type="button" data-open>Get my free audit</button>
       <a class="more" href="https://calendly.com/l-mcfall" target="_blank" rel="noopener noreferrer">Talk to Lauren &amp; Scott</a>
@@ -810,8 +811,8 @@ ul, ol { padding: 0; list-style: none; }
 <section id="back-catalog" class="tile gr buried" data-tone="light">
   <div class="wrap">
     <div class="stack center" data-sc-in data-sc-stagger="70">
-      <h2 class="h-lg">Your next untapped revenue stream is already recorded.</h2>
-      <p class="lede">Old episodes don't stop being valuable. They just get harder to find. We fix the titles, rewrite the show notes and transcribe every episode in your back catalog. Then we don't hand you a document and leave. We publish all of it ourselves, on your podcast host and on your podcast website, so listeners find your old episodes again. Then we show you which ones are paying off.</p>
+      <h2 class="h-lg">Your old episodes aren't bad. They're hard to find.</h2>
+      <p class="lede">Old episodes don't stop being valuable. They just stop being found. Search engines and podcast apps can only match what's written down: the title, the show notes and the transcript. We rewrite all three for every episode in your back catalog, to today's best practices and in the words people search for. Then we publish it ourselves, so the same strong title and notes show up on your podcast host, in Apple and Spotify, and on your website. Then we show you which episodes are being found again.</p>
     </div>
     <div class="calc" data-sc-in>
       <div class="calc__in">
@@ -858,6 +859,23 @@ ul, ol { padding: 0; list-style: none; }
         <div class="acc__body"><p>A past guest lands a bestseller or a viral moment, and people go searching for them. You interviewed them years ago. But the title is only their name, the show notes are two lines and the links are dead, so your interview doesn't come up in search. Someone else's does.</p><p class="fix">Current titles, show notes and links put your interview back in the results.</p></div>
       </details>
     </div>
+  </div>
+</section>
+
+<!-- 2b. HOW DISCOVERY WORKS -->
+<section id="discovery" class="tile" data-tone="light">
+  <div class="wrap">
+    <div class="stack center" data-sc-in data-sc-stagger="70">
+      <h2 class="h-lg">One episode. One strong title. Everywhere.</h2>
+      <p class="lede">Someone types &ldquo;thyroid health after 50&rdquo; into Google or Spotify. An episode called &ldquo;EP 212&rdquo; can&rsquo;t match that. One titled for what it covers, with the guest&rsquo;s name, can.</p>
+    </div>
+    <ul class="svc" data-sc-in data-sc-stagger="70">
+      <li><h3 class="h-md">Search matches words</h3><div><p class="fix">Say what the episode is about.</p><p>Google, Apple and Spotify can only match what&rsquo;s written. A title and notes in the words your listeners use put the episode in front of people looking for exactly that.</p></div></li>
+      <li><h3 class="h-md">Everywhere matches</h3><div><p class="fix">The same title on every platform.</p><p>When your host, Apple, Spotify and your website all carry the same title and notes, search engines can tell it&rsquo;s one episode from one show, and credit it to your brand. Four different titles look like four weaker, unrelated pages.</p></div></li>
+      <li><h3 class="h-md">Your website does the heavy lifting</h3><div><p class="fix">Every word of the conversation, readable.</p><p>The episode page on your own site carries the full show notes and transcript, so Google has the whole conversation to match, not just a one-line description.</p></div></li>
+      <li><h3 class="h-md">Every episode adds up</h3><div><p class="fix">Known for your topics.</p><p>A catalog of clearly labeled episodes on the same subjects tells search engines what your show is about. That helps the next episode get found too.</p></div></li>
+    </ul>
+    <p class="note" style="margin-top:1.5rem">Nobody can promise a #1 ranking. We make every episode built to be found.</p>
   </div>
 </section>
 
@@ -910,12 +928,12 @@ ul, ol { padding: 0; list-style: none; }
   <div class="wrap">
     <div class="stack" data-sc-in data-sc-stagger="70">
       <h2 class="h-lg">Back Catalog Goldmine</h2>
-      <p class="lede">Three services, all written using best practices. Always the whole catalog. Take all three as the full suite, or pick the one or two that fix what your report turned up.</p>
+      <p class="lede">Three services, one goal: getting your episodes found. All written to today&rsquo;s best practices, always the whole catalog. Take all three as the full suite, or pick the one or two that fix what your report turned up.</p>
     </div>
     <ul class="svc" data-sc-in data-sc-stagger="70">
-      <li><h3 class="h-md">Retitling</h3><div><p class="fix">So people press play.</p><p>Every title rewritten in one consistent voice, so a listener scrolling your feed or a search result sees a reason to pick an old episode.</p></div></li>
-      <li><h3 class="h-md">Show notes</h3><div><p class="fix">So your episodes get found.</p><p>New notes for every episode, written so search engines and podcast apps can match them to what people are looking for.</p></div></li>
-      <li><h3 class="h-md">Transcripts</h3><div><p class="fix">So every conversation can be used again.</p><p>Every episode transcribed, so your team can search, quote and reuse anything that's ever been said on the show.</p></div></li>
+      <li><h3 class="h-md">Retitling</h3><div><p class="fix">So people find it, and press play.</p><p>Every title rewritten to today&rsquo;s standards, in one consistent voice and the words people search for, so the episode shows up in search and a listener sees a reason to pick it.</p></div></li>
+      <li><h3 class="h-md">Show notes</h3><div><p class="fix">So search engines know what&rsquo;s inside.</p><p>New notes for every episode, written around what the episode actually covers, so Google and podcast apps can match them to what people are looking for.</p></div></li>
+      <li><h3 class="h-md">Transcripts</h3><div><p class="fix">So every word can be found.</p><p>Every episode transcribed and posted on your website, so search engines can read the whole conversation, and your team can search, quote and reuse anything that&rsquo;s been said on the show.</p></div></li>
     </ul>
     <div class="pair" data-sc-in>
       <div><h3 class="h-md">A real person reads every word.</h3><p>Our automation writes the first draft. Then a native English-speaking human on our team reviews every title, set of show notes and transcript before any of it goes live.</p></div>
@@ -924,7 +942,7 @@ ul, ol { padding: 0; list-style: none; }
     <div class="publish dk" data-sc-in>
       <small>Not just rewrites</small>
       <h3 class="h-lg">We publish it for you.</h3>
-      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
+      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. The same title and notes everywhere your episode lives, and nothing for your team to do.</p>
     </div>
     <div class="suite dk" data-sc-in>
       <p class="suite__kick">What we recommend</p>
