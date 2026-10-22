@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-22 · Gold plus signs on the dropdowns (live)
+- **Done:** The + signs on both dropdown lists (back catalog problems, production services) are now gold (#b8892a, the deeper gold that reads on the light background; the site's #e2bd57 if a dropdown ever sits on a dark section). Checked locally.
+- **Waiting on:** Scott: which gold for "podcast episode" in the headline (previews sent: #e2bd57 vs #b8892a).
+
 ## 2026-10-22 · Gold favicon live
 - **Done:** Scott and Lauren picked option C3 (pickaxe, stacked gold bars and shine on the site's black tile), built from Lauren's reference image. Replaced `public/favicon.svg`; merged into `GH` so mcfallprod.com uses it (also covers `/referral/` and PR previews).
 - **Ideas:** No PNG or .ico fallback yet (only SVG); older browsers and iOS home-screen icons won't show it. The share image (og.png) is still from the old design.
