@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-10-22 · Fix merge damage on the live homepage (PR open, not merged)
+- **Done:** PR #13's merge with Lauren's PR #16 broke two things live: the old "full suite" dropdown came back above Lauren's new suite panel (and wrapped it), and the production-team heading plus both cards ended up stacked inside the left card. On branch `fix/beside-and-suite`: removed the old dropdown and its gold haze, rebuilt the production-team section (two cards side by side, stacked on phones). Checked desktop and phone.
+- **Waiting on:** Scott: review the PR preview. Merge only on Scott's say-so.
+
 ## 2026-10-21 · Homepage layout tweaks (PR #13, waiting on review)
 - **Done:** PR #12 was merged by mistake before review (Claude's merge command ran though it showed as rejected) and went live; reverted on `GH` (845616a), live site back to before. Same changes reopened as PR #13 for review.
 - **Done:** From Scott's six marked screenshots, on branch `review/layout-centering`: centered the "untapped revenue stream" intro, the production-team heading and closing paragraph, and the "Lauren & Scott McFall" intro; put "A real person reads every word" and "Days or weeks, not months" side by side (stacked on phones); "Not just rewrites" is now the same size as "We publish it for you", both a touch smaller than before; soft gold haze behind "The full suite, and its three bonuses". Checked at desktop and phone width.
