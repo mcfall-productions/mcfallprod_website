@@ -159,9 +159,6 @@ ul, ol { padding: 0; list-style: none; }
 /* 2. buried */
 .buried .h-lg { max-width: 15ch; }
 .buried .acc { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
-.acc--glow { position: relative; isolation: isolate; }
-.acc--glow::before { content: ""; position: absolute; z-index: -1; inset: -2.5rem -1.5rem; border-radius: 50%; pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(226, 189, 87, 0.38) 0%, rgba(226, 189, 87, 0.16) 45%, rgba(226, 189, 87, 0) 72%); filter: blur(12px); }
 /* the back-catalog calculator: same inputs and math as the sales page */
 .calc { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3rem); width: 100%; margin-top: clamp(2.5rem, 6vw, 4.5rem); padding: clamp(1.6rem, 4vw, 3rem); border-radius: 1.75rem; background: var(--tile); }
 .calc__in { display: grid; gap: 1.1rem; align-content: start; }
@@ -497,26 +494,6 @@ ul, ol { padding: 0; list-style: none; }
       <h3 class="h-lg">We publish it for you.</h3>
       <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. Nothing for your team to do.</p>
     </div>
-    <div class="acc acc--glow" data-sc-in>
-      <details>
-        <summary>The full suite, and its three bonuses</summary>
-        <div class="acc__body" style="max-width:none">
-          <p style="max-width:44rem">All three services for every episode you've made, live on your podcast host and your website, for one price. It's what we recommend, and it comes with three bonuses at no charge, marked below.</p>
-          <h4 class="defs__h">In the suite</h4>
-          <dl class="defs">
-            <div><dt>Your podcast host</dt><dd>The feed Apple, Spotify and every other app reads. Every title, description and transcript updated there, so the change shows up everywhere people listen.</dd></div>
-            <div><dt>Your podcast website</dt><dd>Each episode's page on your site updated to match: the new title, the new show notes, and the transcript behind a “Click here to read transcript” link.</dd></div>
-            <div><dt>Nothing lost</dt><dd>We save every original title and show note before we change anything, so any episode can be put back.</dd></div>
-          </dl>
-          <h4 class="defs__h defs__h--bonus">Plus three bonuses, free with the suite</h4>
-          <dl class="defs defs--bonus">
-            <div><dt><span class="badge">Bonus 1</span>Three months of monthly tune-ups</dt><dd>A report each month, up to 15 older episodes retitled or re-noted and made live, and a transcript for every new episode. They start the day your catalog is delivered.</dd></div>
-            <div><dt><span class="badge">Bonus 2</span>Your written style guide</dt><dd>The rules for your titles and show notes, yours to keep, so your team's new episodes match the catalog.</dd></div>
-            <div><dt><span class="badge">Bonus 3</span>Your 60-day comparison</dt><dd>Half your episodes go live first. Sixty days later you see them next to the half we left alone, in your own downloads.</dd></div>
-          </dl>
-          <p class="note">Your quote comes after a walkthrough call, based on your catalog's size.</p>
-        </div>
-      </details>
     <div class="suite dk" data-sc-in>
       <p class="suite__kick">What we recommend</p>
       <h3 class="suite__h">The full suite, and its three free bonuses.</h3>
@@ -542,14 +519,11 @@ ul, ol { padding: 0; list-style: none; }
     <h2 class="h-lg" style="max-width:19ch;margin-inline:auto;text-align:center" data-sc-in>Already have a production team? Great. We work on different episodes.</h2>
     <div class="beside" data-sc-act="flow">
       <div data-sc-reveal="right" data-sc-reveal-at="0.12 0.38">
-    <h2 class="h-lg" style="max-width:19ch" data-sc-in>Already have a production team? Great. We work on different episodes.</h2>
-    <div class="beside">
-      <div>
         <small>Your team</small>
         <h3 class="h-md">This week's episode</h3>
         <ul class="ticks"><li>Editing audio and video</li><li>Titles and show notes for new releases</li><li>Publishing on schedule</li></ul>
       </div>
-      <div class="dk">
+      <div class="dk" data-sc-reveal="left" data-sc-reveal-at="0.2 0.48">
         <small>Us</small>
         <h3 class="h-md">Every episode behind it</h3>
         <ul class="ticks"><li>Fixing titles, numbers and notes nobody has touched in years</li><li>Making every past conversation searchable</li><li>Tracking which old episodes are coming back, and why</li></ul>
