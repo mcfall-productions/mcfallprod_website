@@ -880,15 +880,12 @@ ul, ol { padding: 0; list-style: none; }
 
   /* ---------------------------------------------------------------- the audit request */
   /* Requests post to FormSubmit (no account), which emails team@mcfallprod.com with a copy to eternallauren@gmail.com.
-     The first ever submission sends team@ an activation email: click its link once. If the post fails, the visitor's
-     own mail app opens with the request filled in instead. */
+     FormSubmit can take a minute to answer even when the email has already gone out, so the thank-you shows after
+     WAIT_MS at most while the request finishes in the background (keepalive). A clear failure shows a note with our
+     address. The visitor's mail app is never opened. */
   var AUDIT_ENDPOINT = 'https://formsubmit.co/ajax/team@mcfallprod.com';
   var AUDIT_CC = 'eternallauren@gmail.com';
-  var AUDIT_TO = 'team@mcfallprod.com,' + AUDIT_CC;
-  function viaMail(name, email) {
-    location.href = 'mailto:' + AUDIT_TO + '?subject=' + encodeURIComponent('Free audit request: ' + name) + '&body=' + encodeURIComponent('Show: ' + name + '\nEmail: ' + email + '\n\nPlease email me my free audit.');
-    finish();
-  }
+  var WAIT_MS = 4000;
   var form = $('#audit-form'), nameIn = $('#show-name'), emailIn = $('#show-email');
   var status = $('#form-status'), btn = $('#btn-send'), done = $('#pop-done');
   var pop = $('#pop'), lastFocus = null;
@@ -925,12 +922,19 @@ ul, ol { padding: 0; list-style: none; }
     if (!email || !emailIn.checkValidity()) { say('Enter a valid email address so we know where to send it.'); emailIn.focus(); return; }
     say('');
     if ($('#show-site').value) { finish(); return; }   /* spam trap: bots fill the hidden field */
-    btn.disabled = true; btn.textContent = 'Sending';
-    fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    var settled = false;
+    var wait = setTimeout(function () { if (!settled) { settled = true; finish(); } }, WAIT_MS);
+    fetch(AUDIT_ENDPOINT, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ show: name, email: email, _replyto: email, _honey: '', _cc: AUDIT_CC, _subject: 'Free audit request: ' + name, _template: 'table' }) })
-      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (x) { if (!x.ok || String(x.j && x.j.success) === 'false') throw 0; finish(); })
-      .catch(function () { btn.disabled = false; btn.textContent = 'Email me my free audit'; viaMail(name, email); });
+      .then(function (r) { return r.text().then(function (t) { var j = null; try { j = JSON.parse(t); } catch (err) {} return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (!x.ok || String(x.j && x.j.success) === 'false') throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
+      .catch(function () {
+        if (settled) return;
+        settled = true; clearTimeout(wait);
+        btn.disabled = false; btn.textContent = 'Email me my free audit';
+        say('That didn\'t go through. Try again, or email your show\'s name to team@mcfallprod.com.');
+      });
   });
 
   $('#btn-copy').addEventListener('click', function () {
