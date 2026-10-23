@@ -1,5 +1,8 @@
 # Project log
 
+## 2026-10-23 · "Great!" in the production-team heading (live)
+- **Done:** On Scott's ask, "Already have a production team? Great. We work on different episodes." now reads "Great!". Edited `mcfall-website/minimal/src/page.html` and the built `index.html`, committed straight to `GH` and pushed.
+
 ## 2026-10-22 · New website is live
 - **Done:** The new mcfallprod.com is live and final: minimal design with the discovery copy, gold "podcast episode" in the hero, gold pickaxe favicon, and the free audit popup (fixed in PR #28). `CLAUDE.md` updated so Lauren's Claude treats this as the baseline and never merges without Scott's OK.
 - **Next:** Decide whether to retire the old `main` branch and the old React app in `src/`. Share image (og.png) is still from the old design.
