@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>BCG explainer</title>
+<style>
+:root{--coal:#161e26;--gold:#c9a13b;--lgold:#e2bd57;--ivory:#F3E7D3;--oat:#D8C6A7;--teal:#1F6867;--navy:#344B59;--paprika:#B85332}
+*{box-sizing:border-box;margin:0}
+html,body{background:#000;height:100%;overflow:hidden}
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1920px;height:1080px;position:relative;background:var(--coal);color:var(--ivory);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;overflow:hidden;flex:none;transform-origin:center}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;opacity:0}
+.h1{font-family:Georgia,serif;font-size:96px;line-height:1.08;letter-spacing:-1px}
+.h2{font-family:Georgia,serif;font-size:64px;line-height:1.1}
+.gold{color:var(--lgold)}
+.foil{background:linear-gradient(100deg,#9c7a22,#e2bd57 45%,#c9a13b 60%,#f1d98a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.row{position:absolute;left:360px;width:1200px;height:86px;border-radius:14px;background:#1f2a35;border:1px solid #2c3a47;display:flex;align-items:center;padding:0 30px;font-size:34px;white-space:nowrap}
+.row small{margin-left:auto;font-size:26px;color:var(--oat)}
+.card{position:absolute;width:520px;height:560px;border-radius:24px;background:#1f2a35;border:1px solid #2c3a47;padding:40px}
+.card h3{font-family:Georgia,serif;font-size:44px;color:var(--lgold);margin-bottom:26px;line-height:1.1}
+.tl{font-size:28px;padding:12px 16px;border-radius:10px;background:#161e26;margin-bottom:12px;color:var(--oat)}
+.pill{position:absolute;border-radius:22px;background:#1f2a35;border:2px solid var(--gold);padding:34px 40px}
+.pill h4{font-family:Georgia,serif;font-size:50px;color:var(--lgold)}
+.pill p{font-size:30px;color:var(--oat);margin-top:12px;line-height:1.3}
+.node{position:absolute;width:480px;height:300px;border-radius:24px;background:#1f2a35;border:2px solid #2c3a47;padding:36px;font-size:30px;color:var(--oat)}
+.node b{display:block;font-family:Georgia,serif;font-size:50px;color:var(--ivory);margin-bottom:14px;font-weight:normal}
+#cap{position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:36px;color:var(--ivory);padding:0 220px;line-height:1.35;text-shadow:0 2px 12px #000}
+#bar{position:absolute;left:0;bottom:0;height:6px;background:var(--gold)}
+#brand{position:absolute;left:60px;top:44px;font-size:26px;letter-spacing:4px;text-transform:uppercase;color:var(--oat)}
+#brand i{font-style:normal;color:var(--paprika)}
+
+#stage{background:radial-gradient(1200px 700px at 50% 38%,#1f2c38 0%,#161e26 70%)}
+#shade{position:absolute;left:0;right:0;bottom:0;height:200px;background:linear-gradient(transparent,#161e26 70%)}
+#cap{font-size:40px;bottom:48px;padding:0 240px;z-index:3}#bar{z-index:4}
+.row{left:300px;width:1320px;height:80px;font-size:38px;padding:0 34px}
+.row small{font-size:28px;width:90px;text-align:right}
+.row .pl{margin-left:auto;margin-right:26px;height:14px;border-radius:7px;background:var(--lgold);width:220px;transform-origin:left}
+.h2{font-size:74px}.h1{font-size:104px}
+.card{width:540px;height:580px;top:270px;padding:44px}.card h3{font-size:52px}.tl{font-size:32px;padding:14px 18px;margin-bottom:14px}
+.pill{top:290px;width:540px;height:540px}.pill h4{font-size:60px}.pill p{font-size:34px}
+.node{top:350px;width:540px;height:360px;padding:44px;font-size:36px;line-height:1.35}.node b{font-size:60px;margin-bottom:18px}
+</style></head><body>
+<div id="wrap"><div id="stage">
+<div id="brand">McFall <i>Productions</i></div>
+
+<div class="scene" id="s-hook">
+  <div class="abs h1" style="left:0;right:0;top:130px;text-align:center">Years of episodes.</div>
+  <div class="abs h2 gold" id="hook2" style="left:0;right:0;top:268px;text-align:center">The older ones get harder to find.</div>
+  <div id="feed"></div>
+  <div class="abs" id="hookKey" style="left:300px;top:376px;width:1320px;font-size:26px;color:var(--oat)"><span class="abs" style="left:34px">Episode</span><span class="abs" style="right:155px">Plays today</span><span class="abs" style="right:34px">Year</span></div>
+</div>
+
+<div class="scene" id="s-rise">
+  <div class="abs h2" style="left:0;right:0;top:120px;text-align:center">Found again means <span class="gold">played again</span></div>
+  <div class="abs" style="left:140px;top:236px;font-size:28px;color:var(--oat)">Downloads per episode</div>
+  <div class="abs" id="chart" style="left:140px;top:280px;width:1240px;height:560px;border-bottom:2px solid #3a4a58;display:flex;align-items:flex-end;gap:5px"></div>
+  <div class="abs" style="left:140px;top:862px;font-size:28px;color:var(--oat);display:flex;gap:40px"><span><i style="display:inline-block;width:18px;height:18px;background:#4a5967;border-radius:3px;margin-right:10px"></i>Old episodes</span><span><i style="display:inline-block;width:18px;height:18px;background:var(--lgold);border-radius:3px;margin-right:10px"></i>Old episodes found again</span><span><i style="display:inline-block;width:18px;height:18px;background:var(--ivory);border-radius:3px;margin-right:10px"></i>New episodes</span><span style="color:#8d8372">Illustration, not real data.</span></div>
+  <div class="abs" style="left:1430px;top:270px;width:460px">
+    <div style="font-size:30px;color:var(--oat)">Monthly downloads</div>
+    <div class="serif" id="dlUp" style="font-size:92px;color:var(--ivory)">&#9650; 0%</div>
+    <div id="a1" style="font-size:48px;color:var(--lgold);margin:6px 0 6px 20px">&#8595;</div>
+    <div style="font-size:30px;color:var(--oat)">Ad plays</div>
+    <div class="serif" id="adUp" style="font-size:92px;color:var(--ivory)">&#9650; 0%</div>
+    <div id="a2" style="font-size:48px;color:var(--lgold);margin:6px 0 6px 20px">&#8595;</div>
+    <div style="font-size:30px;color:var(--oat)">Extra ad revenue a month</div>
+    <div class="serif foil" id="revUp" style="font-size:88px;white-space:nowrap">+$0</div>
+  </div>
+</div>
+
+<div class="scene" id="s-why">
+  <div class="abs h2" style="left:0;right:0;top:120px;text-align:center">Three ways a big catalog goes quiet</div>
+  <div class="card" style="left:120px" id="w1"><h3>Titles drift</h3>
+    <div class="tl">Ep 214: Sleep Better</div><div class="tl">SLEEP SECRETS!!</div><div class="tl">Dr. Amy Lee</div><div class="tl">#212 | Sleep | Amy Lee</div>
+    <div style="font-size:30px;color:var(--oat);margin-top:26px">Four formats. One show.</div></div>
+  <div class="card" style="left:690px" id="w2"><h3>Thin show notes</h3>
+    <div class="tl" style="margin-bottom:24px">"Great chat with Amy about sleep."</div>
+    <div class="tl" style="opacity:.35">&nbsp;</div><div class="tl" style="opacity:.2">&nbsp;</div><div class="tl" style="opacity:.1">&nbsp;</div>
+    <div style="font-size:30px;color:var(--oat);margin-top:26px">Nothing for search to match.</div></div>
+  <div class="card" style="left:1260px" id="w3"><h3>Hours nobody can search</h3><div id="wave" style="display:flex;align-items:center;gap:6px;height:230px"></div>
+    <div style="font-size:32px;color:var(--ivory);margin-top:26px">Where did a guest talk about grief?</div></div>
+</div>
+
+<div class="scene" id="s-bcg">
+  <div class="abs h1 foil" id="bcgTitle" style="left:0;right:0;top:110px;text-align:center">Back Catalog Goldmine</div>
+  <div class="pill" id="p1" style="left:120px"><h4>Retitling</h4><p>So people press play.</p>
+    <div id="ba" style="margin-top:30px;font-size:32px;line-height:1.3"><div id="bad" style="color:#9a8f7c;text-decoration:line-through">The #1 Financial Freedom SECRET Rich People WON'T Tell You!</div><div id="good" style="color:var(--ivory);margin-top:22px">Saving Will Never Make You Rich. Earning Will | Codie Sanchez</div></div></div>
+  <div class="pill" id="p2" style="left:690px"><h4>Show notes</h4><p>So episodes get found.</p>
+    <div id="notes" style="margin-top:30px"></div></div>
+  <div class="pill" id="p3" style="left:1260px"><h4>Transcripts</h4><p>So every conversation can be used again.</p>
+    <div style="margin-top:30px;font-size:32px;line-height:1.5;color:var(--ivory)"><span style="color:var(--lgold)">Amy:</span> The first thing I tell people about <mark id="mk" style="background:#775a0b;color:var(--ivory);padding:0 6px;border-radius:6px">sleep</mark> is...<br><span style="color:var(--lgold)">Host:</span> Say more about that.</div></div>
+</div>
+
+<div class="scene" id="s-human">
+  <div class="abs h2" style="left:0;right:0;top:120px;text-align:center">Automation drafts. <span class="gold">A person reviews every word.</span></div>
+  <div class="node" id="n1" style="left:100px"><b>Draft</b>Our automation writes titles, show notes and transcripts.</div>
+  <div class="node" id="n2" style="left:690px"><b>Human review</b>A native English speaker on our team checks each one.<div id="tick" style="position:absolute;right:28px;top:22px;font-size:86px;color:var(--lgold)">✓</div></div>
+  <div class="node" id="n3" style="left:1280px"><b>Live</b>Only then does anything go live.</div>
+  <div class="abs" id="line" style="left:640px;top:526px;height:8px;border-radius:4px;background:var(--gold);width:0"></div>
+  <div class="abs" id="line2" style="left:1230px;top:526px;height:8px;border-radius:4px;background:var(--gold);width:0"></div>
+</div>
+
+<div class="scene" id="s-publish">
+  <div class="abs h2" style="left:0;right:0;top:120px;text-align:center">We publish it for you</div>
+  <div class="node" id="pb1" style="left:140px;top:270px;width:760px;height:440px"><b>Your podcast host</b><div class="tl">New title ✓</div><div class="tl">New description ✓</div><div class="tl">Transcript ✓</div></div>
+  <div class="node" id="pb2" style="left:1020px;top:270px;width:760px;height:440px"><b>Your podcast website</b><div class="tl">New title ✓</div><div class="tl">New show notes ✓</div><div class="tl">"Click here to read transcript" ✓</div></div>
+  <div class="abs" id="vault" style="left:0;right:0;top:770px;text-align:center;font-size:46px;color:var(--lgold)">Every original saved first. Any episode can be put back.</div>
+</div>
+
+<div class="scene" id="s-pays">
+  <div class="abs h2" style="left:0;right:0;top:120px;text-align:center">An old episode's play carries <span class="gold">this month's ads</span></div>
+  <div class="abs" id="eq" style="left:0;right:0;top:330px;text-align:center;font-size:58px;color:var(--oat)">
+    <span id="e1"><b class="serif" style="color:var(--ivory)" id="dl">0</b> more back-catalog downloads</span>
+    <span id="e2"> &times; 3 ad spots</span><span id="e3"> &times; $25 per 1,000</span></div>
+  <div class="abs foil" id="res" style="left:0;right:0;top:450px;text-align:center;font-family:Georgia,serif;font-size:220px;line-height:1.1">$<span id="amt">0</span></div>
+  <div class="abs" id="res2" style="left:0;right:0;top:720px;text-align:center;font-size:52px;color:var(--ivory)">a month, from episodes you've already made</div>
+  <div class="abs" style="left:0;right:0;top:810px;text-align:center;font-size:28px;color:#8d8372">Illustration, not real data.</div>
+</div>
+
+<div class="scene" id="s-proof">
+  <img class="abs" id="sog" src="school-of-greatness.jpg" style="left:140px;top:210px;width:560px;height:560px;object-fit:cover;border-radius:30px;border:2px solid var(--gold)">
+  <div class="abs" style="left:140px;top:790px;width:560px;text-align:center;font-size:32px;color:var(--oat)">The School of Greatness, with Lewis Howes</div>
+  <div class="abs" id="stats" style="left:840px;top:200px;width:1000px">
+    <div id="c1" style="margin-bottom:46px"><span class="serif foil" style="font-size:170px" id="n13">0</span><span style="font-size:48px;color:var(--oat)"> years of episodes</span></div>
+    <div id="c2" style="margin-bottom:46px"><span class="serif foil" style="font-size:170px" id="n19">0</span><span style="font-size:48px;color:var(--oat)"> titles rewritten</span></div>
+    <div id="c3"><span class="serif foil" style="font-size:170px" id="n11">0</span><span style="font-size:48px;color:var(--oat)"> hours made searchable</span></div>
+  </div>
+</div>
+
+<div class="scene" id="s-cta">
+  <div class="abs h1 foil" style="left:0;right:0;top:250px;text-align:center;font-size:120px">Back Catalog Goldmine</div>
+  <div class="abs" style="left:0;right:0;top:450px;text-align:center;font-size:56px;color:var(--ivory)">What's sitting in your catalog?</div>
+  <div class="abs" id="btn" style="left:660px;top:580px;width:600px;height:130px;border-radius:65px;background:var(--gold);color:#1d1605;font-size:52px;font-weight:700;text-align:center;line-height:130px">Get my free audit</div>
+  <div class="abs" style="left:0;right:0;top:760px;text-align:center;font-size:54px;color:var(--lgold);letter-spacing:2px">mcfallprod.com</div>
+</div>
+
+<div id="shade"></div><div id="cap"></div><div id="bar"></div>
+</div></div>
+<audio id="aud" src="voice.mp3" preload="auto"></audio>
+<script src="timeline.js"></script>
+<script>
+const $=id=>document.getElementById(id),clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const seg=(p,a,b)=>ease((p-a)/(b-a));
+const S={};TIMELINE.scenes.forEach(s=>S[s.id]=s);
+const SAY={hook:["Every episode you've ever published is still out there.","But the older ones get harder to find, every year."],
+rise:["When old episodes are found again, their downloads climb.","More downloads means more ad plays, which means more revenue from episodes you've already made."],
+why:["Titles drift into four different formats.","Early show notes are a single line.","And hundreds of hours of conversation can't be searched."],
+bcg:["Back Catalog Goldmine fixes that, across your whole catalog.","Retitling, so people press play.","Show notes, so episodes get found.","And transcripts, so every conversation can be used again."],
+human:["Our automation writes the first draft.","Then a real person on our team reviews every single title, set of show notes, and transcript before anything goes live."],
+publish:["And we don't hand you a document.","We publish it ourselves, on your podcast host and your website.","Every original is saved first, so anything can be put back."],
+pays:["Here's why it pays.","If your show uses dynamic ad insertion, a play of an old episode carries this month's ads.","So when more people find your back catalog, you earn more from episodes you've already made."],
+proof:["We did it first for The School of Greatness.","Thirteen years of episodes.","Nineteen hundred and fifty titles rewritten, and over eleven hundred hours of conversation made searchable."],
+cta:["Want to see what's sitting in your catalog?","Get a free audit at mcfallprod.com."]};
+// feed rows
+const feed=$('feed');const titles=["Why Habits Beat Goals","The Truth About Burnout","SLEEP SECRETS!!","Ep 214: Dr. Amy Lee","#98 | Money | Guest","untitled episode"];
+const years=[2026,2024,2022,2019,2016,2014],plays=[1,.7,.45,.26,.14,.07];
+titles.forEach((t,i)=>{const d=document.createElement('div');d.className='row';d.style.top=(414+i*88)+'px';d.innerHTML=t+'<span class="pl"></span><small>'+years[i]+'</small>';d.id='r'+i;feed.appendChild(d)});
+const wave=$('wave');for(let i=0;i<34;i++){const b=document.createElement('div');b.style.cssText='flex:1;background:var(--oat);border-radius:3px;height:'+(20+Math.abs(Math.sin(i*1.7)*180)%200)+'px';wave.appendChild(b)}
+const notes=$('notes');["Guest: Amy Lee","Topics: sleep, habits, burnout","Links: book, site, social","Timestamps"].forEach(x=>{const d=document.createElement('div');d.className='tl';d.style.color='var(--ivory)';d.textContent=x;notes.appendChild(d)});
+const chart=$('chart'),NO=48,NN=9,bars=[];
+for(let i=0;i<NO+NN;i++){const d=document.createElement('i');const old=i<NO;const r=Math.abs(Math.sin(i*12.9898)*43758.5453)%1;
+ d.style.cssText='flex:1;border-radius:3px 3px 0 0;display:block;transform-origin:50% 100%';
+ const base=old?(0.08+r*0.12):(0.62+r*0.3);const found=old&&i%2===0&&i>4;
+ const hump=0.3+0.2*Math.sin(i/NO*Math.PI);
+ bars.push({d,old,base,found,peak:found?base+hump+r*0.1:base,idx:i});
+ if(!old&&i===NO){d.style.marginLeft='80px'}chart.appendChild(d)}
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const ORDER=TIMELINE.scenes.map(s=>s.id);
+function setT(t){
+  // scene visibility with crossfade
+  ORDER.forEach(id=>{const s=S[id],el=$('s-'+id);const a=clamp((t-(s.start-0.35))/0.35),b=clamp(((s.end+0.45)-t)/0.35);
+    el.style.opacity=id==='hook'&&t<s.start?1:Math.min(a,b);});
+  const L=id=>{const s=S[id];return clamp((t-s.start)/(s.end-s.start))}; // 0..1 within scene
+  // hook
+  {const p=L('hook');for(let i=0;i<6;i++){const e=$('r'+i);const a=seg(p,.05+i*.08,.25+i*.08);e.style.opacity=a*(1-i*.1);e.style.transform=`translateY(${(1-a)*40}px)`;e.querySelector('.pl').style.transform=`scaleX(${plays[i]*seg(p,.3+i*.05,.6+i*.05)})`;}$('hookKey').style.opacity=seg(p,.35,.55);
+   $('hook2').style.opacity=seg(p,.45,.7);$('hook2').style.transform=`translateY(${(1-seg(p,.45,.7))*20}px)`;}
+  // why
+  {const p=L('why');['w1','w2','w3'].forEach((id,i)=>{const a=seg(p,i*.3,i*.3+.2);$(id).style.opacity=a;$(id).style.transform=`translateY(${(1-a)*50}px)`;});}
+  // bcg
+  {const p=L('bcg');$('bcgTitle').style.opacity=seg(p,0,.15);
+   [['p1',.2],['p2',.45],['p3',.68]].forEach(([id,s])=>{const a=seg(p,s,s+.12);const e=$(id);e.style.opacity=a;e.style.transform=`translateY(${(1-a)*50}px)`;});
+   const sw=seg(p,.3,.4);$('bad').style.opacity=1-sw*.6;$('good').style.opacity=sw;
+   [...notes.children].forEach((c,i)=>{const a=seg(p,.5+i*.04,.55+i*.04);c.style.opacity=a;});
+   $('mk').style.background=p>.78?'#775a0b':'transparent';}
+  // human
+  {const p=L('human');['n1','n2','n3'].forEach((id,i)=>{const a=seg(p,i*.22,i*.22+.15);$(id).style.opacity=a;$(id).style.transform=`translateY(${(1-a)*40}px)`;});
+   $('line').style.width=50*seg(p,.15,.3)+'px';$('line2').style.width=50*seg(p,.5,.7)+'px';
+   $('tick').style.opacity=seg(p,.55,.7);$('n2').style.borderColor=p>.55?'var(--gold)':'#2c3a47';}
+  // publish
+  {const p=L('publish');['pb1','pb2'].forEach((id,i)=>{const a=seg(p,.18+i*.15,.33+i*.15);$(id).style.opacity=a;$(id).style.transform=`translateY(${(1-a)*40}px)`;});
+   $('vault').style.opacity=seg(p,.65,.85);}
+  // rise
+  {const p=L('rise');const g=seg(p,.12,.8);
+   bars.forEach(b=>{let h=b.base;let col=b.old?'#4a5967':'#F3E7D3';
+    if(b.found){const k=ease((g*1.7)-b.idx/NO*0.7);h=b.base+(b.peak-b.base)*k;col=k>.05?'#e2bd57':'#4a5967'}
+    const a=seg(p,0,.1);b.d.style.height=(h*100)+'%';b.d.style.background=col;b.d.style.opacity=a});
+   const dl=Math.round(10*g),ad=Math.round(10*g);const rev=2250*g;
+   $('dlUp').innerHTML='&#9650; '+dl+'%';$('adUp').innerHTML='&#9650; '+dl+'%';$('revUp').textContent='+$'+fmt(rev);
+   $('dlUp').style.opacity=seg(p,.12,.25);$('adUp').style.opacity=seg(p,.35,.5);$('revUp').style.opacity=seg(p,.55,.7);$('a1').style.opacity=seg(p,.3,.4);$('a2').style.opacity=seg(p,.5,.6);}
+  // pays
+  {const p=L('pays');$('dl').textContent=fmt(30000*seg(p,.3,.5));
+   $('e2').style.opacity=seg(p,.45,.55);$('e3').style.opacity=seg(p,.55,.65);$('e1').style.opacity=seg(p,.28,.4);
+   const r=seg(p,.65,.9);$('amt').textContent=fmt(2250*r);$('res').style.opacity=seg(p,.62,.72);$('res2').style.opacity=seg(p,.8,.95);}
+  // proof
+  {const p=L('proof');$('sog').style.opacity=seg(p,0,.15);
+   $('n13').textContent=Math.round(13*seg(p,.1,.3));$('n19').textContent=fmt(1950*seg(p,.3,.6));$('n11').textContent=fmt(1105*seg(p,.62,.9));
+   ['c1','c2','c3'].forEach((id,i)=>$(id).style.opacity=seg(p,.08+i*.25,.18+i*.25));}
+  // cta
+  {const p=L('cta');$('btn').style.transform=`scale(${1+0.04*Math.sin(clamp(p-.3,0,1)*18)*Math.exp(-clamp(p-.3,0,1)*3)})`;}
+  // caption
+  let cap='';for(const id of ORDER){const s=S[id];if(t>=s.start-.05&&t<=s.end+.4){const parts=SAY[id],tot=parts.join('').length;let acc=0;const p=(t-s.start)/(s.end-s.start);cap=parts[parts.length-1];for(const x of parts){acc+=x.length;if(p<=acc/tot){cap=x;break}}}}
+  $('cap').textContent=cap;
+  $('bar').style.width=(t/TIMELINE.total*100)+'%';
+}
+function fit(){const k=Math.min(innerWidth/1920,innerHeight/1080);$('stage').style.transform='scale('+k+')'}
+addEventListener('resize',fit);fit();
+const aud=$('aud');let go=false;
+function loop(){if(go)setT(aud.currentTime);requestAnimationFrame(loop)}
+loop();setT(0);
+if(!/capture/.test(location.hash)){document.body.addEventListener('click',()=>{if(aud.paused){go=true;aud.play()}else{aud.pause();go=false}});}
+</script></body></html>
