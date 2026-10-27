@@ -16,7 +16,7 @@ const head = `<!doctype html>
 <link rel="canonical" href="https://mcfallprod.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mcfallprod.com/">
-<meta property="og:title" content="We make every podcast episode findable.">
+<meta property="og:title" content="We build every podcast episode to earn.">
 <meta property="og:description" content="In Google, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.">
 <meta property="og:image" content="https://mcfallprod.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
