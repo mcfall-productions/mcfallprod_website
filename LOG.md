@@ -1,7 +1,12 @@
 # Project log
 
-## 2026-10-26 · BCG explainer video (draft)
-- **Done:** 77-second narrated explainer for Back Catalog Goldmine (old-episode findability, three services, human review, publishing, ad-revenue math, School of Greatness proof, CTA). Source in `explainer/` (`narration.json`, `voice.sh`, `build_timeline.py`, `scenes.html`); output `explainer/bcg-explainer.mp4`.
+## 2026-10-27 · Daily CTA check
+- **Done:** Live site: nav anchors resolve, 3 audit buttons open/close the popup, empty and invalid-email messages show, thank-you and "Back to the site" work, no console errors.
+- **Confirmed:** Lauren received the FormSubmit email, so the live opt-in works end to end. formsubmit.co only timed out from the Claude machine.
+- **Ideas:** The popup shows the thank-you after a timeout even if the POST hasn't returned; a dead endpoint would still look like success.
+
+## 2026-10-27 · BCG explainer video (draft)
+- **Done:** 98-second narrated explainer for Back Catalog Goldmine (old-episode findability, three services, human review, publishing, ad-revenue math, School of Greatness proof, CTA). Source in `explainer/` (`narration.json`, `voice.sh`, `build_timeline.py`, `scenes.html`); output `explainer/bcg-explainer.mp4`.
 - **Waiting on:** Voice choice. It uses macOS Samantha as a stand-in; swap for Scott's clone or a hired VO. Then where it goes on the homepage.
 
 ## 2026-10-21 · Lauren's edits on the live minimal homepage (PR for preview)
