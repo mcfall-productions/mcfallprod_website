@@ -683,6 +683,8 @@ ul, ol { padding: 0; list-style: none; }
 @media (max-width: 720px) { .peak__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* 5. goldmine */
+.ov { margin: clamp(2rem, 5vw, 3.25rem) 0 0; width: 100%; border-radius: var(--sc-r-lg); overflow: hidden; background: #0b0b0d; box-shadow: 0 18px 50px rgba(0,0,0,.14); aspect-ratio: 16 / 9; }
+.ov video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .svc { margin-top: clamp(2.5rem, 6vw, 4.5rem); border-top: 1px solid var(--hair); width: 100%; }
 .svc li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0.5rem 2rem; padding-block: clamp(1.4rem, 3vw, 2.1rem); border-bottom: 1px solid var(--hair); align-items: baseline; }
 .svc p { color: var(--sc-ink-soft); max-width: 34rem; }
@@ -812,6 +814,7 @@ ul, ol { padding: 0; list-style: none; }
     <div class="row">
       <button class="btn" type="button" data-open>Get my free audit</button>
       <a class="more" href="https://calendly.com/l-mcfall" target="_blank" rel="noopener noreferrer">Talk to Lauren &amp; Scott</a>
+      <a class="more" href="#overview">Watch the 2-minute overview</a>
     </div>
   </div>
   <div class="strata" id="strata" aria-hidden="true">
@@ -949,6 +952,7 @@ ul, ol { padding: 0; list-style: none; }
       <h2 class="h-lg">Back Catalog Goldmine</h2>
       <p class="lede">Three services, one goal: getting your episodes found. All written to today&rsquo;s best practices, always the whole catalog. Take all three as the full suite, or pick the one or two that fix what your report turned up. YouTube cleanup is part of the offer too.</p>
     </div>
+    <figure class="ov" id="overview" data-sc-in><video controls playsinline preload="none" poster="images/bcg-overview-poster.jpg" aria-label="Two-minute overview of Back Catalog Goldmine"><source src="images/bcg-overview.mp4" type="video/mp4"></video></figure>
     <ul class="svc" data-sc-in data-sc-stagger="70">
       <li><h3 class="h-md">Retitling</h3><div><p class="fix">So people find it, and press play.</p><p>Every title rewritten to today&rsquo;s standards, in one consistent voice and the words people search for, so the episode shows up in search and a listener sees a reason to pick it.</p></div></li>
       <li><h3 class="h-md">Show notes</h3><div><p class="fix">So search engines know what&rsquo;s inside.</p><p>New notes for every episode, written around what the episode actually covers, so Google and podcast apps can match them to what people are looking for.</p></div></li>
