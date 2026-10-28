@@ -1,9 +1,15 @@
 # Project log
 
+## 2026-10-28 · Daily CTA check
+- **Done:** Live site: nav anchors, 3 audit buttons (open/close popup), validation messages and thank-you state work; no console errors.
+- **Waiting on:** Confirm the "CTA Test" FormSubmit email reached team@mcfallprod.com. The POST to formsubmit.co hung from the Claude machine again (same as 10-27), so delivery isn't verified from here.
+
 ## 2026-10-28 · Richard Middleton call (BCG)
 - **Done:** Saved the call transcript with a summary and both action items to `explainer/richard-middleton-call-2026-10-28.md`.
 - **Waiting on:** Richard: ask David and other producers if back-catalog cleanup interests them.
-- **Next:** Email Richard a pricing/turnaround range and a 1-pager (humanizer pass first); he reviews before pitching David.
+- **Done:** Drafted the follow-up email (links the homepage, no one-pager) in `explainer/richard-follow-up-email-2026-10-28.md` (humanizer pass done): Reviewed vs Automated, audio and YouTube priced separately, Full Suite bundle ($130 / $50 per episode at 500 episodes); table in `explainer/pricing-table.html`.
+- **Waiting on:** Scott's OK on the prices; James's email address.
+- **Next:** Send the email. If Automated is offered publicly, the site line "A real person reads every word" needs changing.
 
 ## 2026-10-27 · Daily CTA check
 - **Done:** Live site: nav anchors resolve, 3 audit buttons open/close the popup, empty and invalid-email messages show, thank-you and "Back to the site" work, no console errors.
