@@ -41,3 +41,7 @@ Run `npm run typecheck` and `npm run lint` before considering a change done.
 - `src/App.tsx` (the old React homepage) is no longer what visitors see. `mcfall-website/` (scroll version) is still a draft only.
 - The free audit popup was removed on 2026-10-21; the "Get my free audit" buttons go to the closing section and to an email to team@mcfallprod.com.
 - Every PR preview carries the homepage at `https://mcfallprod.com/pr-preview/pr-<number>/drafts/minimal/`. Feedback there is a PR comment (rules above). The claude.ai review link (https://claude.ai/artifact/54grxFFPugQwNP1QGanWd3) is only updated from Scott's account.
+
+## Call notes
+
+- The 2026-10-28 call with Richard Middleton (Longwave Digital) about Back Catalog Goldmine is in `explainer/richard-middleton-call-2026-10-28.md` (transcript, summary, action items). Open it when anyone asks for "the Richard call" or "the October 2026 call".

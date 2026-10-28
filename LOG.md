@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-10-28 · Richard Middleton call (BCG)
+- **Done:** Saved the call transcript with a summary and both action items to `explainer/richard-middleton-call-2026-10-28.md`.
+- **Waiting on:** Richard: ask David and other producers if back-catalog cleanup interests them.
+- **Next:** Email Richard a pricing/turnaround range and a 1-pager (humanizer pass first); he reviews before pitching David.
+
 ## 2026-10-27 · Daily CTA check
 - **Done:** Live site: nav anchors resolve, 3 audit buttons open/close the popup, empty and invalid-email messages show, thank-you and "Back to the site" work, no console errors.
 - **Confirmed:** Lauren received the FormSubmit email, so the live opt-in works end to end. formsubmit.co only timed out from the Claude machine.
