@@ -12,12 +12,12 @@ const head = `<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>McFall Productions | Podcast discovery and production</title>
-<meta name="description" content="We make every podcast episode findable in Google, Apple and Spotify: titles, show notes and transcripts for your whole back catalog, published for you. From the producers of The School of Greatness.">
+<meta name="description" content="We make every podcast episode findable in Google, YouTube, Apple and Spotify: titles, show notes and transcripts for your whole back catalog, published for you. From the producers of The School of Greatness.">
 <link rel="canonical" href="https://mcfallprod.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mcfallprod.com/">
 <meta property="og:title" content="We build every podcast episode to earn.">
-<meta property="og:description" content="In Google, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.">
+<meta property="og:description" content="In Google, YouTube, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.">
 <meta property="og:image" content="https://mcfallprod.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJE415F7JT"></script>
