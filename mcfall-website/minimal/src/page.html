@@ -102,6 +102,8 @@ ul, ol { padding: 0; list-style: none; }
 .hero__copy .h-xl { max-width: 13ch; }
 .gold-word { color: #b8892a; }
 .hero__copy .row { margin-top: 0.6rem; justify-content: center; }
+.hero__copy > .row { flex-direction: column; gap: 1.2rem; }
+.hero__copy .row .row { flex-direction: row; justify-content: center; margin-top: 0; }
 .field { position: relative; min-height: 0; }
 .field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 /* the catalog as one row of bars: old episodes on the left, new ones on the right, never
@@ -362,8 +364,10 @@ ul, ol { padding: 0; list-style: none; }
     <p class="lede">In Google, YouTube, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.</p>
     <div class="row">
       <button class="btn" type="button" data-open>Get my free audit</button>
-      <a class="more" href="https://calendly.com/l-mcfall" target="_blank" rel="noopener noreferrer">Talk to Lauren &amp; Scott</a>
-      <a class="more" href="#overview">Watch the 2-minute overview</a>
+      <div class="row">
+        <a class="more" href="https://calendly.com/l-mcfall" target="_blank" rel="noopener noreferrer">Talk to Lauren &amp; Scott</a>
+        <a class="more" href="#overview">Watch the 2-minute overview</a>
+      </div>
     </div>
   </div>
   <div class="strata" id="strata" aria-hidden="true">
