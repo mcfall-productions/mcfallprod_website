@@ -1,5 +1,24 @@
 # Project log
 
+## 2026-11-02 · SOG retitle lift check
+- **Done:** Ran podStatsAnalyzer `retitle-report` on Scott's files (retitle log, re-air markers, catalog.db through Nov 1). No change beyond normal variation (+1% vs a normal range of -8% to +7%), about 8 weeks of data. Asana task for Scott created and done.
+- **Found (exploratory, not proof):** episodes published 2013-21 ran about 23% below last year's pattern after the retitle (2013-17: -26%, outside the 2025 placebo range); 2022+ episodes flat. No control group, so the cause is unknown.
+- **Waiting on:** YouTube Studio CSVs; full report due early December.
+- **Next:** Don't claim a lift in the Goldmine pitch; promise discoverability. Consider a holdout pilot for new clients.
+
+## 2026-11-01 · Daily CTA check
+- **Done:** Live site: 3 audit buttons open the popup, × and "Back to the site" close it, POST to formsubmit.co returned 200, thank-you shows, no console errors. Nav anchor targets exist.
+- **Waiting on:** Confirm the "CTA Test" email reached team@mcfallprod.com (two test POSTs sent). Mobile width and scroll not visually checked (browser pane hidden).
+- **Note:** The local checkout is on `fix/popup-thanks` and its page.html is older than live (no 4s fallback).
+
+## 2026-10-31 · Daily CTA check
+- **Done:** Live site: 3 audit buttons open/close the popup, empty and invalid-email messages show, POST to formsubmit.co returned 200, thank-you and "Back to the site" work, no console errors. Nav anchor targets exist; hash updates.
+- **Waiting on:** Confirm the "CTA Test" email reached team@mcfallprod.com. Smooth-scroll to anchors couldn't be seen because the browser pane was hidden (not a site fault).
+
+## 2026-10-30 · Daily CTA check
+- **Done:** Live site, desktop and mobile: nav anchors resolve, 3 audit buttons open/close the popup, empty and invalid-email messages show, POST to formsubmit.co returned 200, thank-you and "Back to the site" work, Copy address works, no console errors.
+- **Waiting on:** Confirm the "CTA Test" email reached team@mcfallprod.com.
+
 ## 2026-10-28 · Daily CTA check
 - **Done:** Live site: nav anchors, 3 audit buttons (open/close popup), validation messages and thank-you state work; no console errors.
 - **Waiting on:** Confirm the "CTA Test" FormSubmit email reached team@mcfallprod.com. The POST to formsubmit.co hung from the Claude machine again (same as 10-27), so delivery isn't verified from here.
