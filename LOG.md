@@ -2,8 +2,8 @@
 
 ## 2026-11-02 · Daily CTA check
 - **Done:** Live site checked. Audit buttons, popup open/close (x, Back to the site), anchor links and validation messages all work; no console errors.
-- **Waiting on:** The audit endpoint (formsubmit.co/ajax/team@mcfallprod.com) did not answer a POST (60 s timeout; formsubmit.co home page loads). The popup falls back to opening a mailto, so visitors still see the thank-you, but the form emails may not be arriving.
-- **Next:** Check team@ and eternallauren@ inboxes for a "CTA Test" email and any FormSubmit activation email; consider a different form service.
+- **Correction:** The audit endpoint works. Lauren got 3 emails around 2:12pm ET (my popup test plus the slow test POSTs). FormSubmit is just slow to reply (over 60 s), so the popup can show the mailto fallback first.
+- **Next:** Optional: add a short fetch timeout so the thank-you shows sooner.
 
 ## 2026-11-02 · SOG retitle lift check
 - **Done:** Ran podStatsAnalyzer `retitle-report` on Scott's files (retitle log, re-air markers, catalog.db through Nov 1). No change beyond normal variation (+1% vs a normal range of -8% to +7%), about 8 weeks of data. Asana task for Scott created and done.
