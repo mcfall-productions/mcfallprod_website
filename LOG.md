@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-03 · Daily CTA check: audit form endpoint down
+- **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
+- **Waiting on:** FormSubmit (formsubmit.co/ajax/team@mcfallprod.com) is returning Cloudflare 522 (down); the browser sees a CORS error. The test submission did not go through, but the popup still showed "thank you" after 4s, so real requests are being lost silently while it is down.
+- **Next:** Retest tomorrow. If FormSubmit stays down, switch the form service (e.g. Web3Forms/Formspree) or show the failure note instead of the 4-second thank-you.
+
 ## 2026-10-23 · "Great!" in the production-team heading (live)
 - **Done:** On Scott's ask, "Already have a production team? Great. We work on different episodes." now reads "Great!". Edited `mcfall-website/minimal/src/page.html` and the built `index.html`, committed straight to `GH` and pushed.
 
