@@ -17,7 +17,7 @@ const head = `<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mcfallprod.com/">
 <meta property="og:title" content="We build every podcast episode to earn.">
-<meta property="og:description" content="In Google, YouTube, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.">
+<meta property="og:description" content="So listeners find it when they search Google, YouTube, Apple and Spotify. The one you publish next week, and the hundreds you've already made.">
 <meta property="og:image" content="https://mcfallprod.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJE415F7JT"></script>

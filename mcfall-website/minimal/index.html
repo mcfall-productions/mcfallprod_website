@@ -578,6 +578,11 @@ ul, ol { padding: 0; list-style: none; }
 .center .tease { justify-items: center; }
 .production__ask { font-size: 1.0625rem; font-weight: 600; letter-spacing: 0.02em; color: var(--sc-accent); }
 
+.perks { display: grid; gap: 1rem; margin-block: clamp(2.5rem, 6vw, 4.5rem); }
+.perks .h-md { max-width: 22ch; }
+.perks__lede { color: var(--sc-ink-soft); max-width: 40rem; font-size: 1.0625rem; }
+.perks .defs { margin-top: 0.8rem; padding-top: 1.6rem; border-top: 1px solid var(--hair); }
+.perks dd { color: var(--sc-ink-soft); }
 /* disclosures */
 .acc { border-top: 1px solid var(--hair); width: 100%; }
 .acc details { border-bottom: 1px solid var(--hair); }
@@ -793,7 +798,7 @@ ul, ol { padding: 0; list-style: none; }
 <section class="hero" data-sc-act="flow" data-tone="light">
   <div class="wrap hero__copy">
     <h1 class="h-xl">We build every <span class="gold-word">podcast episode</span> to earn.</h1>
-    <p class="lede">In Google, YouTube, Apple and Spotify, under the words people actually search. The one you publish next week, and the hundreds you've already made.</p>
+    <p class="lede">So listeners find it when they search Google, YouTube, Apple and Spotify. The one you publish next week, and the hundreds you've already made.</p>
     <div class="row">
       <button class="btn" type="button" data-open>Get my free audit</button>
       <div class="row">
@@ -844,6 +849,20 @@ ul, ol { padding: 0; list-style: none; }
       </div>
       <p class="cap calc__math"><span id="m-extra">30,000</span> extra downloads x <span id="m-slots">3</span> ad spots x <span id="m-cpm">$25</span> per 1,000 = <b id="m-month">$2,250 a month</b>. Try your own numbers. Ads are only the start: a searchable, well-titled catalog also feeds sponsor pitches, clips and premium content.</p>
     </div>
+    <div class="perks" data-sc-in>
+      <h3 class="h-md">It's about more than ad revenue.</h3>
+      <p class="perks__lede">A cleaned-up catalog pays off in ways you can see and check, whatever happens to your downloads.</p>
+      <dl class="defs">
+        <div><dt>Links that work</dt><dd>Every link in your show notes is checked and fixed. A listener who clicks through to your website, your store or a guest's page lands on a real page.</dd></div>
+        <div><dt>One keyword, every platform</dt><dd>We make sure every title shares the best-ranked keyword for your episode, so your host, Apple, Spotify, your website and YouTube hang together. Episode numbers are fixed, duplicate titles removed and guests named.</dd></div>
+        <div><dt>Easier to find</dt><dd>Titles say what the episode covers and who's in it. Notes are written around the topic. We can't promise a ranking, but the search apps finally have something to read.</dd></div>
+        <div><dt>Past guests, found again</dt><dd>When an old guest has a new book or a viral moment, people search for them. Your interview has their name in the title and real notes behind it.</dd></div>
+        <div><dt>Readable by search engines and AI tools</dt><dd>Full transcripts on your episode pages give Google and AI assistants far more to read than a two-line description.</dd></div>
+        <div><dt>Your old conversations, reusable</dt><dd>Searchable transcripts let your team quote, clip and write from anything ever said on the show.</dd></div>
+        <div><dt>A better experience for listeners</dt><dd>Fewer dead links, clearer titles, and timestamps where we add them.</dd></div>
+        <div><dt>Old wording, cleaned up</dt><dd>Titles and notes that you wouldn't write the same way today get caught and rewritten in your current voice.</dd></div>
+      </dl>
+    </div>
     <div class="tease" data-sc-in>
       <h3 class="h-md">Which of these is quietly burying your episodes?</h3>
       <p>Tap the <b>+</b> on each one to see what goes wrong, and how we fix it.</p>
@@ -878,7 +897,7 @@ ul, ol { padding: 0; list-style: none; }
     </div>
     <ul class="svc" data-sc-in data-sc-stagger="70">
       <li><h3 class="h-md">Search matches words</h3><div><p class="fix">Say what the episode is about.</p><p>Google, Apple and Spotify can only match what&rsquo;s written. A title and notes in the words your listeners use put the episode in front of people looking for exactly that.</p></div></li>
-      <li><h3 class="h-md">Everywhere matches</h3><div><p class="fix">The same title on every platform.</p><p>When your host, Apple, Spotify and your website all carry the same title and notes, search engines can tell it&rsquo;s one episode from one show, and credit it to your brand. Four different titles look like four weaker, unrelated pages.</p></div></li>
+      <li><h3 class="h-md">Everywhere matches</h3><div><p class="fix">The same keyword on every platform.</p><p>We make sure every title shares the best-ranked keyword for your episode, so your host, Apple, Spotify and your website hang together. Search engines can tell it&rsquo;s one episode from one show, and credit it to your brand. Four unrelated titles look like four weaker, unrelated pages.</p></div></li>
       <li><h3 class="h-md">Your website does the heavy lifting</h3><div><p class="fix">Every word of the conversation, readable.</p><p>The episode page on your own site carries the full show notes and transcript, so Google has the whole conversation to match, not just a one-line description.</p></div></li>
       <li><h3 class="h-md">Every episode adds up</h3><div><p class="fix">Known for your topics.</p><p>A catalog of clearly labeled episodes on the same subjects tells search engines what your show is about. That helps the next episode get found too.</p></div></li>
     </ul>
@@ -950,7 +969,7 @@ ul, ol { padding: 0; list-style: none; }
     <div class="publish dk" data-sc-in>
       <small>Not just rewrites</small>
       <h3 class="h-lg">We publish it for you.</h3>
-      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. The same title and notes everywhere your episode lives, and nothing for your team to do.</p>
+      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. The same best-ranked keyword in the title everywhere your episode lives, and nothing for your team to do.</p>
     </div>
     <div class="suite dk" data-sc-in>
       <p class="suite__kick">What we recommend</p>
@@ -969,6 +988,19 @@ ul, ol { padding: 0; list-style: none; }
       </dl>
       <p class="note">YouTube is included. Pricing that includes YouTube is set after a walkthrough call, because we need to see where your channel needs the most cleanup. Your quote shows Reviewed and Automated side by side, based on your catalog's size and where your podcast feed and channel need the most work.</p>
     </div>
+  </div>
+</section>
+
+<!-- 5b. THE SHOWS WE PRODUCE: results -->
+<section id="results" class="tile results" data-tone="light">
+  <div class="wrap center stack">
+    <h2 class="h-lg" data-sc-in>We use the same playbook on the shows we produce.</h2>
+    <p class="lede" data-sc-in>The title and show-notes practices we use on your back catalog are the ones we now use on new episodes of the podcasts we produce. Here's what has happened since.</p>
+    <dl class="ledger" data-sc-in>
+      <div><dt>Increase in first-week downloads of new episodes on one show, and the gain grew week over week</dt><dd>10%+</dd></div>
+      <div><dt>Increase in downloads of older episodes on that show, spread across the catalog and not a few hits</dt><dd>20%+</dd></div>
+      <div><dt>Increase in weekly downloads on a second show</dt><dd>5%+</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -1000,9 +1032,8 @@ ul, ol { padding: 0; list-style: none; }
     <p class="lede" data-sc-in>From editing and publishing to growth and monetization strategy, we handle it all so your podcast sounds as world-class as your ideas.</p>
     <dl class="ledger">
       <div><dt>Podcast downloads produced since 2020</dt><dd><span data-sc-count="0 30.8">30.8</span>M+</dd></div>
-      <div><dt>Reduction in project creation time by introducing Asana best practices</dt><dd><span data-sc-count="0 50">50</span>%</dd></div>
+      <div><dt>Increase in weekly downloads on a show we produce after we put our title and show-notes practices on new episodes</dt><dd>20%+</dd></div>
       <div><dt>Increased watch time on YouTube in one month</dt><dd><span data-sc-count="0 27">27</span>%</dd></div>
-      <div><dt>Expanded Facebook reach in one month, maximizing exposure for podcast-driven posts</dt><dd><span data-sc-count="0 60">60</span>%</dd></div>
     </dl>
     <div class="acc">
       <details>
