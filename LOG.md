@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-04 · Audit form moved off FormSubmit (PR #34, not merged)
+- **Done:** FormSubmit was down (Cloudflare 522) since 11-03, so audit requests were lost. [PR #34](https://github.com/mcfall-productions/mcfallprod_website/pull/34) switches to Web3Forms and shows the thank-you only when the send is confirmed. Tested on the preview: 200 in under 1s, thank-you and "Back to the site" work.
+- **Waiting on:** Scott's OK to merge #34. Check team@mcfallprod.com got the "CTA Test" email.
+- **Next:** After merge, rerun the daily CTA check against the live site.
+
 ## 2026-10-23 · "Great!" in the production-team heading (live)
 - **Done:** On Scott's ask, "Already have a production team? Great. We work on different episodes." now reads "Great!". Edited `mcfall-website/minimal/src/page.html` and the built `index.html`, committed straight to `GH` and pushed.
 
