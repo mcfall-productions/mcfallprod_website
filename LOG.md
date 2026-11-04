@@ -1,5 +1,14 @@
 # Project log
 
+## 2026-11-04 · Book version: one spread per comparison
+- **Done:** Rebuilt the page-turn book (https://claude.ai/artifact/U6Q3i9WkD1bJ5HcRW7juov) so each comparison is exactly two pages: Them on the left, Us on the right. Three spreads (transcript, Robert Greene search, old titles, the last one new). Chapter title sits in a band above the book and changes per spread; headline moved above the book; "scroll to turn" hint and filler pages removed. Checked on desktop and phone screenshots. Source: `comparison/theirs-vs-ours-book.html`.
+- **Done:** Both pages (flat and book) on branch `feature/theirs-vs-ours` with a PR into `GH`; previews carry them at `/drafts/comparison/`. Live site unchanged.
+- **Waiting on:** Scott: review the PR preview and pick flat or book.
+
+## 2026-11-04 · "Theirs vs ours" comparison draft
+- **Done:** Draft section `comparison/theirs-vs-ours.html` (artifact: https://claude.ai/artifact/411CtacQEkt1YQF2fuhkXX). Two tabs: a free AI transcript tool vs our Cal Newport transcript, and a free podcast chatbot vs our archive on Robert Greene. Competitors unnamed ("Typical AI tool"). Data from `mcfallProdBiz/research_notes/competitor-tests/`. Not on the live site.
+- **Next:** Scott: feedback on the draft, then decide whether it goes on the homepage (PR into `GH`). Scott and Lauren: OK to show archive results publicly. Fix EP 1's "Unknown" Greene label before quoting its lines.
+
 ## 2026-11-03 · Daily CTA check: audit form endpoint down
 - **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
 - **Waiting on:** FormSubmit (formsubmit.co/ajax/team@mcfallprod.com) is returning Cloudflare 522 (down); the browser sees a CORS error. The test submission did not go through, but the popup still showed "thank you" after 4s, so real requests are being lost silently while it is down.

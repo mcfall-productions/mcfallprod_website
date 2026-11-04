@@ -56,6 +56,17 @@ jobs:
             printf '</body></html>'
           } > "$out/index.html"
 
+      # Draft "theirs vs ours" comparison pages, previews only:
+      # .../pr-<number>/drafts/comparison/theirs-vs-ours.html and theirs-vs-ours-book.html
+      - name: Add the comparison drafts
+        if: github.event.action != 'closed'
+        run: |
+          out=dist/drafts/comparison
+          mkdir -p "$out"
+          for f in comparison/*.html; do
+            sed 's|<head>|<head><meta name="robots" content="noindex, nofollow">|' "$f" > "$out/$(basename "$f")"
+          done
+
       - name: Publish or remove the preview
         uses: rossjrw/pr-preview-action@v1
         with:
