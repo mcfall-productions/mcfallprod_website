@@ -854,7 +854,7 @@ ul, ol { padding: 0; list-style: none; }
       <p class="perks__lede">A cleaned-up catalog pays off in ways you can see and check, whatever happens to your downloads.</p>
       <dl class="defs">
         <div><dt>Links that work</dt><dd>Every link in your show notes is checked and fixed. A listener who clicks through to your website, your store or a guest's page lands on a real page.</dd></div>
-        <div><dt>The same title everywhere</dt><dd>Your podcast host, Apple, Spotify, your website and YouTube carry matching titles and notes, with episode numbers fixed, duplicate titles removed and guests named.</dd></div>
+        <div><dt>One keyword, every platform</dt><dd>We make sure every title shares the best-ranked keyword for your episode, so your host, Apple, Spotify, your website and YouTube hang together. Episode numbers are fixed, duplicate titles removed and guests named.</dd></div>
         <div><dt>Easier to find</dt><dd>Titles say what the episode covers and who's in it. Notes are written around the topic. We can't promise a ranking, but the search apps finally have something to read.</dd></div>
         <div><dt>Past guests, found again</dt><dd>When an old guest has a new book or a viral moment, people search for them. Your interview has their name in the title and real notes behind it.</dd></div>
         <div><dt>Readable by search engines and AI tools</dt><dd>Full transcripts on your episode pages give Google and AI assistants far more to read than a two-line description.</dd></div>
@@ -897,7 +897,7 @@ ul, ol { padding: 0; list-style: none; }
     </div>
     <ul class="svc" data-sc-in data-sc-stagger="70">
       <li><h3 class="h-md">Search matches words</h3><div><p class="fix">Say what the episode is about.</p><p>Google, Apple and Spotify can only match what&rsquo;s written. A title and notes in the words your listeners use put the episode in front of people looking for exactly that.</p></div></li>
-      <li><h3 class="h-md">Everywhere matches</h3><div><p class="fix">The same title on every platform.</p><p>When your host, Apple, Spotify and your website all carry the same title and notes, search engines can tell it&rsquo;s one episode from one show, and credit it to your brand. Four different titles look like four weaker, unrelated pages.</p></div></li>
+      <li><h3 class="h-md">Everywhere matches</h3><div><p class="fix">The same keyword on every platform.</p><p>We make sure every title shares the best-ranked keyword for your episode, so your host, Apple, Spotify and your website hang together. Search engines can tell it&rsquo;s one episode from one show, and credit it to your brand. Four unrelated titles look like four weaker, unrelated pages.</p></div></li>
       <li><h3 class="h-md">Your website does the heavy lifting</h3><div><p class="fix">Every word of the conversation, readable.</p><p>The episode page on your own site carries the full show notes and transcript, so Google has the whole conversation to match, not just a one-line description.</p></div></li>
       <li><h3 class="h-md">Every episode adds up</h3><div><p class="fix">Known for your topics.</p><p>A catalog of clearly labeled episodes on the same subjects tells search engines what your show is about. That helps the next episode get found too.</p></div></li>
     </ul>
@@ -969,7 +969,7 @@ ul, ol { padding: 0; list-style: none; }
     <div class="publish dk" data-sc-in>
       <small>Not just rewrites</small>
       <h3 class="h-lg">We publish it for you.</h3>
-      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. The same title and notes everywhere your episode lives, and nothing for your team to do.</p>
+      <p>The new copy doesn't arrive as a document for your team to paste in. We log in and update every episode ourselves: the title, description, show notes and transcript on your podcast host, and the matching page on your podcast website. The same best-ranked keyword in the title everywhere your episode lives, and nothing for your team to do.</p>
     </div>
     <div class="suite dk" data-sc-in>
       <p class="suite__kick">What we recommend</p>
@@ -1351,13 +1351,12 @@ ul, ol { padding: 0; list-style: none; }
   })();
 
   /* ---------------------------------------------------------------- the audit request */
-  /* Requests post to FormSubmit (no account), which emails team@mcfallprod.com with a copy to eternallauren@gmail.com.
-     FormSubmit can take a minute to answer even when the email has already gone out, so the thank-you shows after
-     WAIT_MS at most while the request finishes in the background (keepalive). A clear failure shows a note with our
-     address. The visitor's mail app is never opened. */
-  var AUDIT_ENDPOINT = 'https://formsubmit.co/ajax/team@mcfallprod.com';
-  var AUDIT_CC = 'eternallauren@gmail.com';
-  var WAIT_MS = 4000;
+  /* Requests post to Web3Forms, which emails team@mcfallprod.com. The access key is public by design (it can only
+     send to that address). The thank-you shows only when Web3Forms confirms; a failure or a 12-second timeout shows a
+     note with our address. The visitor's mail app is never opened. */
+  var AUDIT_ENDPOINT = 'https://api.web3forms.com/submit';
+  var AUDIT_KEY = '48a756c2-db91-401f-8c41-53f3422758bf';
+  var WAIT_MS = 12000;
   var form = $('#audit-form'), nameIn = $('#show-name'), emailIn = $('#show-email');
   var status = $('#form-status'), btn = $('#btn-send'), done = $('#pop-done');
   var pop = $('#pop'), lastFocus = null;
@@ -1396,17 +1395,18 @@ ul, ol { padding: 0; list-style: none; }
     if ($('#show-site').value) { finish(); return; }   /* spam trap: bots fill the hidden field */
     btn.disabled = true; btn.textContent = 'Sending\u2026';
     var settled = false;
-    var wait = setTimeout(function () { if (!settled) { settled = true; finish(); } }, WAIT_MS);
-    fetch(AUDIT_ENDPOINT, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ show: name, email: email, _replyto: email, _honey: '', _cc: AUDIT_CC, _subject: 'Free audit request: ' + name, _template: 'table' }) })
-      .then(function (r) { return r.text().then(function (t) { var j = null; try { j = JSON.parse(t); } catch (err) {} return { ok: r.ok, j: j }; }); })
-      .then(function (x) { if (!x.ok || String(x.j && x.j.success) === 'false') throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
-      .catch(function () {
-        if (settled) return;
-        settled = true; clearTimeout(wait);
-        btn.disabled = false; btn.textContent = 'Email me my free audit';
-        say('That didn\'t go through. Try again, or email your show\'s name to team@mcfallprod.com.');
-      });
+    function fail() {
+      if (settled) return;
+      settled = true; clearTimeout(wait);
+      btn.disabled = false; btn.textContent = 'Email me my free audit';
+      say('That didn\'t go through. Try again, or email your show\'s name to team@mcfallprod.com.');
+    }
+    var wait = setTimeout(fail, WAIT_MS);
+    fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, botcheck: '' }) })
+      .then(function (r) { return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) { if (!x.ok || !x.j || x.j.success !== true) throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
+      .catch(fail);
   });
 
   $('#btn-copy').addEventListener('click', function () {
