@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-04 · Daily CTA check (live): all clear
+- **Done:** Live mcfallprod.com now on Web3Forms. Audit buttons, nav anchors, empty-field message, test submit ("CTA Test"), thank-you, "Back to the site" all work; no console errors.
+- **Waiting on:** Check team@mcfallprod.com got the "CTA Test" email (network log not captured by the browser tool). Mobile width and outbound links not re-clicked.
+- **Next:** Rerun tomorrow.
+
 ## 2026-11-03 · Daily CTA check: audit form endpoint down
 - **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
 - **Waiting on:** FormSubmit (formsubmit.co/ajax/team@mcfallprod.com) is returning Cloudflare 522 (down); the browser sees a CORS error. The test submission did not go through, but the popup still showed "thank you" after 4s, so real requests are being lost silently while it is down.
