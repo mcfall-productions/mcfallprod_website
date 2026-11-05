@@ -1,5 +1,27 @@
 # Project log
 
+## 2026-11-05 · Comparison chapter 2: real timestamps (PR #35)
+- **Done:** Chapter 2 "Us" page now shows minutes on mastery plus timestamp ranges instead of downloads, pulled from the SOG transcripts: EP 1 (31 min, 4 ranges), EP 713 (5 min), EP 1024 (4 min). Dropped EP 750 and EP 1174 (no mastery talk in their transcripts) and EP 1193 (Scott's call). Check now reads "All appearances in the catalog". Footnote moved under the book and no longer mentions downloads. Pages scale down evenly on short screens so nothing is cut off. Pushed to PR #35.
+- **Next:** Scott: EP 1193 has real mastery talk (17:43, 48:41, 56:44) if you want it back. Minutes are summed from the ranges where mastery comes up, not a full topic count.
+
+## 2026-11-05 · Comparison section: Scott's round 1 changes (PR #35)
+- **Done:** Bigger chapter labels; all three chapter titles upright (Chapter 1 was the only non-italic one, being an episode title, not a client quote); long titles run full width before wrapping; less space between the intro and the book; caption box keeps one size, only its text fades. THEM/US are now big pills; Them pages get a generic "AI tool" look (purple-blue gradient, sparkle, lavender background). Pushed to PR #35.
+- **Waiting on:** Scott: review https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+
+## 2026-11-05 · Them/Us book added to the homepage draft (PR #35)
+- **Done:** Added the page-turn comparison as a homepage section, between "We did it for The School of Greatness first" and "Back Catalog Goldmine", heading "Same episode. Two results." Edited `mcfall-website/minimal/src/page.html`, rebuilt `index.html`, pushed to [PR #35](https://github.com/mcfall-productions/mcfallprod_website/pull/35). Preview: https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+- **Waiting on:** Scott (and Lauren): review the preview. Merging puts it live, so not without Scott's OK.
+- **Next:** OK to show archive results publicly; fix EP 1's "Unknown" Greene label before quoting its lines.
+
+## 2026-11-04 · Book version: one spread per comparison
+- **Done:** Rebuilt the page-turn book (https://claude.ai/artifact/U6Q3i9WkD1bJ5HcRW7juov) so each comparison is exactly two pages: Them on the left, Us on the right. Three spreads (transcript, Robert Greene search, old titles, the last one new). Chapter title sits in a band above the book and changes per spread; headline moved above the book; "scroll to turn" hint and filler pages removed. Checked on desktop and phone screenshots. Source: `comparison/theirs-vs-ours-book.html`.
+- **Done:** Both pages (flat and book) on branch `feature/theirs-vs-ours` with a PR into `GH`; previews carry them at `/drafts/comparison/`. Live site unchanged.
+- **Waiting on:** Scott: review the PR preview and pick flat or book.
+
+## 2026-11-04 · "Theirs vs ours" comparison draft
+- **Done:** Draft section `comparison/theirs-vs-ours.html` (artifact: https://claude.ai/artifact/411CtacQEkt1YQF2fuhkXX). Two tabs: a free AI transcript tool vs our Cal Newport transcript, and a free podcast chatbot vs our archive on Robert Greene. Competitors unnamed ("Typical AI tool"). Data from `mcfallProdBiz/research_notes/competitor-tests/`. Not on the live site.
+- **Next:** Scott: feedback on the draft, then decide whether it goes on the homepage (PR into `GH`). Scott and Lauren: OK to show archive results publicly. Fix EP 1's "Unknown" Greene label before quoting its lines.
+
 ## 2026-11-03 · Daily CTA check: audit form endpoint down
 - **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
 - **Waiting on:** FormSubmit (formsubmit.co/ajax/team@mcfallprod.com) is returning Cloudflare 522 (down); the browser sees a CORS error. The test submission did not go through, but the popup still showed "thank you" after 4s, so real requests are being lost silently while it is down.
