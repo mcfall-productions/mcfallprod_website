@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-05 · Daily CTA check (live): all clear
+- **Done:** Desktop + mobile (375px). All 3 audit buttons open the popup, × and "Back to the site" close it, nav anchors scroll correctly, 12 outbound links respond, no broken images, no console errors. Empty/invalid-email messages show. Test submit ("CTA Test") got POST api.web3forms.com/submit 200 and the thank-you.
+- **Waiting on:** Confirm "CTA Test" email arrived at team@mcfallprod.com.
+- **Next:** Rerun tomorrow.
+
 ## 2026-11-04 · Daily CTA check (live): all clear
 - **Done:** Live mcfallprod.com now on Web3Forms. Audit buttons, nav anchors, empty-field message, test submit ("CTA Test"), thank-you, "Back to the site" all work; no console errors.
 - **Waiting on:** Check team@mcfallprod.com got the "CTA Test" email (network log not captured by the browser tool). Mobile width and outbound links not re-clicked.
