@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-05 · Them/Us book added to the homepage draft (PR #35)
+- **Done:** Added the page-turn comparison as a homepage section, between "We did it for The School of Greatness first" and "Back Catalog Goldmine", heading "Same episode. Two results." Edited `mcfall-website/minimal/src/page.html`, rebuilt `index.html`, pushed to [PR #35](https://github.com/mcfall-productions/mcfallprod_website/pull/35). Preview: https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+- **Waiting on:** Scott (and Lauren): review the preview. Merging puts it live, so not without Scott's OK.
+- **Next:** OK to show archive results publicly; fix EP 1's "Unknown" Greene label before quoting its lines.
+
 ## 2026-11-04 · Book version: one spread per comparison
 - **Done:** Rebuilt the page-turn book (https://claude.ai/artifact/U6Q3i9WkD1bJ5HcRW7juov) so each comparison is exactly two pages: Them on the left, Us on the right. Three spreads (transcript, Robert Greene search, old titles, the last one new). Chapter title sits in a band above the book and changes per spread; headline moved above the book; "scroll to turn" hint and filler pages removed. Checked on desktop and phone screenshots. Source: `comparison/theirs-vs-ours-book.html`.
 - **Done:** Both pages (flat and book) on branch `feature/theirs-vs-ours` with a PR into `GH`; previews carry them at `/drafts/comparison/`. Live site unchanged.
