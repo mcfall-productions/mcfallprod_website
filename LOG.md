@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-11-05 · Comparison section: Scott's round 1 changes (PR #35)
+- **Done:** Bigger chapter labels; all three chapter titles upright (Chapter 1 was the only non-italic one, being an episode title, not a client quote); long titles run full width before wrapping; less space between the intro and the book; caption box keeps one size, only its text fades. THEM/US are now big pills; Them pages get a generic "AI tool" look (purple-blue gradient, sparkle, lavender background). Pushed to PR #35.
+- **Waiting on:** Scott: review https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+
 ## 2026-11-05 · Them/Us book added to the homepage draft (PR #35)
 - **Done:** Added the page-turn comparison as a homepage section, between "We did it for The School of Greatness first" and "Back Catalog Goldmine", heading "Same episode. Two results." Edited `mcfall-website/minimal/src/page.html`, rebuilt `index.html`, pushed to [PR #35](https://github.com/mcfall-productions/mcfallprod_website/pull/35). Preview: https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
 - **Waiting on:** Scott (and Lauren): review the preview. Merging puts it live, so not without Scott's OK.
