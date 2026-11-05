@@ -1014,10 +1014,17 @@ mark.tv-stock { background: var(--tv-stock-soft); color: var(--tv-stock); border
 .tv-them .tv-ep, .tv-them .tv-n { color: #64748b; }
 .tv-them .tv-ep { border-color: #e0e7ff; }
 .tv-m { color: var(--sc-ink-soft); grid-column: 2; font-size: 11px; }
+.tv-ep.tv-hit { grid-template-columns: auto 1fr; gap: 5px 10px; padding: 8px 0; }
+.tv-hit .tv-m { display: block; }
+.tv-min, .tv-chips { grid-column: 2; }
+.tv-min { justify-self: start; font: 800 12px/1 var(--sc-font-text); letter-spacing: .08em; text-transform: uppercase; color: #1d1d1f; background: var(--gold); border-radius: 999px; padding: 5px 10px; }
+.tv-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.tv-chips li { font: 600 12px/1 var(--tv-mono); font-variant-numeric: tabular-nums; color: var(--sc-accent); border: 1px solid color-mix(in srgb, var(--sc-accent) 45%, transparent); background: color-mix(in srgb, var(--gold) 10%, transparent); border-radius: 7px; padding: 5px 7px; }
+.tv-body.tv-fit { max-height: none; }
 .tv-old { color: var(--tv-dim-ink); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--tv-dim-ink) 50%, transparent); }
 .tv-nav { display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--sc-ink-soft); }
 .tv-nav .tv-count { font-family: var(--tv-mono); font-variant-numeric: tabular-nums; min-width: 7ch; text-align: center; }
-.tv-foot { max-width: var(--tv-bw); text-align: center; }
+.tv-foot { text-align: center; padding-block: 1.5rem clamp(3rem, 8vw, 5rem); }
 .tv-src { display: none; }
 </style>
 <section id="compare" class="gr" data-tone="light">
@@ -1034,9 +1041,9 @@ mark.tv-stock { background: var(--tv-stock-soft); color: var(--tv-stock); border
         <span class="tv-count" id="tv-count">1 / 3</span>
         <button class="btn btn--sm btn--ghost" id="tv-next" type="button" aria-label="Next comparison">Turn &rarr;</button>
       </div>
-      <p class="cap tv-foot">Outputs shown as returned, Nov 4, 2026. Downloads are 12-month Simplecast totals. Title examples are real rewrites from the School of Greatness catalog project.</p>
     </div>
   </div>
+  <div class="wrap"><p class="cap tv-foot">Outputs shown as returned, Nov 4, 2026. Timestamps come from our School of Greatness transcripts. Title examples are real rewrites from the School of Greatness catalog project.</p></div>
   <div class="tv-src" id="tv-src">
     <div class="tv-page tv-them" data-tv-p>
     <span class="tv-side">Them</span>
@@ -1083,18 +1090,15 @@ mark.tv-stock { background: var(--tv-stock-soft); color: var(--tv-stock); border
   <div class="tv-page tv-us" data-tv-p>
     <span class="tv-side">Us</span>
     <div class="tv-head"><span class="tv-who">McFall Productions</span><span class="tv-tag">Archive search</span></div>
-    <div class="tv-body">
-      <div class="tv-ep"><span class="tv-n">EP 1</span><span>How to Master Anything and Achieve Greatness</span><span class="tv-m">Jan 24, 2013 · 65 min on mastery · 12,192 downloads</span></div>
-      <div class="tv-ep"><span class="tv-n">EP 713</span><span>Master the Laws of Human Nature</span><span class="tv-m">Oct 30, 2018 · 1,231 downloads</span></div>
-      <div class="tv-ep"><span class="tv-n">EP 750</span><span>6 Years of Greatness</span><span class="tv-m">Jan 24, 2019 · 278 downloads</span></div>
-      <div class="tv-ep"><span class="tv-n">EP 1024</span><span>The Positive Side of Human Manipulation</span><span class="tv-m">Oct 26, 2020 · 927 downloads</span></div>
-      <div class="tv-ep"><span class="tv-n">EP 1174</span><span>How To Find Love &amp; Master The Art of Seduction</span><span class="tv-m">Oct 11, 2021 · 4,155 downloads</span></div>
-      <div class="tv-ep"><span class="tv-n">EP 1193</span><span>Find Your Inner Power, Embrace Your Weirdness</span><span class="tv-m">Nov 24, 2021 · 1,427 downloads</span></div>
+    <div class="tv-body tv-fit">
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 1</span><span>How to Master Anything and Achieve Greatness<span class="tv-m">Jan 24, 2013</span></span><span class="tv-min">31 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>6:33–11:55</li><li>29:07–43:20</li><li>54:25–1:01:22</li><li>1:28:24–1:32:28</li></ul></div>
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 713</span><span>Master the Laws of Human Nature<span class="tv-m">Oct 30, 2018</span></span><span class="tv-min">5 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>1:06:07–1:10:43</li></ul></div>
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 1024</span><span>The Positive Side of Human Manipulation<span class="tv-m">Oct 26, 2020</span></span><span class="tv-min">4 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>10:00</li><li>42:25–45:51</li></ul></div>
     </div>
     <ul class="tv-checks">
-      <li><span class="tv-ok">✓</span>All 6 appearances, back to 2013</li>
-      <li><span class="tv-ok">✓</span>Every quote links to its exact minute</li>
-      <li><span class="tv-ok">✓</span>Ranked by what your audience actually downloaded</li>
+      <li><span class="tv-ok">✓</span>All appearances in the catalog</li>
+      <li><span class="tv-ok">✓</span>Every answer jumps to the exact minute</li>
+      <li><span class="tv-ok">✓</span>Shows how long he talks about it, so you know where to start</li>
     </ul>
   </div>
 
@@ -1167,8 +1171,8 @@ function stepH(){ return (innerHeight-barH())*0.9; }
 function size(){
   const vw=innerWidth, vh=innerHeight-barH(), gutter=32;
   let pw,ph;
-  if(mode==='spread'){ ph=Math.min(vh-cap.offsetHeight-165,600); pw=Math.min((vw-gutter)/2,ph*0.82); }
-  else { pw=Math.min(vw-gutter,460); ph=Math.min(vh-cap.offsetHeight-170,pw*1.55); }
+  if(mode==='spread'){ ph=Math.min(vh-cap.offsetHeight-110,600); pw=Math.min((vw-gutter)/2,544,ph*1.05); }
+  else { pw=Math.min(vw-gutter,460); ph=Math.min(vh-cap.offsetHeight-115,pw*1.55); }
   ph=Math.max(ph,360);
   const st=sec.style;
   st.setProperty('--tv-pw',pw+'px'); st.setProperty('--tv-ph',ph+'px');
@@ -1176,6 +1180,14 @@ function size(){
   st.setProperty('--tv-leafx',(mode==='spread'?pw:0)+'px');
   st.setProperty('--tv-bodyh',Math.max(140,ph*0.5)+'px');
   track.style.height=(flips*stepH()+vh)+'px';
+  // Pages whose lists must show in full (no fade) can need more room than a short screen gives.
+  // Measure every page at natural height and, if any is too tall, scale all pages by the same amount.
+  const pages=[...book.querySelectorAll('.tv-page')];
+  pages.forEach(p=>{ p.style.cssText=''; });
+  let z=1;
+  pages.forEach(p=>{ p.style.bottom='auto'; z=Math.min(z,ph/p.offsetHeight); p.style.bottom=''; });
+  z=Math.max(.68,z);
+  if(z<.995) pages.forEach(p=>{ p.style.cssText=`zoom:${z.toFixed(3)};inset:0 auto auto 0;width:${pw/z}px;height:${ph/z}px`; });
   render();
 }
 const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
