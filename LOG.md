@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-06 · Referral page restyled to match the homepage
+- **Done:** `/referral/` now uses the homepage look (white/grey/black tiles, one gold, pill buttons, sticky ribbon, dark proof panel) and its copy ("free audit" instead of "Buried Gold Report", titles/show notes/transcripts published on host, website and YouTube). Terms, fee and email address unchanged. Checked desktop and 375px, no overflow or console errors.
+- **Waiting on:** Scott's OK to merge the PR (merging puts it live).
+- **Next:** Review the preview at /pr-preview/pr-<n>/referral/.
+
 ## 2026-11-03 · Daily CTA check: audit form endpoint down
 - **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
 - **Waiting on:** FormSubmit (formsubmit.co/ajax/team@mcfallprod.com) is returning Cloudflare 522 (down); the browser sees a CORS error. The test submission did not go through, but the popup still showed "thank you" after 4s, so real requests are being lost silently while it is down.
