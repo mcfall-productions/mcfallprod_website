@@ -2,7 +2,9 @@
 
 ## 2026-11-05 · Comparison chapter 2: real timestamps (PR #35)
 - **Done:** Chapter 2 "Us" page now shows minutes on mastery plus timestamp ranges instead of downloads, pulled from the SOG transcripts: EP 1 (31 min, 4 ranges), EP 713 (5 min), EP 1024 (4 min). Dropped EP 750 and EP 1174 (no mastery talk in their transcripts) and EP 1193 (Scott's call). Check now reads "All appearances in the catalog". Footnote moved under the book and no longer mentions downloads. Pages scale down evenly on short screens so nothing is cut off. Pushed to PR #35.
-- **Next:** Scott: EP 1193 has real mastery talk (17:43, 48:41, 56:44) if you want it back. Minutes are summed from the ranges where mastery comes up, not a full topic count.
+- **Decided:** EP 1193 stays out (Scott, 5 Nov).
+- **Waiting on:** Lauren: review PR #35 (Asana task in Goldmine launch, assigned 5 Nov: https://app.asana.com/1/1211366034618669/project/1218999910620926/task/1220288828575806).
+- **Note:** Minutes are summed from the ranges where mastery comes up, not a full topic count.
 
 ## 2026-11-05 · Comparison section: Scott's round 1 changes (PR #35)
 - **Done:** Bigger chapter labels; all three chapter titles upright (Chapter 1 was the only non-italic one, being an episode title, not a client quote); long titles run full width before wrapping; less space between the intro and the book; caption box keeps one size, only its text fades. THEM/US are now big pills; Them pages get a generic "AI tool" look (purple-blue gradient, sparkle, lavender background). Pushed to PR #35.
