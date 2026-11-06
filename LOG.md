@@ -2,7 +2,7 @@
 
 ## 2026-11-05 · Daily CTA check (live): all clear
 - **Done:** Desktop + mobile (375px). All 3 audit buttons open the popup, × and "Back to the site" close it, nav anchors scroll, outbound links respond, no console errors. Test submit got POST api.web3forms.com/submit 200 and the thank-you.
-- **Waiting on:** Inbox delivery to team@mcfallprod.com can't be checked from here; the check now relies on the Web3Forms `success: true` response.
+- **Waiting on:** Nothing. Nov 5 "CTA Test" email confirmed in team@scottmcfall.com; daily check now verifies delivery there.
 - **Next:** Daily check now only notifies on problems.
 
 ## 2026-11-06 · Referral page restyled to match the homepage
