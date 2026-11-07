@@ -1,5 +1,11 @@
 # Project log
 
+## 2026-11-07 · Daily CTA check (live): all clear
+- **Done:** Desktop + mobile (375px, no overflow). Audit buttons open the popup, empty and invalid-email messages show, × closes it, anchors resolve, no console errors. POST web3forms 200, success:true, thank-you shown.
+- **Waiting on:** Nothing. "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:50 PM.
+- **Next:** None.
+- **Ideas:** Copy address shows "Selected. Press copy" in the automated browser (clipboard fallback), same as before.
+
 ## 2026-11-06 · Daily CTA check (live): all clear
 - **Done:** Desktop + mobile (375px, no overflow). All 3 audit buttons open the popup, validation message shows, × and "Back to the site" close it, anchors resolve, no console errors. POST web3forms 200, success:true, thank-you shown.
 - **Waiting on:** Nothing. "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:11 PM.
