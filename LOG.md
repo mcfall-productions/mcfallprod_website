@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-08 · Daily CTA check (live): INCOMPLETE
+- **Done:** git pull ok. mcfallprod.com returns 200 and all five nav anchors (#back-catalog, #overview, #production, #team, #top) exist in the served HTML.
+- **Waiting on:** The built-in browser timed out on navigate (pane hidden), and the unattended run could not approve a curl POST. CTA clicks, popup, Web3Forms POST and email delivery were NOT tested today.
+- **Next:** Re-run the check with the browser pane open.
+
 ## 2026-11-07 · Daily CTA check (live): all clear
 - **Done:** Desktop + mobile (375px, no overflow). Audit buttons open the popup, empty and invalid-email messages show, × closes it, anchors resolve, no console errors. POST web3forms 200, success:true, thank-you shown.
 - **Waiting on:** Nothing. "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:50 PM.
