@@ -1,7 +1,7 @@
 # Project log
 
 ## 2026-11-09 · /SOGreferral/ page for Kat (PR open, not merged)
-- **Done:** Copy of the referral page with 20% of first project, no cap. Rest of the terms unchanged. The 11-06 Kat call did not settle 20% or the cap (she only said Lewis's past standard was about 20%).
+- **Done:** Copy of the referral page for Lewis (not Kat) with 20% of first project, no cap, and the intro email in Lewis's voice. Rest of the terms unchanged. The 11-06 Kat call did not settle 20% or the cap (she only said Lewis's past standard was about 20%).
 - **Waiting on:** OK on terms (first project only, or all sales?) and Scott's OK to merge.
 - **Next:** Send Kat the link.
 
