@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-09 · Comparison section: anonymized chapters 1 and 3 (PR #35)
+- **Done:** In the homepage draft's "Same episode. Two results." section (`mcfall-website/minimal/src/page.html`, rebuilt `index.html`): Chapter 1 now uses HOST and GUEST with reworded lines, a made-up episode title, and invented ad reads and intro on the Them page (no SOG names or text left). Chapter 3 uses made-up old titles ("Mindset", "Finding Your Why", "A Conversation with Sarah", "Q&A Friday #14") against specific, searchable rewrites. Intro line and footnote updated to say chapters 1 and 3 use made-up names. Checked in a local preview.
+- **Waiting on:** Scott: OK to commit and push to PR #35 (not committed yet).
+- **Next:** Chapter 2 (Robert Greene archive search) is still real SOG content; decide whether to anonymize it too. Older drafts in `comparison/` still have the SOG versions.
+
 ## 2026-11-05 · Comparison chapter 2: real timestamps (PR #35)
 - **Done:** Chapter 2 "Us" page now shows minutes on mastery plus timestamp ranges instead of downloads, pulled from the SOG transcripts: EP 1 (31 min, 4 ranges), EP 713 (5 min), EP 1024 (4 min). Dropped EP 750 and EP 1174 (no mastery talk in their transcripts) and EP 1193 (Scott's call). Check now reads "All appearances in the catalog". Footnote moved under the book and no longer mentions downloads. Pages scale down evenly on short screens so nothing is cut off. Pushed to PR #35.
 - **Decided:** EP 1193 stays out (Scott, 5 Nov).
