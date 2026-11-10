@@ -1,5 +1,18 @@
 # Project log
 
+## 2026-11-10 · Daily CTA check: all clear
+- **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
+- **Waiting on:** Nothing.
+
+## 2026-11-09 · Daily CTA check: all clear
+- **Done:** Live site checked (nav anchors, audit buttons, popup open/close, validation, mobile 375px, no console errors). Test opt-in POST returned 200 `success: true`; "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:11 PM.
+- **Waiting on:** Nothing.
+
+## 2026-11-09 · /SOGreferral/ page for Kat (PR open, not merged)
+- **Done:** Copy of the referral page for Lewis (not Kat) with 20% of first project, no cap, and the intro email in Lewis's voice. Rest of the terms unchanged. The 11-06 Kat call did not settle 20% or the cap (she only said Lewis's past standard was about 20%).
+- **Waiting on:** OK on terms (first project only, or all sales?) and Scott's OK to merge.
+- **Next:** Send Kat the link.
+
 ## 2026-11-06 · Referral page restyled to match the homepage
 - **Done:** `/referral/` now uses the homepage look (white/grey/black tiles, one gold, pill buttons, sticky ribbon, dark proof panel) and its copy ("free audit" instead of "Buried Gold Report", titles/show notes/transcripts published on host, website and YouTube). Terms, fee and email address unchanged. Checked desktop and 375px, no overflow or console errors.
 - **Waiting on:** Scott's OK to merge the PR (merging puts it live).
