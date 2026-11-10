@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-11-10 · Daily CTA check: all clear
+- **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
+- **Waiting on:** Nothing.
+
 ## 2026-11-09 · Daily CTA check: all clear
 - **Done:** Live site checked (nav anchors, audit buttons, popup open/close, validation, mobile 375px, no console errors). Test opt-in POST returned 200 `success: true`; "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:11 PM.
 - **Waiting on:** Nothing.
