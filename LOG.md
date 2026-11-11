@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-11 · Daily CTA check: all clear (email delivery not verified)
+- **Done:** Live site checked (anchors, audit buttons, popup, validation, close/back, mobile width, no console errors). Test opt-in POST returned 200 `success: true`; thank-you showed.
+- **Waiting on:** Gmail delivery check skipped: 2 Chrome browsers are connected and the run can't pick one unattended.
+- **Next:** Select a default Chrome browser for the extension so the inbox check can run.
+
 ## 2026-11-10 · Daily CTA check: all clear
 - **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
 - **Waiting on:** Nothing.
