@@ -1,10 +1,32 @@
 # Project log
 
+## 2026-11-12 · Minimal site is now `main`
+- **Done:** Old React `main` saved as tag `archive/old-react-main` and deleted; `GH` renamed to `main` (now the default branch; PR #35 retargeted automatically). Live site unchanged (same commit ff52e25). Branch `chore/main-is-minimal` drops `GH` from `deploy.yml` and updates CLAUDE.md.
+- **Waiting on:** Scott: OK to push `chore/main-is-minimal` and merge it. Lauren: run `git fetch --prune` and `git branch -f main origin/main` once (her local `GH`/`main` are stale).
+- **Note:** The Claude GitHub Actions workflows from PR #10 lived only on the old main; they're in the tag if ever wanted.
+
+## 2026-11-10 · Daily CTA check: all clear
+- **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
+- **Waiting on:** Nothing.
+
 ## 2026-11-09 · Comparison section: anonymized chapters 1 and 3 (PR #35)
 - **Done:** In the homepage draft's "Same episode. Two results." section (`mcfall-website/minimal/src/page.html`, rebuilt `index.html`): Chapter 1 now uses HOST and GUEST with reworded lines, a made-up episode title, and invented ad reads and intro on the Them page (no SOG names or text left). Chapter 3 uses made-up old titles ("Mindset", "Finding Your Why", "A Conversation with Sarah", "Q&A Friday #14") against specific, searchable rewrites. Intro line and footnote updated to say chapters 1 and 3 use made-up names. Checked in a local preview.
 - **Waiting on:** Scott: OK to commit and push to PR #35 (not committed yet).
 - **Next:** Chapter 2 (Robert Greene archive search) is still real SOG content; decide whether to anonymize it too. Older drafts in `comparison/` still have the SOG versions.
 
+## 2026-11-09 · Daily CTA check: all clear
+- **Done:** Live site checked (nav anchors, audit buttons, popup open/close, validation, mobile 375px, no console errors). Test opt-in POST returned 200 `success: true`; "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:11 PM.
+- **Waiting on:** Nothing.
+
+## 2026-11-09 · /SOGreferral/ page for Kat (PR open, not merged)
+- **Done:** Copy of the referral page for Lewis (not Kat) with 20% of first project, no cap, and the intro email in Lewis's voice. Rest of the terms unchanged. The 11-06 Kat call did not settle 20% or the cap (she only said Lewis's past standard was about 20%).
+- **Waiting on:** OK on terms (first project only, or all sales?) and Scott's OK to merge.
+- **Next:** Send Kat the link.
+
+## 2026-11-06 · Referral page restyled to match the homepage
+- **Done:** `/referral/` now uses the homepage look (white/grey/black tiles, one gold, pill buttons, sticky ribbon, dark proof panel) and its copy ("free audit" instead of "Buried Gold Report", titles/show notes/transcripts published on host, website and YouTube). Terms, fee and email address unchanged. Checked desktop and 375px, no overflow or console errors.
+- **Waiting on:** Scott's OK to merge the PR (merging puts it live).
+- **Next:** Review the preview at /pr-preview/pr-<n>/referral/.
 ## 2026-11-05 · Comparison chapter 2: real timestamps (PR #35)
 - **Done:** Chapter 2 "Us" page now shows minutes on mastery plus timestamp ranges instead of downloads, pulled from the SOG transcripts: EP 1 (31 min, 4 ranges), EP 713 (5 min), EP 1024 (4 min). Dropped EP 750 and EP 1174 (no mastery talk in their transcripts) and EP 1193 (Scott's call). Check now reads "All appearances in the catalog". Footnote moved under the book and no longer mentions downloads. Pages scale down evenly on short screens so nothing is cut off. Pushed to PR #35.
 - **Decided:** EP 1193 stays out (Scott, 5 Nov).
