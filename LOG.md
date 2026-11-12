@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-12 · Minimal site is now `main`
+- **Done:** Old React `main` saved as tag `archive/old-react-main` and deleted; `GH` renamed to `main` (now the default branch; PR #35 retargeted automatically). Live site unchanged (same commit ff52e25). Branch `chore/main-is-minimal` drops `GH` from `deploy.yml` and updates CLAUDE.md.
+- **Waiting on:** Scott: OK to push `chore/main-is-minimal` and merge it. Lauren: run `git fetch --prune` and `git branch -f main origin/main` once (her local `GH`/`main` are stale).
+- **Note:** The Claude GitHub Actions workflows from PR #10 lived only on the old main; they're in the tag if ever wanted.
+
 ## 2026-11-10 · Daily CTA check: all clear
 - **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
 - **Waiting on:** Nothing.
