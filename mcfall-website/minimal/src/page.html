@@ -517,6 +517,284 @@ ul, ol { padding: 0; list-style: none; }
   </div>
 </section>
 
+<!-- 4b. THEM VS US: one spread per comparison, Them on the left page, Us on the right -->
+<style>
+#compare { --tv-dim: #f4f4f6; --tv-dim-ink: #8e8e93; --tv-red: #d70015; --tv-red-soft: rgba(215,0,21,.08); --tv-stock: #5b5b66; --tv-stock-soft: rgba(91,91,102,.12); --tv-shade: rgba(0,0,0,.16); --tv-mono: ui-monospace, "SF Mono", Menlo, monospace; padding-block: clamp(5rem, 12vw, 9.5rem) 0; scroll-margin-top: var(--bar-h); }
+#compare .tv-intro { margin-bottom: 0; }
+.tv-track { position: relative; padding-inline: var(--g); }
+.tv-stage { position: sticky; top: var(--bar-h); height: calc(100svh - var(--bar-h)); display: grid; justify-items: center; align-content: start; gap: 12px; padding-top: clamp(12px, 2.5vh, 24px); }
+.tv-cap { width: var(--tv-bw); background: #1d1d1f; color: #f5f5f7; border-radius: 14px; padding: 18px 22px; display: grid; }
+.tv-cap__i { grid-area: 1 / 1; display: grid; gap: 8px; align-content: start; opacity: 0; visibility: hidden; transition: opacity .35s var(--ease), visibility 0s .35s; }
+.tv-cap__i.on { opacity: 1; visibility: visible; transition: opacity .35s var(--ease); }
+.tv-cap__k { font-size: clamp(14px, 1.3vw, 17px); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.tv-cap__t { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(18px, 2vw, 25px); line-height: 1.2; letter-spacing: -.01em; text-wrap: pretty; }
+.tv-cap__m { display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; color: #a1a1a6; }
+.tv-cap__m span { border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 2px 9px; }
+.tv-cap__m b { color: var(--gold); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .tv-cap__i, .tv-cap__i.on { transition: none; } }
+.tv-book { position: relative; perspective: 2200px; width: var(--tv-bw); height: var(--tv-ph); font-size: 15px; line-height: 1.5; letter-spacing: 0; }
+.tv-static, .tv-leaf { position: absolute; top: 0; height: 100%; width: var(--tv-pw); }
+.tv-static { left: 0; }
+.tv-leaf { left: var(--tv-leafx); transform-origin: left center; transform-style: preserve-3d; will-change: transform; }
+.tv-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden; }
+.tv-face.back { transform: rotateY(180deg); }
+.tv-face::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--tv-shade), transparent 60%); opacity: var(--sh, 0); }
+.tv-face.back::after { background: linear-gradient(270deg, var(--tv-shade), transparent 60%); }
+.tv-page { position: absolute; inset: 0; background: #fff; border: 1px solid var(--hair); padding: clamp(18px, 2.6vw, 28px); display: grid; align-content: start; gap: 12px; box-shadow: 0 18px 40px -24px var(--tv-shade); }
+.spread .tv-page.r { border-radius: 0 14px 14px 0; box-shadow: inset 14px 0 18px -14px var(--tv-shade), 0 18px 40px -24px var(--tv-shade); }
+.spread .tv-page.l { border-radius: 14px 0 0 14px; box-shadow: inset -14px 0 18px -14px var(--tv-shade), 0 18px 40px -24px var(--tv-shade); }
+.single .tv-page { border-radius: 4px 14px 14px 4px; box-shadow: inset 10px 0 14px -12px var(--tv-shade), 0 18px 40px -24px var(--tv-shade); }
+.tv-page.tv-them { background: linear-gradient(160deg, #f5f3ff 0%, #eef2ff 55%, #fdf4ff 100%); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.tv-page.tv-us { outline: 1px solid var(--sc-accent); outline-offset: -8px; }
+.tv-side { justify-self: start; font: 800 15px/1 var(--sc-font-text); letter-spacing: .16em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
+.tv-them .tv-side { color: #fff; background: linear-gradient(90deg, #8b5cf6, #3b82f6); box-shadow: 0 6px 16px -6px rgba(99,102,241,.55); }
+.tv-us .tv-side { color: #1d1d1f; background: var(--gold); }
+.tv-us .tv-who { color: var(--sc-accent); }
+.tv-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.tv-who { font-family: var(--sc-font-display); font-weight: 600; font-size: 17px; }
+.tv-them .tv-who { background: linear-gradient(90deg, #7c3aed, #2563eb); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 700; }
+.tv-them .tv-who::before { content: "\2728\00a0"; color: #a78bfa; -webkit-text-fill-color: #a78bfa; }
+.tv-them .tv-tag { color: #6d28d9; background: #ede9fe; border-radius: 999px; padding: 3px 9px; letter-spacing: .04em; }
+.tv-tag { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--sc-ink-soft); }
+.tv-legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--sc-ink-soft); }
+.tv-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; }
+.tv-k-ad { background: var(--tv-red); } .tv-k-stock { background: var(--tv-stock); }
+.tv-body { font-size: 13px; line-height: 1.55; position: relative; overflow: hidden; max-height: var(--tv-bodyh); }
+.tv-body:not(.tv-fit) { -webkit-mask-image: linear-gradient(#000 calc(100% - 44px), transparent); mask-image: linear-gradient(#000 calc(100% - 44px), transparent); }
+.tv-them .tv-body { color: #64748b; background: rgba(255,255,255,.6); border: 1px solid #e0e7ff; border-radius: 12px; padding: 12px 14px; }
+.tv-body.tv-prose { text-align: justify; hyphens: auto; }
+mark.tv-ad { background: var(--tv-red-soft); color: var(--tv-red); border-radius: 3px; padding: 0 2px; }
+mark.tv-stock { background: var(--tv-stock-soft); color: var(--tv-stock); border-radius: 3px; padding: 0 2px; text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--tv-stock) 45%, transparent); }
+.tv-lbl { font: 700 9px/1 var(--sc-font-text); letter-spacing: .08em; text-transform: uppercase; border-radius: 3px; padding: 2px 4px; margin-right: 4px; vertical-align: 1px; color: #fff; }
+.tv-lbl.tv-ad { background: var(--tv-red); } .tv-lbl.tv-stock { background: var(--tv-stock); }
+.tv-line { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; padding: 5px 0; border-bottom: 1px solid var(--hair); }
+.tv-line:last-child, .tv-ep:last-child { border: 0; }
+.tv-ts { font-family: var(--tv-mono); font-size: 11px; color: var(--sc-accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.tv-sp { font-weight: 600; font-size: 12px; }
+.tv-sp.tv-guest { color: var(--sc-accent); }
+.tv-txt { grid-column: 2; }
+.tv-checks { display: grid; gap: 4px; font-size: 12px; }
+.tv-checks li { display: flex; gap: 8px; align-items: baseline; }
+.tv-x { color: var(--tv-red); font-weight: 700; } .tv-ok { color: var(--sc-accent); font-weight: 700; }
+.tv-them .tv-checks { color: #64748b; }
+.tv-ep { display: grid; grid-template-columns: auto 1fr; gap: 1px 10px; padding: 6px 0; border-bottom: 1px solid var(--hair); font-size: 12px; }
+.tv-n { font-family: var(--tv-mono); color: var(--sc-accent); font-variant-numeric: tabular-nums; }
+.tv-them .tv-ep, .tv-them .tv-n { color: #64748b; }
+.tv-them .tv-ep { border-color: #e0e7ff; }
+.tv-m { color: var(--sc-ink-soft); grid-column: 2; font-size: 11px; }
+.tv-ep.tv-hit { grid-template-columns: auto 1fr; gap: 5px 10px; padding: 8px 0; }
+.tv-hit .tv-m { display: block; }
+.tv-min, .tv-chips { grid-column: 2; }
+.tv-min { justify-self: start; font: 800 12px/1 var(--sc-font-text); letter-spacing: .08em; text-transform: uppercase; color: #1d1d1f; background: var(--gold); border-radius: 999px; padding: 5px 10px; }
+.tv-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.tv-chips li { font: 600 12px/1 var(--tv-mono); font-variant-numeric: tabular-nums; color: var(--sc-accent); border: 1px solid color-mix(in srgb, var(--sc-accent) 45%, transparent); background: color-mix(in srgb, var(--gold) 10%, transparent); border-radius: 7px; padding: 5px 7px; }
+.tv-body.tv-fit { max-height: none; }
+.tv-old { color: var(--tv-dim-ink); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--tv-dim-ink) 50%, transparent); }
+.tv-nav { display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--sc-ink-soft); }
+.tv-nav .tv-count { font-family: var(--tv-mono); font-variant-numeric: tabular-nums; min-width: 7ch; text-align: center; }
+.tv-foot { text-align: center; padding-block: 1.5rem clamp(3rem, 8vw, 5rem); }
+.tv-src { display: none; }
+</style>
+<section id="compare" class="gr" data-tone="light">
+  <div class="wrap center stack tv-intro">
+    <h2 class="h-lg" data-sc-in>Same episode. Two results.</h2>
+    <p class="lede" data-sc-in>We ran real podcast work through popular tools and through our own process. Them on the left, us on the right.</p>
+  </div>
+  <div class="tv-track" id="tv-track">
+    <div class="tv-stage">
+      <div class="tv-cap" id="tv-cap" aria-live="polite"></div>
+      <div class="tv-book" id="tv-book"></div>
+      <div class="tv-nav">
+        <button class="btn btn--sm btn--ghost" id="tv-prev" type="button" aria-label="Previous comparison">&larr; Back</button>
+        <span class="tv-count" id="tv-count">1 / 3</span>
+        <button class="btn btn--sm btn--ghost" id="tv-next" type="button" aria-label="Next comparison">Turn &rarr;</button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap"><p class="cap tv-foot">Tests run Nov 4, 2026. Chapter 2 is shown as returned, with timestamps from our School of Greatness transcripts. Chapters 1 and 3 use made-up names and wording to protect client shows.</p></div>
+  <div class="tv-src" id="tv-src">
+    <div class="tv-page tv-them" data-tv-p>
+    <span class="tv-side">Them</span>
+    <div class="tv-head"><span class="tv-who">Typical AI tool</span><span class="tv-tag">Free tier, Nov 2026</span></div>
+    <div class="tv-legend"><span><i class="tv-k-ad"></i>Baked-in ad read</span><span><i class="tv-k-stock"></i>Stock show intro</span></div>
+    <div class="tv-body tv-prose"><mark class="tv-ad"><span class="tv-lbl tv-ad">Ad</span>Tired of meal prep that tastes like cardboard? … GreenCrate boxes are now shipping nationwide. Get your first box free at greencrate.com.</mark> <mark class="tv-ad"><span class="tv-lbl tv-ad">Ad</span>This episode is brought to you by Ledgerly, bookkeeping that runs itself. Try it free for 30 days.</mark> <mark class="tv-ad"><span class="tv-lbl tv-ad">Ad</span>Today’s show is proudly supported by Northpine Insurance. Coverage that keeps up with you.</mark> <mark class="tv-stock"><span class="tv-lbl tv-stock">Intro</span>Welcome back to the show. Before we start, if this podcast has helped you in any way, do me one favor: hit follow, leave a quick review, and send this episode to one friend who needs it. That’s how the show grows, and our mission is to reach a million people every week.</mark> Honestly, it feels like nobody can hold their attention on one thing anymore. Right, and two things are happening at once. Deep focus is worth more every year, because more and more jobs reward hard thinking over busywork…</div>
+    <ul class="tv-checks">
+      <li><span class="tv-x">✕</span>14,545 words in one block, no paragraphs</li>
+      <li><span class="tv-x">✕</span>No speaker names, no timestamps</li>
+      <li><span class="tv-x">✕</span>Ad reads left in, three before the show even starts</li>
+      <li><span class="tv-x">✕</span>Same stock intro and outro as every other episode</li>
+    </ul>
+  </div>
+
+  <div class="tv-page tv-us" data-tv-p>
+    <span class="tv-side">Us</span>
+    <div class="tv-head"><span class="tv-who">McFall Productions</span><span class="tv-tag">Delivered file</span></div>
+    <div class="tv-legend"><span>Starts at the first real line of the conversation</span></div>
+    <div class="tv-body">
+      <div class="tv-line"><span class="tv-ts">00:01:17</span><span class="tv-sp">HOST</span><span class="tv-txt">Honestly, it feels like nobody can hold their attention on one thing anymore.</span></div>
+      <div class="tv-line"><span class="tv-ts">00:01:21</span><span class="tv-sp tv-guest">GUEST</span><span class="tv-txt">Right, and two things are happening at once. Deep focus is worth more every year, because more and more jobs reward hard thinking over busywork.</span></div>
+      <div class="tv-line"><span class="tv-ts">00:01:38</span><span class="tv-sp tv-guest">GUEST</span><span class="tv-txt">If you can concentrate, you can create that kind of value. But at the same time, our phones are training us out of it, one ping every few minutes.</span></div>
+      <div class="tv-line"><span class="tv-ts">00:01:52</span><span class="tv-sp tv-guest">GUEST</span><span class="tv-txt">So it’s a supply and demand problem. The skill gets more valuable right as it gets harder to find…</span></div>
+      <div class="tv-line"><span class="tv-ts">00:02:08</span><span class="tv-sp">HOST</span><span class="tv-txt">So the few people who can still focus get the edge.</span></div>
+    </div>
+    <ul class="tv-checks">
+      <li><span class="tv-ok">✓</span>Every line names who said it, with a timestamp</li>
+      <li><span class="tv-ok">✓</span>Skips the ads and the stock intro and outro automatically</li>
+      <li><span class="tv-ok">✓</span>Episode number, date and guest built into the file</li>
+    </ul>
+  </div>
+
+  <div class="tv-page tv-them" data-tv-p>
+    <span class="tv-side">Them</span>
+    <div class="tv-head"><span class="tv-who">Typical podcast chatbot</span><span class="tv-tag">Free tier, Nov 2026</span></div>
+    <div class="tv-body tv-fit">The supplied research doesn’t include timestamps or a direct discussion of mastery by Robert Greene, so I can’t reliably give you timestamped references.<br><br>The relevant appearance on The School of Greatness is: “Consciousness Beyond the Brain: What Nearly Dying Taught Me | Robert Greene”<br><br>Timestamp: Not provided in the research.</div>
+    <ul class="tv-checks">
+      <li><span class="tv-x">✕</span>Found 1 of his 6 appearances</li>
+      <li><span class="tv-x">✕</span>No timestamps</li>
+      <li><span class="tv-x">✕</span>Couldn’t find him talking about mastery</li>
+    </ul>
+  </div>
+
+  <div class="tv-page tv-us" data-tv-p>
+    <span class="tv-side">Us</span>
+    <div class="tv-head"><span class="tv-who">McFall Productions</span><span class="tv-tag">Archive search</span></div>
+    <div class="tv-body tv-fit">
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 1</span><span>How to Master Anything and Achieve Greatness<span class="tv-m">Jan 24, 2013</span></span><span class="tv-min">31 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>6:33–11:55</li><li>29:07–43:20</li><li>54:25–1:01:22</li><li>1:28:24–1:32:28</li></ul></div>
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 713</span><span>Master the Laws of Human Nature<span class="tv-m">Oct 30, 2018</span></span><span class="tv-min">5 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>1:06:07–1:10:43</li></ul></div>
+      <div class="tv-ep tv-hit"><span class="tv-n">EP 1024</span><span>The Positive Side of Human Manipulation<span class="tv-m">Oct 26, 2020</span></span><span class="tv-min">4 min on mastery</span><ul class="tv-chips" aria-label="Timestamps"><li>10:00</li><li>42:25–45:51</li></ul></div>
+    </div>
+    <ul class="tv-checks">
+      <li><span class="tv-ok">✓</span>All appearances in the catalog</li>
+      <li><span class="tv-ok">✓</span>Every answer jumps to the exact minute</li>
+      <li><span class="tv-ok">✓</span>Shows how long he talks about it, so you know where to start</li>
+    </ul>
+  </div>
+
+  <div class="tv-page tv-them" data-tv-p>
+    <span class="tv-side">Them</span>
+    <div class="tv-head"><span class="tv-who">Typical podcast agency</span><span class="tv-tag">Title written once, at upload</span></div>
+    <div class="tv-body tv-fit">
+      <div class="tv-ep"><span class="tv-n">EP 47</span><span>Mindset</span><span class="tv-m">Untouched since release</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 112</span><span>Finding Your Why</span><span class="tv-m">Untouched since release</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 138</span><span>A Conversation with Sarah</span><span class="tv-m">Untouched since release</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 311</span><span>Q&A Friday #14</span><span class="tv-m">Untouched since release</span></div>
+    </div>
+    <ul class="tv-checks">
+      <li><span class="tv-x">✕</span>The title is done the day the episode goes out</li>
+      <li><span class="tv-x">✕</span>Nobody goes back to check how it performed</li>
+      <li><span class="tv-x">✕</span>Redoing the catalog by hand would take months, so it never happens</li>
+    </ul>
+  </div>
+
+  <div class="tv-page tv-us" data-tv-p>
+    <span class="tv-side">Us</span>
+    <div class="tv-head"><span class="tv-who">McFall Productions</span><span class="tv-tag">Catalog retitle</span></div>
+    <div class="tv-body tv-fit">
+      <div class="tv-ep"><span class="tv-n">EP 47</span><span>Why Your Morning Routine Is Making You More Tired | Sleep Researcher</span><span class="tv-m tv-old">Mindset</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 112</span><span>How I Quit a Six-Figure Job and Doubled My Income in a Year</span><span class="tv-m tv-old">Finding Your Why</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 138</span><span>3 Money Mistakes Most Couples Make in Their First Year | Financial Therapist</span><span class="tv-m tv-old">A Conversation with Sarah</span></div>
+      <div class="tv-ep"><span class="tv-n">EP 311</span><span>Is It Too Late to Change Careers at 40? Your Questions Answered</span><span class="tv-m tv-old">Q&A Friday #14</span></div>
+    </div>
+    <ul class="tv-checks">
+      <li><span class="tv-ok">✓</span>Written from what the guest actually said, pulled from the transcript</li>
+      <li><span class="tv-ok">✓</span>Checked against the show’s style rules, fixes the weakest first</li>
+      <li><span class="tv-ok">✓</span>400 titles proofread in a single day</li>
+    </ul>
+  </div>
+  </div>
+</section>
+<script>
+(()=>{
+const CAPS=[
+  {k:'Chapter 1 · The episode',t:'“Why Nobody Can Focus Anymore (and How to Get It Back)”',q:false,m:['<b>GUEST</b> on a weekly interview show','61 min']},
+  {k:'Chapter 2 · The question',t:'“What has Robert Greene said on the show about mastery? Give me the episodes and timestamps.”',q:true,m:['Searching <b>The School of Greatness</b> back catalog','2013 to today']},
+  {k:'Chapter 3 · The job',t:'“Our old episodes have titles nobody would search for. Can you fix them?”',q:true,m:['<b>Your</b> back catalog','Hundreds of episodes']}
+];
+const $=id=>document.getElementById(id);
+const src=[...document.querySelectorAll('#tv-src [data-tv-p]')];
+const book=$('tv-book'), track=$('tv-track'), cap=$('tv-cap'), prev=$('tv-prev'), next=$('tv-next'), count=$('tv-count');
+const sec=$('compare');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const barH=()=>parseFloat(getComputedStyle(document.documentElement).fontSize)*3;
+let leaves=[], flips=0, mode='', shownCap=-1;
+const el=(c)=>{const d=document.createElement('div'); d.className=c; return d};
+function clone(i,side){ if(i>=src.length) return null; const n=src[i].cloneNode(true); n.classList.add(side); return n; }
+function build(){
+  const m=innerWidth>=820?'spread':'single'; if(m===mode){size();return} mode=m;
+  book.innerHTML=''; book.className='tv-book '+m; leaves=[];
+  if(m==='spread'){
+    // Spread k: page 2k (Them) left, page 2k+1 (Us) right.
+    const s=el('tv-static'); s.appendChild(clone(0,'l')); book.appendChild(s);
+    for(let i=1;i<src.length;i+=2){
+      const L=el('tv-leaf'), fr=el('tv-face front'), bk=el('tv-face back');
+      fr.appendChild(clone(i,'r')); const b=clone(i+1,'l'); if(b) bk.appendChild(b);
+      L.append(fr,bk); book.appendChild(L); leaves.push(L);
+    }
+  }else{
+    src.forEach((_,i)=>{ const L=el('tv-leaf'), fr=el('tv-face front'); fr.appendChild(clone(i,'r')); L.appendChild(fr); book.appendChild(L); leaves.push(L); });
+  }
+  flips=leaves.length-1; shownCap=-1; size();
+}
+function stepH(){ return (innerHeight-barH())*0.9; }
+function size(){
+  const vw=innerWidth, vh=innerHeight-barH(), gutter=32;
+  let pw,ph;
+  if(mode==='spread'){ ph=Math.min(vh-cap.offsetHeight-110,600); pw=Math.min((vw-gutter)/2,544,ph*1.05); }
+  else { pw=Math.min(vw-gutter,460); ph=Math.min(vh-cap.offsetHeight-115,pw*1.55); }
+  ph=Math.max(ph,360);
+  const st=sec.style;
+  st.setProperty('--tv-pw',pw+'px'); st.setProperty('--tv-ph',ph+'px');
+  st.setProperty('--tv-bw',(mode==='spread'?pw*2:pw)+'px');
+  st.setProperty('--tv-leafx',(mode==='spread'?pw:0)+'px');
+  st.setProperty('--tv-bodyh',Math.max(140,ph*0.5)+'px');
+  track.style.height=(flips*stepH()+vh)+'px';
+  // Pages whose lists must show in full (no fade) can need more room than a short screen gives.
+  // Measure every page at natural height and, if any is too tall, scale all pages by the same amount.
+  const pages=[...book.querySelectorAll('.tv-page')];
+  pages.forEach(p=>{ p.style.cssText=''; });
+  let z=1;
+  pages.forEach(p=>{ p.style.bottom='auto'; z=Math.min(z,ph/p.offsetHeight); p.style.bottom=''; });
+  z=Math.max(.68,z);
+  if(z<.995) pages.forEach(p=>{ p.style.cssText=`zoom:${z.toFixed(3)};inset:0 auto auto 0;width:${pw/z}px;height:${ph/z}px`; });
+  render();
+}
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+function progress(){ return Math.max(0,Math.min(flips,(barH()-track.getBoundingClientRect().top)/stepH())); }
+// All three captions sit stacked in one grid cell, so the box keeps one size and only the text fades.
+cap.innerHTML=CAPS.map(c=>`<div class="tv-cap__i"><span class="tv-cap__k">${c.k}</span><h3 class="tv-cap__t">${c.t}</h3><div class="tv-cap__m">${c.m.map(x=>`<span>${x}</span>`).join('')}</div></div>`).join('');
+const capItems=[...cap.children];
+function setCap(i){
+  if(i===shownCap) return; shownCap=i;
+  capItems.forEach((n,j)=>{ n.classList.toggle('on',j===i); n.setAttribute('aria-hidden',j===i?'false':'true'); });
+}
+function render(){
+  const p=progress();
+  leaves.forEach((L,i)=>{
+    let t=Math.max(0,Math.min(1,p-i)); if(i>=flips) t=0; if(reduce) t=t>.5?1:0;
+    L.style.transform=`rotateY(${-180*ease(t)}deg)`;
+    L.style.zIndex=(t>0&&t<1)?50:(t>=1?10+i:10-i+20);
+    const sh=(Math.sin(Math.PI*t)*.9).toFixed(3);
+    L.querySelectorAll('.tv-face').forEach(f=>f.style.setProperty('--sh',sh));
+    if(mode==='single'){ L.style.visibility=t>=1?'hidden':'visible'; L.style.opacity=t>.5?(1-(t-.5)*2).toFixed(3):'1'; }
+  });
+  const cur=Math.round(p);
+  setCap(Math.min(CAPS.length-1,mode==='spread'?cur:Math.floor(cur/2)));
+  count.textContent=`${cur+1} / ${flips+1}`;
+  prev.disabled=cur<=0; next.disabled=cur>=flips;
+}
+function go(d){
+  const cur=Math.max(0,Math.min(flips,Math.round(progress())+d));
+  const top=track.getBoundingClientRect().top+scrollY-barH()+cur*stepH();
+  scrollTo({top,behavior:reduce?'auto':'smooth'});
+}
+prev.addEventListener('click',()=>go(-1));
+next.addEventListener('click',()=>go(1));
+let raf=0; addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})},{passive:true});
+addEventListener('resize',build);
+build();
+})();
+</script>
+
 <!-- 5. GOLDMINE -->
 <section id="goldmine" class="tile" data-tone="light">
   <div class="wrap">

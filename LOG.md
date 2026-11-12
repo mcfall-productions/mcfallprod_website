@@ -9,6 +9,11 @@
 - **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
 - **Waiting on:** Nothing.
 
+## 2026-11-09 · Comparison section: anonymized chapters 1 and 3 (PR #35)
+- **Done:** In the homepage draft's "Same episode. Two results." section (`mcfall-website/minimal/src/page.html`, rebuilt `index.html`): Chapter 1 now uses HOST and GUEST with reworded lines, a made-up episode title, and invented ad reads and intro on the Them page (no SOG names or text left). Chapter 3 uses made-up old titles ("Mindset", "Finding Your Why", "A Conversation with Sarah", "Q&A Friday #14") against specific, searchable rewrites. Intro line and footnote updated to say chapters 1 and 3 use made-up names. Checked in a local preview.
+- **Waiting on:** Scott: OK to commit and push to PR #35 (not committed yet).
+- **Next:** Chapter 2 (Robert Greene archive search) is still real SOG content; decide whether to anonymize it too. Older drafts in `comparison/` still have the SOG versions.
+
 ## 2026-11-09 · Daily CTA check: all clear
 - **Done:** Live site checked (nav anchors, audit buttons, popup open/close, validation, mobile 375px, no console errors). Test opt-in POST returned 200 `success: true`; "Free audit request: CTA Test" email arrived in team@scottmcfall.com at 2:11 PM.
 - **Waiting on:** Nothing.
@@ -22,6 +27,29 @@
 - **Done:** `/referral/` now uses the homepage look (white/grey/black tiles, one gold, pill buttons, sticky ribbon, dark proof panel) and its copy ("free audit" instead of "Buried Gold Report", titles/show notes/transcripts published on host, website and YouTube). Terms, fee and email address unchanged. Checked desktop and 375px, no overflow or console errors.
 - **Waiting on:** Scott's OK to merge the PR (merging puts it live).
 - **Next:** Review the preview at /pr-preview/pr-<n>/referral/.
+## 2026-11-05 · Comparison chapter 2: real timestamps (PR #35)
+- **Done:** Chapter 2 "Us" page now shows minutes on mastery plus timestamp ranges instead of downloads, pulled from the SOG transcripts: EP 1 (31 min, 4 ranges), EP 713 (5 min), EP 1024 (4 min). Dropped EP 750 and EP 1174 (no mastery talk in their transcripts) and EP 1193 (Scott's call). Check now reads "All appearances in the catalog". Footnote moved under the book and no longer mentions downloads. Pages scale down evenly on short screens so nothing is cut off. Pushed to PR #35.
+- **Decided:** EP 1193 stays out (Scott, 5 Nov).
+- **Waiting on:** Lauren: review PR #35 (Asana task in Goldmine launch, assigned 5 Nov: https://app.asana.com/1/1211366034618669/project/1218999910620926/task/1220288828575806).
+- **Note:** Minutes are summed from the ranges where mastery comes up, not a full topic count.
+
+## 2026-11-05 · Comparison section: Scott's round 1 changes (PR #35)
+- **Done:** Bigger chapter labels; all three chapter titles upright (Chapter 1 was the only non-italic one, being an episode title, not a client quote); long titles run full width before wrapping; less space between the intro and the book; caption box keeps one size, only its text fades. THEM/US are now big pills; Them pages get a generic "AI tool" look (purple-blue gradient, sparkle, lavender background). Pushed to PR #35.
+- **Waiting on:** Scott: review https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+
+## 2026-11-05 · Them/Us book added to the homepage draft (PR #35)
+- **Done:** Added the page-turn comparison as a homepage section, between "We did it for The School of Greatness first" and "Back Catalog Goldmine", heading "Same episode. Two results." Edited `mcfall-website/minimal/src/page.html`, rebuilt `index.html`, pushed to [PR #35](https://github.com/mcfall-productions/mcfallprod_website/pull/35). Preview: https://mcfallprod.com/pr-preview/pr-35/drafts/minimal/#compare
+- **Waiting on:** Scott (and Lauren): review the preview. Merging puts it live, so not without Scott's OK.
+- **Next:** OK to show archive results publicly; fix EP 1's "Unknown" Greene label before quoting its lines.
+
+## 2026-11-04 · Book version: one spread per comparison
+- **Done:** Rebuilt the page-turn book (https://claude.ai/artifact/U6Q3i9WkD1bJ5HcRW7juov) so each comparison is exactly two pages: Them on the left, Us on the right. Three spreads (transcript, Robert Greene search, old titles, the last one new). Chapter title sits in a band above the book and changes per spread; headline moved above the book; "scroll to turn" hint and filler pages removed. Checked on desktop and phone screenshots. Source: `comparison/theirs-vs-ours-book.html`.
+- **Done:** Both pages (flat and book) on branch `feature/theirs-vs-ours` with a PR into `GH`; previews carry them at `/drafts/comparison/`. Live site unchanged.
+- **Waiting on:** Scott: review the PR preview and pick flat or book.
+
+## 2026-11-04 · "Theirs vs ours" comparison draft
+- **Done:** Draft section `comparison/theirs-vs-ours.html` (artifact: https://claude.ai/artifact/411CtacQEkt1YQF2fuhkXX). Two tabs: a free AI transcript tool vs our Cal Newport transcript, and a free podcast chatbot vs our archive on Robert Greene. Competitors unnamed ("Typical AI tool"). Data from `mcfallProdBiz/research_notes/competitor-tests/`. Not on the live site.
+- **Next:** Scott: feedback on the draft, then decide whether it goes on the homepage (PR into `GH`). Scott and Lauren: OK to show archive results publicly. Fix EP 1's "Unknown" Greene label before quoting its lines.
 
 ## 2026-11-03 · Daily CTA check: audit form endpoint down
 - **Done:** Checked mcfallprod.com. Nav anchors, all 3 "Get my free audit" buttons, popup open/close (x), empty and invalid-email messages, "Back to the site" all work. No page errors.
