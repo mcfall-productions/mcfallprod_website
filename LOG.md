@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-14 · Daily CTA check: all clear
+- **Done:** Live site (desktop): audit buttons, nav anchors, validation, thank-you, Back/close all work; Web3Forms POST 200 `success: true`; no console errors or broken images. "Free audit request: CTA Test" arrived in team@scottmcfall.com (2:15 PM).
+- **Waiting on:** Nothing.
+- **Next:** Mobile width not scripted-tested today (browser pane was hidden). After a successful submit, reopening the popup still shows the thank-you state until reload (minor).
+
 ## 2026-11-13 · Daily CTA check
 - **Done:** Live site checked desktop + mobile: audit buttons, nav anchors, validation, close/back all work; Web3Forms POST returned 200 success:true; no console errors or 404s.
 - **Waiting on:** Gmail delivery check not done. Two Chrome browsers are connected and the scheduled run can't choose one.
