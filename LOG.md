@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-11-12 · "Theirs vs ours" comparison is live (PR #35)
+- **Done:** Merged main into PR #35 (only LOG.md conflicted), preview checked, merged on Scott's OK. "Same episode. Two results." is live at https://mcfallprod.com/#compare; deploy succeeded and the section shows on the live page. Closes the 11-05 waits on Scott's and Lauren's review.
+- **Next:** Chapter 2 (Robert Greene archive search) is still real SOG content; decide whether to anonymize it. Fix EP 1's "Unknown" Greene label if its lines get quoted.
+
 ## 2026-11-12 · Minimal site is now `main`
 - **Done:** Old React `main` saved as tag `archive/old-react-main` and deleted; `GH` renamed to `main` (now the default branch; PR #35 retargeted automatically). Live site unchanged (same commit ff52e25). Branch `chore/main-is-minimal` drops `GH` from `deploy.yml` and updates CLAUDE.md.
 - **Waiting on:** Scott: OK to push `chore/main-is-minimal` and merge it. Lauren: run `git fetch --prune` and `git branch -f main origin/main` once (her local `GH`/`main` are stale).
