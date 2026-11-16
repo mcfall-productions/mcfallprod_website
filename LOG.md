@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-16 · Daily CTA check: all clear
+- **Done:** Live site: audit popup, nav anchors, outbound links, validation, thank-you, Back to the site all work; Web3Forms POST 200 `success: true`; no console errors. "Free audit request: CTA Test" arrived in team@scottmcfall.com (2:10 PM).
+- **Waiting on:** Nothing.
+- **Next:** Same check tomorrow. Mobile width not scripted-tested.
+
 ## 2026-11-15 · Daily CTA check: all clear
 - **Done:** Live site: audit buttons, nav anchors, outbound links, Back/close all work; Web3Forms POST 200 `success: true`; thank-you shown; no console errors. "Free audit request: CTA Test" arrived in team@scottmcfall.com (2:11 PM).
 - **Waiting on:** Nothing.
