@@ -9,6 +9,11 @@
 - **Waiting on:** Scott: OK to push `chore/main-is-minimal` and merge it. Lauren: run `git fetch --prune` and `git branch -f main origin/main` once (her local `GH`/`main` are stale).
 - **Note:** The Claude GitHub Actions workflows from PR #10 lived only on the old main; they're in the tag if ever wanted.
 
+## 2026-11-17 · BCG explainer added to /referral/
+- **Done:** Copied the "What you're introducing: Back Catalog Goldmine" section (with the full-offer link) from /SOGreferral/ to /referral/, right after the hero. Fee and terms unchanged. Merged live at Lauren's request.
+- **Waiting on:** Nothing.
+- **Next:** Send Lewis the /SOGreferral/ link if not sent.
+
 ## 2026-11-10 · Daily CTA check: all clear
 - **Done:** Live site checked (anchors, audit buttons, popup, no console errors). Test opt-in POST returned 200 `success: true`; thank-you state showed; "Free audit request: CTA Test" email arrived in team@scottmcfall.com.
 - **Waiting on:** Nothing.
