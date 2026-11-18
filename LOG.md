@@ -242,3 +242,7 @@
 ## 2026-11-17 · Daily CTA check
 - **Done:** Live site checked (desktop + mobile): nav anchors, all audit buttons, popup close/back, validation, copy address. Web3Forms POST returned 200 `success:true`; "Free audit request: CTA Test" arrived at team@scottmcfall.com. No console errors or broken links.
 - **Waiting on:** Nothing.
+
+## 2026-11-18 · Daily CTA check: all clear
+- **Done:** Live site checked at desktop (1440) and mobile (375): nav anchors, all 3 audit buttons, popup ×/Back to the site, empty/invalid-email validation, Copy address, Calendly + 9 show links (all 200). Web3Forms POST returned 200 `success:true`; "Free audit request: CTA Test" arrived at team@scottmcfall.com. No console errors.
+- **Waiting on:** Nothing.
