@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-18 · "Woman-owned" added to the site (branch, not pushed)
+- **Done:** Branch `feat/woman-owned`: homepage team line ("a woman-owned, husband-and-wife business") and footer ("Woman-owned business"), footers on /referral/ and /SOGreferral/, meta description in `live.mjs` and root `index.html`, and new schema.org Organization JSON-LD in the live head. Homepage rebuilt; JSON-LD parses. Scott confirmed Lauren owns 51%+.
+- **Waiting on:** Scott: OK to commit, push and open the PR (merging puts it live).
+- **Ideas:** WBENC or SBA WOSB certification, once Lauren decides it's worth it.
+
 ## 2026-11-12 · "Theirs vs ours" comparison is live (PR #35)
 - **Done:** Merged main into PR #35 (only LOG.md conflicted), preview checked, merged on Scott's OK. "Same episode. Two results." is live at https://mcfallprod.com/#compare; deploy succeeded and the section shows on the live page. Closes the 11-05 waits on Scott's and Lauren's review.
 - **Next:** Chapter 2 (Robert Greene archive search) is still real SOG content; decide whether to anonymize it. Fix EP 1's "Unknown" Greene label if its lines get quoted.
