@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-11-18 · "Woman-owned" removed from the site
+- **Done:** Ownership is 50/50 (Lauren), so "woman-owned" doesn't apply. Removed it from the homepage team line and footer, /referral/ and /SOGreferral/ footers, both meta descriptions, and the JSON-LD description and keywords. Supersedes the entry below. Branch `fix/remove-woman-owned`.
+- **Waiting on:** Merge to put it live.
+
 ## 2026-11-18 · New link-preview image (og.png)
 - **Done:** Replaced the old ivory/navy share image with one matching the live hero ("We build every podcast episode to earn.", gold accent). Source in `mcfall-website/minimal/og/` (`og.html` + `render.mjs`). Share URL bumped to `og.png?v=2` so LinkedIn and others refetch. Branch `fix/og-image`, committed locally.
 - **Waiting on:** Scott's OK to push, open the PR and merge (merge puts it live).
