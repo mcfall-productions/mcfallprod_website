@@ -1,5 +1,10 @@
 # Project log
 
+## 2026-11-18 · New link-preview image (og.png)
+- **Done:** Replaced the old ivory/navy share image with one matching the live hero ("We build every podcast episode to earn.", gold accent). Source in `mcfall-website/minimal/og/` (`og.html` + `render.mjs`). Share URL bumped to `og.png?v=2` so LinkedIn and others refetch. Branch `fix/og-image`, committed locally.
+- **Waiting on:** Scott's OK to push, open the PR and merge (merge puts it live).
+- **Next:** After it's live, run https://mcfallprod.com/ through LinkedIn Post Inspector. Posts already shared keep the old preview.
+
 ## 2026-11-18 · "Woman-owned" added to the site (branch, not pushed)
 - **Done:** Branch `feat/woman-owned`: homepage team line ("a woman-owned, husband-and-wife business") and footer ("Woman-owned business"), footers on /referral/ and /SOGreferral/, meta description in `live.mjs` and root `index.html`, and new schema.org Organization JSON-LD in the live head. Homepage rebuilt; JSON-LD parses. Scott confirmed Lauren owns 51%+.
 - **Waiting on:** Scott: OK to commit, push and open the PR (merging puts it live).
