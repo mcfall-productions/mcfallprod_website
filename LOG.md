@@ -246,3 +246,9 @@
 ## 2026-11-18 · Daily CTA check: all clear
 - **Done:** Live site checked at desktop (1440) and mobile (375): nav anchors, all 3 audit buttons, popup ×/Back to the site, empty/invalid-email validation, Copy address, Calendly + 9 show links (all 200). Web3Forms POST returned 200 `success:true`; "Free audit request: CTA Test" arrived at team@scottmcfall.com. No console errors.
 - **Waiting on:** Nothing.
+
+## 2026-11-19 · Daily CTA check: site all clear, inbox check blocked
+- **Done:** Live site checked at desktop (1280) and mobile (375): all 5 nav anchors land on target, all 3 "Get my free audit" buttons open the popup, × and "Back to the site" close it, empty/invalid-email validation messages fire, Copy address falls back cleanly. All requests 200, no console errors, no horizontal overflow on mobile. Calendly, the 9 show links and /referral/ all 200.
+- **Done:** Opt-in submitted (CTA Test / l.nickoloff.mcfall@gmail.com). Web3Forms POST returned HTTP 200 with `success: true` and the thank-you state showed.
+- **Waiting on:** Scott or Lauren to sign in to Gmail for team@scottmcfall.com in Chrome — Google asked to re-verify, so the usual "did the email actually arrive" check could not run today. No site change needed.
+- **Next:** Re-run the inbox half of the check once Chrome is signed in again.
