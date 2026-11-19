@@ -1,5 +1,9 @@
 # Project log
 
+## 2026-11-19 · "Woman-owned" back on the site
+- **Done:** Reverted yesterday's removal on Lauren's request: homepage team line and footer, /referral/ and /SOGreferral/ footers, both meta descriptions, JSON-LD. Build passes, JSON-LD parses. Branch `feat/restore-woman-owned`.
+- **Waiting on:** Merge the PR to put it live.
+
 ## 2026-11-19 · /portfolio/ page for Lauren is live (PR #43)
 - **Done:** Static page at `public/portfolio/` in the homepage style: note on limited access to past client decks, A Mindful Emergence webinar (80-second excerpt + 10 slides), Bill Baren program Module 4 (12 slides), 4-step process (storyboard, style, build, animate), before/after redesign study (2 HTML slides, not client work), Back Catalog Goldmine overview video, 7 School of Greatness reels, testimonials from Bill Baren and JJ Virgin, link to mcfallprod.com, contact. Media about 37 MB. Checked desktop and 375px, no console errors. `noindex` set. Branch `feat/portfolio-page`.
 - **Decided:** Lauren reordered it (explainer video, process, redesign, webinar, online program, reels, testimonials, contact) and said Scott's OK isn't needed for this page; merged on her word.
