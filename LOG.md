@@ -1,5 +1,16 @@
 # Project log
 
+## 2026-11-20 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked at 1440px and 375px. All three "Get my free audit" buttons open the popup; × and "Back to the site" close it; nav anchors (#back-catalog, #overview, #production, #team, #top) land with the 48px offset; "Copy address" works (clipboard blocked in the headless pane, so it fell back to selecting team@mcfallprod.com, as designed).
+- **Done:** Opt-in submitted as "CTA Test" / l.nickoloff.mcfall@gmail.com. Web3Forms returned HTTP 200 with `success: true`; thank-you state showed. Empty-name and invalid-email messages both fire. Delivery confirmed: "Free audit request: CTA Test" in team@scottmcfall.com at 2:13 PM.
+- **Done:** No console errors, no 404s. All page assets 200; Calendly, the eight Apple Podcasts links, the YouTube channel, /referral/, /portfolio/, favicon and og.png all 200.
+- **Waiting on:** Nothing from this check. (`feat/restore-woman-owned` is still unmerged from 19 Nov.)
+- **Next:** Nothing. Next run tomorrow.
+
+## 2026-11-19 · "Woman-owned" back on the site
+- **Done:** Reverted yesterday's removal on Lauren's request: homepage team line and footer, /referral/ and /SOGreferral/ footers, both meta descriptions, JSON-LD. Build passes, JSON-LD parses. Branch `feat/restore-woman-owned`.
+- **Waiting on:** Merge the PR to put it live.
+
 ## 2026-11-19 · /portfolio/ page for Lauren is live (PR #43)
 - **Done:** Static page at `public/portfolio/` in the homepage style: note on limited access to past client decks, A Mindful Emergence webinar (80-second excerpt + 10 slides), Bill Baren program Module 4 (12 slides), 4-step process (storyboard, style, build, animate), before/after redesign study (2 HTML slides, not client work), Back Catalog Goldmine overview video, 7 School of Greatness reels, testimonials from Bill Baren and JJ Virgin, link to mcfallprod.com, contact. Media about 37 MB. Checked desktop and 375px, no console errors. `noindex` set. Branch `feat/portfolio-page`.
 - **Decided:** Lauren reordered it (explainer video, process, redesign, webinar, online program, reels, testimonials, contact) and said Scott's OK isn't needed for this page; merged on her word.
