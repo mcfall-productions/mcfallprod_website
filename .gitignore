@@ -21,3 +21,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Explainer render output (33 MB of generated audio/frames)
+explainer/build/
