@@ -1,5 +1,12 @@
 # Project log
 
+## 2026-11-23 · Audit popup consent by region, privacy page (PR #46)
+- **Done:** On local branch `newsletter-optin-v2`, not committed: US time zones keep the required audit + newsletter box; everyone else gets the audit with a separate optional unticked box. Box moved above the send button. Consent record now saves the exact wording and time zone. Added `/privacy/`, plus the Asheville mailing address and privacy link in the popup and footer. Tested US, Toronto, Paris and UTC with form sends blocked.
+- **Done:** Google Analytics now loads only for US time zones (`live.mjs`), and the privacy page says so. Checked 3 US zones (loads) and Toronto, Paris, London, UTC (doesn't).
+- **Decided:** Scott chose the automatic time-zone swap over a separate "EU and Canadian podcasts" link, and US-only Analytics. Non-US traffic will no longer show in Google Analytics after merge.
+- **Waiting on:** Scott: OK to commit and push to PR #46, then OK to merge.
+- **Next:** Every newsletter must carry the mailing address and an unsubscribe link. Only add people whose `newsletter_consent` starts with YES.
+
 ## 2026-11-19 · /portfolio/ page for Lauren is live (PR #43)
 - **Done:** Static page at `public/portfolio/` in the homepage style: note on limited access to past client decks, A Mindful Emergence webinar (80-second excerpt + 10 slides), Bill Baren program Module 4 (12 slides), 4-step process (storyboard, style, build, animate), before/after redesign study (2 HTML slides, not client work), Back Catalog Goldmine overview video, 7 School of Greatness reels, testimonials from Bill Baren and JJ Virgin, link to mcfallprod.com, contact. Media about 37 MB. Checked desktop and 375px, no console errors. `noindex` set. Branch `feat/portfolio-page`.
 - **Decided:** Lauren reordered it (explainer video, process, redesign, webinar, online program, reels, testimonials, contact) and said Scott's OK isn't needed for this page; merged on her word.
