@@ -1,5 +1,11 @@
 # Project log
 
+## 2026-11-23 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked. Three "Get my free audit" buttons open the popup; Back to the site and × close it; all 5 nav anchors resolve; Copy address and outbound links present. No console errors. (Mobile width not re-tested today.)
+- **Done:** Opt-in as "CTA Test": invalid-email and empty messages fire; Web3Forms returned HTTP 200 `success: true`; thank-you showed. Delivery confirmed in team@scottmcfall.com at 2:11 PM.
+- **Waiting on:** `feat/restore-woman-owned` still unmerged.
+- **Next:** Nothing. Next run tomorrow.
+
 ## 2026-11-22 · Daily CTA + opt-in check: all clear
 - **Done:** Live mcfallprod.com checked at 1440px and 375px. All three "Get my free audit" buttons open the popup; × and "Back to the site" close it and restore page scroll; nav anchors (#back-catalog, #production, #team, #overview, #top) all land with the 48px bar offset; the section links are hidden under 720px by design (`.bar nav { display: none }`). "Copy address" fell back to selecting team@mcfallprod.com, as designed (clipboard write blocked in the automated pane). No horizontal scroll at 375px; popup fields and send button all render.
 - **Done:** Opt-in submitted as "CTA Test" / l.nickoloff.mcfall@gmail.com. Web3Forms returned HTTP 200 with `success: true` ("Form submitted successfully!"); thank-you state showed the right address. Empty-name and invalid-email messages both fire. Delivery confirmed: "Free audit request: CTA Test" in team@scottmcfall.com at 2:59 PM, auto-reply label applied.
