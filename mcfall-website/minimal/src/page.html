@@ -1004,7 +1004,7 @@ build();
         <input id="show-email" class="in" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Your email address" required>
         <input type="text" id="show-site" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn btn--full" id="btn-send" type="submit">Email me my free audit</button>
-        <label class="pop__check" for="show-news"><input type="checkbox" id="show-news" name="newsletter" value="yes"><span>Yes, also send me the McFall Productions weekly email newsletter. I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.</span></label>
+        <label class="pop__check" for="show-news"><input type="checkbox" id="show-news" name="newsletter" value="yes" required><span>I agree to receive my free audit and the McFall Productions weekly email newsletter. I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.</span></label>
         <p class="pop__legal" id="consent-note">We'll use your email to send your audit and reply to you. McFall Productions, team@mcfallprod.com.</p>
         <p class="note" id="form-status" role="status" hidden></p>
       </div>
@@ -1242,6 +1242,7 @@ build();
     e.preventDefault();
     var name = clean(nameIn.value, 120), email = clean(emailIn.value, 160);
     if (!name) { say('Type your show\'s name first.'); nameIn.focus(); return; }
+    if (!$('#show-news').checked) { say('Please tick the box to agree to receive your audit and our weekly newsletter.'); $('#show-news').focus(); return; }
     if (!email || !emailIn.checkValidity()) { say('Enter a valid email address so we know where to send it.'); emailIn.focus(); return; }
     say('');
     if ($('#show-site').value) { finish(); return; }   /* spam trap: bots fill the hidden field */
@@ -1255,7 +1256,7 @@ build();
     }
     var wait = setTimeout(fail, WAIT_MS);
     fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, newsletter_consent: $('#show-news').checked ? 'YES, ticked unchecked-by-default box: "Yes, also send me the McFall Productions weekly email newsletter." at ' + new Date().toISOString() : 'No', botcheck: '' }) })
+      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, newsletter_consent: 'YES, ticked box: "I agree to receive my free audit and the McFall Productions weekly email newsletter." at ' + new Date().toISOString(), botcheck: '' }) })
       .then(function (r) { return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) { if (!x.ok || !x.j || x.j.success !== true) throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
       .catch(fail);
