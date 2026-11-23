@@ -1,5 +1,38 @@
 # Project log
 
+## 2026-11-23 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked. Three "Get my free audit" buttons open the popup; Back to the site and × close it; all 5 nav anchors resolve; Copy address and outbound links present. No console errors. (Mobile width not re-tested today.)
+- **Done:** Opt-in as "CTA Test": invalid-email and empty messages fire; Web3Forms returned HTTP 200 `success: true`; thank-you showed. Delivery confirmed in team@scottmcfall.com at 2:11 PM.
+- **Waiting on:** `feat/restore-woman-owned` still unmerged.
+- **Next:** Nothing. Next run tomorrow.
+
+## 2026-11-22 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked at 1440px and 375px. All three "Get my free audit" buttons open the popup; × and "Back to the site" close it and restore page scroll; nav anchors (#back-catalog, #production, #team, #overview, #top) all land with the 48px bar offset; the section links are hidden under 720px by design (`.bar nav { display: none }`). "Copy address" fell back to selecting team@mcfallprod.com, as designed (clipboard write blocked in the automated pane). No horizontal scroll at 375px; popup fields and send button all render.
+- **Done:** Opt-in submitted as "CTA Test" / l.nickoloff.mcfall@gmail.com. Web3Forms returned HTTP 200 with `success: true` ("Form submitted successfully!"); thank-you state showed the right address. Empty-name and invalid-email messages both fire. Delivery confirmed: "Free audit request: CTA Test" in team@scottmcfall.com at 2:59 PM, auto-reply label applied.
+- **Done:** No console errors, no 404s. Page assets, Calendly, the eight Apple Podcasts links, the YouTube channel, /referral/, /SOGreferral/, /portfolio/, favicon.svg, og.png and CNAME all 200.
+- **Note:** Another audit request ("xx", 1:26 PM) arrived today from outside this check, so the live form is working for visitors too.
+- **Waiting on:** Nothing from this check. (`feat/restore-woman-owned` is still unmerged from 19 Nov.)
+- **Next:** Nothing. Next run tomorrow.
+
+## 2026-11-21 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked at 1280px and 375px. All three "Get my free audit" buttons open the popup; ×, the scrim and Escape close it; nav anchors (#back-catalog, #production, #team, #overview, #top) land with the 48px bar offset; the section links are hidden under 720px by design. "Copy address" fell back to selecting team@mcfallprod.com (clipboard write blocked in the automated pane), as designed.
+- **Done:** Opt-in submitted as "CTA Test" / l.nickoloff.mcfall@gmail.com. Web3Forms returned HTTP 200 with `success: true` ("Form submitted successfully!"); thank-you state showed the right address, and "Back to the site" and × both close it. Empty-name and invalid-email messages both fire, on desktop and mobile. Delivery confirmed: "Free audit request: CTA Test" in team@scottmcfall.com at 4:35 PM.
+- **Done:** No console errors, no 404s. Page assets, Calendly, the eight Apple Podcasts links, the YouTube channel, /referral/, /SOGreferral/, /portfolio/, favicon.svg and og.png all 200.
+- **Note:** Two real audit requests arrived today (10:38 AM and 12:26 PM), so the live form is working for visitors, not just the test.
+- **Waiting on:** Nothing from this check. (`feat/restore-woman-owned` is still unmerged from 19 Nov.)
+- **Next:** Nothing. Next run tomorrow.
+
+## 2026-11-20 · Daily CTA + opt-in check: all clear
+- **Done:** Live mcfallprod.com checked at 1440px and 375px. All three "Get my free audit" buttons open the popup; × and "Back to the site" close it; nav anchors (#back-catalog, #overview, #production, #team, #top) land with the 48px offset; "Copy address" works (clipboard blocked in the headless pane, so it fell back to selecting team@mcfallprod.com, as designed).
+- **Done:** Opt-in submitted as "CTA Test" / l.nickoloff.mcfall@gmail.com. Web3Forms returned HTTP 200 with `success: true`; thank-you state showed. Empty-name and invalid-email messages both fire. Delivery confirmed: "Free audit request: CTA Test" in team@scottmcfall.com at 2:13 PM.
+- **Done:** No console errors, no 404s. All page assets 200; Calendly, the eight Apple Podcasts links, the YouTube channel, /referral/, /portfolio/, favicon and og.png all 200.
+- **Waiting on:** Nothing from this check. (`feat/restore-woman-owned` is still unmerged from 19 Nov.)
+- **Next:** Nothing. Next run tomorrow.
+
+## 2026-11-19 · "Woman-owned" back on the site
+- **Done:** Reverted yesterday's removal on Lauren's request: homepage team line and footer, /referral/ and /SOGreferral/ footers, both meta descriptions, JSON-LD. Build passes, JSON-LD parses. Branch `feat/restore-woman-owned`.
+- **Waiting on:** Merge the PR to put it live.
+
 ## 2026-11-19 · /portfolio/ page for Lauren is live (PR #43)
 - **Done:** Static page at `public/portfolio/` in the homepage style: note on limited access to past client decks, A Mindful Emergence webinar (80-second excerpt + 10 slides), Bill Baren program Module 4 (12 slides), 4-step process (storyboard, style, build, animate), before/after redesign study (2 HTML slides, not client work), Back Catalog Goldmine overview video, 7 School of Greatness reels, testimonials from Bill Baren and JJ Virgin, link to mcfallprod.com, contact. Media about 37 MB. Checked desktop and 375px, no console errors. `noindex` set. Branch `feat/portfolio-page`.
 - **Decided:** Lauren reordered it (explainer video, process, redesign, webinar, online program, reels, testimonials, contact) and said Scott's OK isn't needed for this page; merged on her word.
