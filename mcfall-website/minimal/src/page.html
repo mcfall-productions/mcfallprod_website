@@ -346,6 +346,7 @@ ul, ol { padding: 0; list-style: none; }
 .pop__check { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 0.9375rem; line-height: 1.4; color: var(--sc-ink-soft); cursor: pointer; }
 .pop__check input { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--sc-ink); }
 .pop__legal { font-size: 0.8125rem; line-height: 1.45; color: var(--sc-ink-soft); }
+.pop__legal a, .colophon a { color: inherit; text-decoration: underline; }
 .pop__skip { justify-self: center; background: none; border: 0; padding: 0.3rem; cursor: pointer; font-size: 0.875rem; color: var(--sc-ink-soft); }
 
 .no-sc [data-sc-in], .no-sc [data-sc-stagger] > * { opacity: 1; transform: none; }
@@ -981,6 +982,7 @@ build();
     <footer class="colophon">
       <b>McFall Productions</b>
       <span>Scott &amp; Lauren McFall · Producers of The School of Greatness with Lewis Howes and The Daily Motivation</span>
+      <span>69 Grandview Rd, Asheville, NC 28806 · <a href="/privacy/" data-privacy>Privacy policy</a></span>
       <span>© 2026 McFall Productions. All rights reserved.</span>
     </footer>
   </div>
@@ -1002,9 +1004,9 @@ build();
         <label for="show-email" class="sr">Your email address</label>
         <input id="show-email" class="in" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Your email address" required>
         <input type="text" id="show-site" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <label class="pop__check" for="show-news"><input type="checkbox" id="show-news" name="newsletter" value="yes"><span id="news-text">Also send me the McFall Productions weekly email newsletter (optional). I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.</span></label>
+        <p class="pop__legal" id="consent-note">We'll use your email to send your audit and reply to you. McFall Productions, 69 Grandview Rd, Asheville, NC 28806, team@mcfallprod.com. <a href="/privacy/" data-privacy target="_blank" rel="noopener">Privacy policy</a></p>
         <button class="btn btn--full" id="btn-send" type="submit">Email me my free audit</button>
-        <label class="pop__check" for="show-news"><input type="checkbox" id="show-news" name="newsletter" value="yes" required><span>I agree to receive my free audit and the McFall Productions weekly email newsletter. I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.</span></label>
-        <p class="pop__legal" id="consent-note">We'll use your email to send your audit and reply to you. McFall Productions, team@mcfallprod.com.</p>
         <p class="note" id="form-status" role="status" hidden></p>
       </div>
     </form>
@@ -1229,6 +1231,25 @@ build();
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePop(); });
   document.querySelectorAll('[data-open]').forEach(function (b) { b.addEventListener('click', openPop); });
 
+  /* PR previews live under /pr-preview/pr-N/, so point privacy links at that copy there */
+  var previewRoot = location.pathname.match(/^\/pr-preview\/pr-\d+\//);
+  if (previewRoot) document.querySelectorAll('[data-privacy]').forEach(function (a) { a.href = previewRoot[0] + 'privacy/'; });
+
+  /* Newsletter consent: US visitors get the required combined box. Everyone else, including
+     anyone whose time zone we can't read, keeps the optional box from the HTML (GDPR, CASL). */
+  var US_ZONES = 'America/Adak America/Anchorage America/Atka America/Boise America/Chicago America/Denver America/Detroit America/Fort_Wayne America/Indiana/Indianapolis America/Indiana/Knox America/Indiana/Marengo America/Indiana/Petersburg America/Indiana/Tell_City America/Indiana/Vevay America/Indiana/Vincennes America/Indiana/Winamac America/Indianapolis America/Juneau America/Kentucky/Louisville America/Kentucky/Monticello America/Knox_IN America/Los_Angeles America/Louisville America/Menominee America/Metlakatla America/New_York America/Nome America/North_Dakota/Beulah America/North_Dakota/Center America/North_Dakota/New_Salem America/Phoenix America/Shiprock America/Sitka America/Yakutat Navajo Pacific/Honolulu US/Alaska US/Aleutian US/Arizona US/Central US/East-Indiana US/Eastern US/Hawaii US/Indiana-Starke US/Michigan US/Mountain US/Pacific'.split(' ');
+  var visitorTz = '';
+  try { visitorTz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (err) {}
+  var isUS = US_ZONES.indexOf(visitorTz) !== -1, newsBox = $('#show-news'), newsText = $('#news-text');
+  if (isUS) {
+    newsBox.required = true;
+    newsText.textContent = 'I agree to receive my free audit and the McFall Productions weekly email newsletter. I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.';
+  }
+  function consentRecord() {
+    if (!newsBox.checked) return 'NO, audit only. Do not add to the newsletter. Browser time zone: ' + (visitorTz || 'unknown');
+    return 'YES, ticked ' + (isUS ? 'required' : 'optional') + ' box: "' + newsText.textContent + '" at ' + new Date().toISOString() + '. Browser time zone: ' + (visitorTz || 'unknown');
+  }
+
   function say(msg) { status.textContent = msg || ''; status.hidden = !msg; }
   function clean(s, n) { return String(s == null ? '' : s).replace(/\s+/g, ' ').trim().slice(0, n || 200); }
   function finish() {
@@ -1241,8 +1262,8 @@ build();
     e.preventDefault();
     var name = clean(nameIn.value, 120), email = clean(emailIn.value, 160);
     if (!name) { say('Type your show\'s name first.'); nameIn.focus(); return; }
-    if (!$('#show-news').checked) { say('Please tick the box to agree to receive your audit and our weekly newsletter.'); $('#show-news').focus(); return; }
     if (!email || !emailIn.checkValidity()) { say('Enter a valid email address so we know where to send it.'); emailIn.focus(); return; }
+    if (isUS && !newsBox.checked) { say('Please tick the box to agree to receive your audit and our weekly newsletter.'); newsBox.focus(); return; }
     say('');
     if ($('#show-site').value) { finish(); return; }   /* spam trap: bots fill the hidden field */
     btn.disabled = true; btn.textContent = 'Sending\u2026';
@@ -1255,7 +1276,7 @@ build();
     }
     var wait = setTimeout(fail, WAIT_MS);
     fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, newsletter_consent: 'YES, ticked box: "I agree to receive my free audit and the McFall Productions weekly email newsletter." at ' + new Date().toISOString(), botcheck: '' }) })
+      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, newsletter_consent: consentRecord(), botcheck: '' }) })
       .then(function (r) { return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) { if (!x.ok || !x.j || x.j.success !== true) throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
       .catch(fail);
