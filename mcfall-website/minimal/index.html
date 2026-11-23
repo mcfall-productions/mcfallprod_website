@@ -775,6 +775,9 @@ ul, ol { padding: 0; list-style: none; }
 .q, .wait { font-weight: 600; font-size: 1.1875rem; letter-spacing: -0.012em; }
 .match { display: grid; gap: 0.15rem; padding: 1rem 1.1rem; border-radius: 0.9rem; background: var(--sc-surface); font-size: 0.9375rem; color: var(--sc-ink-soft); }
 .match b { color: var(--sc-ink); font-size: 1.0625rem; }
+.pop__check { display: flex; gap: 0.65rem; align-items: flex-start; font-size: 0.9375rem; line-height: 1.4; color: var(--sc-ink-soft); cursor: pointer; }
+.pop__check input { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.15rem; accent-color: var(--sc-ink); }
+.pop__legal { font-size: 0.8125rem; line-height: 1.45; color: var(--sc-ink-soft); }
 .pop__skip { justify-self: center; background: none; border: 0; padding: 0.3rem; cursor: pointer; font-size: 0.875rem; color: var(--sc-ink-soft); }
 
 .no-sc [data-sc-in], .no-sc [data-sc-stagger] > * { opacity: 1; transform: none; }
@@ -1433,6 +1436,8 @@ build();
         <input id="show-email" class="in" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Your email address" required>
         <input type="text" id="show-site" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn btn--full" id="btn-send" type="submit">Email me my free audit</button>
+        <label class="pop__check" for="show-news"><input type="checkbox" id="show-news" name="newsletter" value="yes"><span>Yes, also send me the McFall Productions weekly email newsletter. I can unsubscribe at any time using the link in every email, or by writing to team@mcfallprod.com.</span></label>
+        <p class="pop__legal" id="consent-note">We'll use your email to send your audit and reply to you. McFall Productions, team@mcfallprod.com.</p>
         <p class="note" id="form-status" role="status" hidden></p>
       </div>
     </form>
@@ -1682,7 +1687,7 @@ build();
     }
     var wait = setTimeout(fail, WAIT_MS);
     fetch(AUDIT_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, botcheck: '' }) })
+      body: JSON.stringify({ access_key: AUDIT_KEY, subject: 'Free audit request: ' + name, from_name: 'McFall Productions website', name: name, email: email, show: name, newsletter_consent: $('#show-news').checked ? 'YES, ticked unchecked-by-default box: "Yes, also send me the McFall Productions weekly email newsletter." at ' + new Date().toISOString() : 'No', botcheck: '' }) })
       .then(function (r) { return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) { if (!x.ok || !x.j || x.j.success !== true) throw 0; if (!settled) { settled = true; clearTimeout(wait); finish(); } })
       .catch(fail);
