@@ -1,5 +1,11 @@
 # Project log
 
+## 2026-11-24 · Daily CTA check: all clear
+- **Done:** Live site checked at desktop and 375px: nav anchors, all 3 audit buttons, popup open/close, validation messages, Calendly/podcast/privacy links. No page errors.
+- **Done:** Test opt-in ("CTA Test") POST to Web3Forms returned 200 with `success: true`; thank-you showed; email arrived at team@scottmcfall.com at 2:10 PM.
+- **Waiting on:** Nothing new.
+- **Next:** Same check tomorrow.
+
 ## 2026-11-23 · Audit popup consent by region, privacy page (PR #46)
 - **Done:** On local branch `newsletter-optin-v2`, not committed: US time zones keep the required audit + newsletter box; everyone else gets the audit with a separate optional unticked box. Box moved above the send button. Consent record now saves the exact wording and time zone. Added `/privacy/`, plus the Asheville mailing address and privacy link in the popup and footer. Tested US, Toronto, Paris and UTC with form sends blocked.
 - **Done:** Google Analytics now loads only for US time zones (`live.mjs`), and the privacy page says so. Checked 3 US zones (loads) and Toronto, Paris, London, UTC (doesn't).
