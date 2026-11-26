@@ -1,5 +1,11 @@
 # Project log
 
+## 2026-11-26 · Daily CTA check: all clear
+- **Done:** Live site checked at desktop and 375px: nav anchors, all 3 audit buttons, popup open/close (× and Back to the site), Copy address, validation (empty, bad email, unticked consent), privacy/referral/portfolio pages. No console errors.
+- **Done:** Test opt-in ("CTA Test") accepted by Web3Forms (thank-you shown, which needs `success: true`); email arrived at team@scottmcfall.com at 2:24 PM.
+- **Waiting on:** Nothing new.
+- **Next:** Same check tomorrow.
+
 ## 2026-11-25 · Daily CTA check: all clear
 - **Done:** Live site checked at desktop and 375px: nav anchors, all 3 audit buttons, popup open/close, Copy address, validation (empty, bad email, unticked consent), Calendly/podcast/privacy links. No console errors.
 - **Done:** Test opt-in ("CTA Test") POST to Web3Forms returned 200 with `success: true` and YES consent; thank-you showed; email arrived at team@scottmcfall.com at 2:41 PM.
