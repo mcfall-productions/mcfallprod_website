@@ -1,5 +1,12 @@
 # Project log
 
+## 2026-11-27 · Daily CTA check: all clear
+- **Done:** Live site checked at desktop and 375px: nav anchors (all targets exist), all 3 audit buttons open the popup, × and Back to the site close it, Copy address, validation (empty name, bad email, unticked consent), privacy/referral/favicon/og/scrollcraft all 200. No horizontal scroll on mobile.
+- **Done:** Test opt-in ("CTA Test") accepted by Web3Forms: thank-you showed, which the code only shows on HTTP OK + `success: true`.
+- **Done:** Email arrived at team@scottmcfall.com at 3:52 PM.
+- **Waiting on:** Nothing new.
+- **Next:** Same check tomorrow.
+
 ## 2026-11-26 · Daily CTA check: all clear
 - **Done:** Live site checked at desktop and 375px: nav anchors, all 3 audit buttons, popup open/close (× and Back to the site), Copy address, validation (empty, bad email, unticked consent), privacy/referral/portfolio pages. No console errors.
 - **Done:** Test opt-in ("CTA Test") accepted by Web3Forms (thank-you shown, which needs `success: true`); email arrived at team@scottmcfall.com at 2:24 PM.
